@@ -106,9 +106,6 @@ session_start();
 
 </head>
 
-<!--=====================================
-CUERPO DOCUMENTO
-======================================-->
 
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini login-page">
  

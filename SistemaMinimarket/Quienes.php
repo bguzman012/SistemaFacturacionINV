@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-<title>Sistema Web de Facturacion Promocion y Control</title>
-
+<title>¿Quiénes Somos?</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -11,7 +10,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- css -->
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link rel="stylesheet" href="css/Jortech2.css" type="text/css" media="all" />
+<link rel="stylesheet" href="css/Quienes.css" type="text/css" media="all" />
 <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" media="all" />
 <!--// css -->
 <!-- font -->
@@ -22,16 +21,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="js/bootstrap.js"></script>
 
 </head>
-	
+
 
 <body>
-<?php
-session_start();
-error_reporting(0);
-$validacion=$_SESSION['nombres'];
-if($validacion== null || $validacion ='')
-{
-?>
 
 <div class="header-top-w3layouts">
 	<div class="container">
@@ -61,27 +53,26 @@ if($validacion== null || $validacion ='')
 				</div> 
 				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 					<ul class="nav navbar-nav ">
-						<li class="active"><a href="index.php" class="hyper "><span>Inicio</span></a></li>
+						<li><a href="index.php" class="hyper "><span>Inicio</span></a></li>	
 						<li class="dropdown">
 								<a href="#" class="dropdown-toggle hyper" data-toggle="dropdown" ><span>Nosotros<b class="caret"></b></span></a>
 								<ul class="dropdown-menu multi multi1">
 									<div class="row">
-													<div class="col-sm-4">
+										<div class="col-sm-4">
 											<ul class="multi-column-dropdown">
 												<li><a href="Quienes.php"><i class="fa fa-angle-right" aria-hidden="true"></i>¿Quiénes Somos?</a></li>
 												<li><a href="MisionVision.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Misiòn/Visiòn/Servicios</a></li>
-												
+											
 											</ul>
 										</div>
 										<div class="col-sm-4">
 											<ul class="multi-column-dropdown">
-												<li><a href="Pagos.php"> <i class="fa fa-angle-right" aria-hidden="true"></i>Tipos de Pagos</a></li>
 												<li><a href="Terminos.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Términos y Condiciones</a></li>
 												<li><a href="Preguntas.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Preguntas Frecuentes</a></li>
 											</ul>
 										</div>
 										<div class="col-sm-4 w3l">
-											<a href="#"><img src="images/Productos/celus.jpg" class="img-responsive" alt=""></a>
+											<a href="#"><img src="images/Productos/menu2.jpeg" class="img-responsive" alt=""></a>
 										</div>
 										<div class="clearfix"></div>
 									</div>	
@@ -108,16 +99,17 @@ if($validacion== null || $validacion ='')
 												<li><a href="Productos.php?cat=13"><i class="fa fa-angle-right" aria-hidden="true"></i>Zona Gamer</a></li>
 												<li><a href="Productos.php?cat=14"><i class="fa fa-angle-right" aria-hidden="true"></i>Otros</a></li>
 												<li><a href="Productos.php?cat=15"><i class="fa fa-angle-right" aria-hidden="true"></i>Todos los productos</a></li>
-											</ul>					
-										</div>
+											</ul>						
+										</div>iv>
 										<div class="col-sm-4 w3l">
-											<a href="#"><img src="images/Productos/acesorios.jfif" class="img-responsive" alt=""></a>
+											<a href="#"><img src="images/Productos/Menu.jpg" class="img-responsive" alt=""></a>
 										</div>
 										<div class="clearfix"></div>
 									</div>	
 								</ul>
 						</li>
 						<li><a href="Marcas.php" class="hyper"><span>Marcas</span></a></li>
+						
 						<li><a href="Contacto.php" class="hyper"><span>Contacto</span></a></li>
 						<li class="dropdown">
 								<a href="#" class="dropdown-toggle hyper" data-toggle="dropdown" ><span>Mi Cuenta<b class="caret"></b></span></a>
@@ -130,7 +122,7 @@ if($validacion== null || $validacion ='')
 											</ul>
 										</div>
 										<div class="col-sm-4">
-											<a href="#"><img src="images/Productos/loguin.jfif" class="img-responsive" alt=""></a>
+											<a href="#"><img src="images/Productos/Logo/pc.png" class="img-responsive" alt=""></a>
 										</div>
 										<div class="clearfix"></div>
 									</div>	
@@ -154,7 +146,6 @@ if($validacion== null || $validacion ='')
 					);
 				});
 				</script>
-
 		<div class="col-md-4 search-agileinfo">
 			<form action="#" method="post">
 				<input type="search" name="Search" placeholder="Buscar" required="">
@@ -166,117 +157,164 @@ if($validacion== null || $validacion ='')
 		<div class="clearfix"></div>
 	</div>
 </div>
-<div class="banner-agile">
-	<div class="container">
-		<h2>BIENVENIDOS</h2>
-		<h3>TIENDA<span>MICHELITA</span></h3>
-		<h3>PRODUCTOS DE PRIMERA NECECIDAD </h3>
-		<a href="Productos.php?cat=7">COMPRAR</a>
-	</div>
+
+
+<div class="sub-banner">
 </div>
-
-<div class="banner-bootom-w3-agileits">
-	<div class="container">
-		<div class="col-md-5 bb-grids bb-left-agileits-w3layouts">
-			<a href="Productos.php?cat=10"><div class="bb-left-agileits-w3layouts-inner">
-					<h3>Oferta</h3>
-					<h4>Descuento del<span>10%</span></h4>
-					<h4>en Licores</h4>
-			</div></a>
-		</div>
-		<div class="col-md-4 bb-grids bb-middle-agileits-w3layouts">
-			<a href="Productos.php?cat=13"><div class="bb-middle-top">
-				<h3>Oferta</h3>
-				<h4>Descuento del<span>15%</span></h4>
-				<h4>en Zona Gamer</h4>
-			</div></a>
-			<a href="Productos.php?cat=9"><div class="bb-middle-bottom">
-				<h3>Oferta</h3>
-				<h4>Descuento del<span>30%</span></h4>
-				<h4>en Laptop`s</h4>
-			</div></a>
-		</div>
-		<div class="col-md-3 bb-grids bb-right-agileits-w3layouts">
-			<a href="Productos.php?cat=12"><div class="bb-right-top">
-				<h3>Oferta</h3>
-				<h4>Descuento del<span>12%</span></h4>
-				<h4>en Accesorios</h4>
-			</div></a>
-			<a href="Productos.php?cat=14"><div class="bb-right-bottom">
-				<h3>Oferta</h3>
-				<h4>Descuento del<span>20%</span></h4>
-				<h4>en Otros</h4>
-			</div></a>
-		</div>
-		<div class="clearfix"></div>
-	</div>
-</div>
-
-<div class="fandt">
-	<div class="container">
-		<div class="col-md-6 features">
-			<h3>Nuestros Servicios</h3>
-			<div class="support">
-				<div class="col-md-2 ficon hvr-rectangle-out">
-					<i class="fa fa-user " aria-hidden="true"></i>
-				</div>
-				<div class="col-md-10 ftext">
-					<h4>Soporte gratuito</h4>
-					<p>Soporte gratuito en línea las 24 horas, los 7 días de la semana</p>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-			<div class="shipping">
-				<div class="col-md-2 ficon hvr-rectangle-out">
-					<i class="fa fa-bus" aria-hidden="true"></i>
-				</div>
-				<div class="col-md-10 ftext">
-					<h4>Envíos Gratuitos</h4>
-					<p>Aplica únicamente a los productos comprados dentro de la provincia.</p>
-				</div>	
-				<div class="clearfix"></div>
-			</div>
-			<div class="money-back">
-				<div class="col-md-2 ficon hvr-rectangle-out">
-					<i class="fa fa-money" aria-hidden="true"></i>
-				</div>
-				<div class="col-md-10 ftext">
-					<h4>100% de devolución de dinero</h4>
-					<p>Compra segura, si hay imperfectos de fábrica se devolvera el dinero y tarjeta de regalo.</p>
-				</div>	
-				<div class="clearfix"></div>				
-			</div>
-		</div>
-		<div class="col-md-6 testimonials">
-			<div class="test-inner">
-				<div class="wmuSlider example1 animated wow slideInUp" data-wow-delay=".5s">
-					<div class="wmuSliderWrapper">
-						<article style="position: absolute; width: 100%; opacity: 0;"> 
-							<div class="banner-wrap">
-							<img src="https://scontent.fuio5-1.fna.fbcdn.net/v/t31.18172-8/12890988_1119162974782270_3736026909062289196_o.jpg?_nc_cat=100&ccb=1-5&_nc_sid=174925&_nc_eui2=AeG2smKtoBMCL7oCF9TUD_Sk_IomVhHlUWr8iiZWEeVRakAKPf2fsSLjEGpg5QXgd1HUcOHKZ_ZdDslk6539_TGD&_nc_ohc=gdV4a54Qxb4AX85Y4eE&_nc_ht=scontent.fuio5-1.fna&oh=dc3e1ae84509eb5ea87118bf3e5bc259&oe=6172E7F1" alt=" " class="img-responsive" />
-							<br>
-								
-								
-								
-								<br>
-								
-
-								<p>Trabajar con nocotros es tu mejor elección  TIENDA MICHELITA
-									<br> Nosotros programamos tu futuro .</p>
-								<h4>VISITANOS SERA UN PLACER ATENDERTE </h4>
-							</div>
-						</article>
+<div class="about">
+	<div class="container"> 
+		<h3>¿Quiénes Somos?</h3>
+		<div class="about-info">
+			<div class="col-md-8 about-grids">
+				<h4>TIENDA MICHELITA</h4>
+				<div align="justify"><p>Es una empresa joven Online, que busca ofrecer un modelo integral de servicio para satisfacer tus necesidades de compra, de productos de calidad, originalidad y seleccionados, para toda clase de personas que amen la tecnología tanto como nosotros, a un precio competitivo en el mercado por medio de una tienda virtual abierta las 24 hrs. desde cualquier lugar de Ecuador. Inicialmente vamos a vender solo a Ecuador, en una años más nos abriremos al mercado internacional. </p></div>
+					<div class="about-w3ls-row">
+						<script type="text/javascript">
+								 $(window).load(function() {
+									$("#flexiselDemo3").flexisel({
+										visibleItems:2,
+										animationSpeed: 1000,
+										autoPlay: false,
+										autoPlaySpeed: 3000,    		
+										pauseOnHover: true,
+										enableResponsiveBreakpoints: true,
+										responsiveBreakpoints: { 
+											portrait: { 
+												changePoint:480,
+												visibleItems:2
+											}, 
+											landscape: { 
+												changePoint:640,
+												visibleItems:2
+											},
+											tablet: { 
+												changePoint:768,
+												visibleItems:2
+											}
+										}
+									});
+									
+								});
+						</script>
+						<script type="text/javascript" src="js/jquery.flexisel.js"></script> 
+						<ul id="flexiselDemo3">
+							<li>
+								<img src="images/Productos/sb1.jpg" class="img-responsive" alt="" />
+							</li>
+							<li> 
+								<img src="images/Productos/t1.jfif" class="img-responsive" alt="" />
+							</li>
+							<li> 
+								<img src="images/Productos/sb3.jpg" class="img-responsive" alt="" />
+							</li>
+							<li> 
+								<img src="images/Productos/sb4.jpg" class="img-responsive" alt="" />
+							</li>
+						</ul> 
+						<div class="clearfix"> </div>
 					</div>
-				</div>
 			</div>
+
+
+			<div class="col-md-4 about-grids">
+					<h4>Ventajas de TIENDA MICHELITA</h4>
+					<div class="pince">
+						<div class="pince-left">
+							<h5>01</h5>
+						</div>
+						<div class="pince-right" align="justify">
+							<p>Disponemos de las Mejores Marcas <b>Gamers.</b></p>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="pince">
+						<div class="pince-left">
+							<h5>02</h5>
+						</div>
+						<div class="pince-right" align="justify">
+							<p>Contamos con un Programa de Reembolso en caso de algún daño.</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="pince">
+						<div class="pince-left">
+							<h5>03</h5>
+						</div>
+						<div class="pince-right" align="justify">
+							<p>Envíos dentro del País Totalmente <B>Gratis</B></p>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="pince">
+						<div class="pince-left">
+							<h5>04</h5>
+						</div>
+						<div class="pince-right" align="justify">
+							<p>Disponemos de Soporte y Mantenimiento de las Manos de Expertos</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+			</div>
+			<div class="clearfix"> </div>
 		</div>
-		<div class="clearfix"></div>
 	</div>
-				<script src="js/jquery.wmuSlider.js"></script> 
-								<script>
-									$('.example1').wmuSlider();         
-								</script> 
 </div>
+<!-- //about -->
+
+<!-- about-bottom -->
+	<div class="about-bottom">
+		<div class="container">
+			<h3> Descuentos hasta del <span>50%,</span> aprovecha!</h3>
+			<h4>Computadoras, Laptop`s, Zona Gamer, Celulares y más</h4>
+			<a href="#">COMPRAR</a>
+		</div>
+	</div>
+<!-- //about-bottom -->
+
+
+<!--team-->
+
+<div class="team" id="team">
+	<div class="container">
+		<h3>Directiva de TIENDA MICHELITA</h3>
+		<div class="team-grids">
+			
+			
+			<div class="col-md-3 team-grid">
+				<div class="team-img">
+					<img src="https://scontent.fuio5-1.fna.fbcdn.net/v/t31.18172-8/12890988_1119162974782270_3736026909062289196_o.jpg?_nc_cat=100&ccb=1-5&_nc_sid=174925&_nc_eui2=AeG2smKtoBMCL7oCF9TUD_Sk_IomVhHlUWr8iiZWEeVRakAKPf2fsSLjEGpg5QXgd1HUcOHKZ_ZdDslk6539_TGD&_nc_ohc=gdV4a54Qxb4AX85Y4eE&_nc_ht=scontent.fuio5-1.fna&oh=dc3e1ae84509eb5ea87118bf3e5bc259&oe=6172E7F1" class="img-responsive" alt=" " />
+					<figcaption class="overlay">
+						<div class="social-icon">
+							<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+							<a href="https://www.facebook.com/smart.zone.779"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+						</div>
+					</figcaption>
+				</div>
+				<h4>Administrador General  TIENDA MICHELITA</h4>
+				<h5>david Avila</h5>
+			</div>
+			<div class="col-md-3 team-grid">
+				<div class="team-img">
+					<img src="images/Banner/Foto11.jpg" class="img-responsive" alt=" " />
+					<figcaption class="overlay">
+						<div class="social-icon">
+							<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+							<a href="https://www.facebook.com/smart.zone.779"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+						</div>
+					</figcaption>
+				</div>
+				<h4>Coordinadora de Pedidos TIENDA MICHELITA</h4>
+				<h5>Mari Elizabeth Astudillo</h5>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
+<!--team-->
 
 
 <!-- newsletter -->
@@ -293,19 +331,20 @@ if($validacion== null || $validacion ='')
 		<div class="col-md-3 footer-grids fgd1">
 		<a href="index.php"><img src="images/Logos/pc.png" alt=" " /><h3>TIENDA MICHELITA</h3></a>
 		<ul>
-			<li>Rocendo TOrres y Domingo Comin</li>
-			<li>Sucúa / Morona Santiago  / Ecuador</li>
-			<li><a href="#">micheliata_jaya@outlook.es</a></li>
-			<a href="https://www.twitter.com"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-			<a href="https://www.facebook.com/smart.zone.779"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-			<a href="https://www.instagram.com"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+		<li>Victorino Abarca s/n y Domingo Comin</li>
+            <li>Sucúa / Morona Santiago  / Ecuador</li>
+            <li><a href="#">david_avila85@hotmail.com</a></li>
+
+			<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+			<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+			<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
 		</ul>
 		</div>
 		<div class="col-md-3 footer-grids fgd2">
 			<h4>Menú</h4> 
 			<ul>
 				<li><a href="index.php">Inicio</a></li>
-				
+				<li><a href="Marcas.php">Marcas</a></li>
 				<li><a href="Contacto.php">Contacto</a></li>
 			</ul>
 		</div>
@@ -322,28 +361,18 @@ if($validacion== null || $validacion ='')
 			<h4>Mi Cuenta</h4> 
 			<ul>
 				<li><a href="Login.php">Iniciar Sesión</a></li>
-				
+				<li><a href="Registrarse.php">Registrarse</a></li>
 			</ul>
 		</div>
 		<div class="clearfix"></div>
-		<p class="copy-right">© 2022 TIENDA MICHELITA. Todos los Derechos Reservados | Por: <a href="#">TIENDA MICHELITA</a></p>
+		<p class="copy-right">© 2021 TIENDA MICHELITA. Todos los Derechos Reservados | Por: <a href="#">TIENDA MICHELITA</a></p>
 	</div>
-</div>
-<?php
-}
-else
-{
-    if(isset($_POST["btnsalir"]))
-    {
-        session_destroy();
-        header("location: index.php");
-    }
-    $id= trim($_GET["id"]);
-?>
+</div> 
+
 <div class="header-top-w3layouts">
 	<div class="container">
 		<div class="col-md-6 logo-w3">
-			<a href="index.php"><img src="images/Logos/pc.png" alt=" " /><h1>TIENDA MICHELITA<span></span></h1></a>
+			<a href="index.php?id=<?php echo $id;?>"><img src="images/Logos/pc.png" alt=" " /><h1>TIENDA MICHELITA<span></span></h1></a>
 		</div>
 		<div class="col-md-6 phone-w3l">
 			<ul>
@@ -368,7 +397,7 @@ else
 				</div> 
 				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 					<ul class="nav navbar-nav ">
-						<li class=" active"><a href="index.php?id=<?php echo $id;?>" class="hyper "><span>Inicio</span></a></li>	
+						<li><a href="index.php?id=<?php echo $id;?>" class="hyper "><span>Inicio</span></a></li>	
 						<li class="dropdown">
 								<a href="#" class="dropdown-toggle hyper" data-toggle="dropdown" ><span>Nosotros<b class="caret"></b></span></a>
 								<ul class="dropdown-menu multi multi1">
@@ -376,18 +405,19 @@ else
 										<div class="col-sm-4">
 											<ul class="multi-column-dropdown">
 												<li><a href="Quienes.php?id=<?php echo $id;?>"><i class="fa fa-angle-right" aria-hidden="true"></i>¿Quiénes Somos?</a></li>
-												<li><a href="MisionVision.php?id=<?php echo $id;?>"><i class="fa fa-angle-right" aria-hidden="true"></i>Mision/Visiòn/Servicios</a></li>
-												
+												<li><a href="MisionVision.php?id=<?php echo $id;?>"><i class="fa fa-angle-right" aria-hidden="true"></i>Misión</a></li>
+												<li><a href="MisionVision.php?id=<?php echo $id;?>"><i class="fa fa-angle-right" aria-hidden="true"></i>Visión</a></li>
+												<li><a href="MisionVision.php?id=<?php echo $id;?>"><i class="fa fa-angle-right" aria-hidden="true"></i>Servicios</a></li>
+											</ul>
 										</div>
 										<div class="col-sm-4">
 											<ul class="multi-column-dropdown">
-												<li><a href="Pagos.php?id=<?php echo $id;?>"> <i class="fa fa-angle-right" aria-hidden="true"></i>Tipos de Pagos</a></li>
 												<li><a href="Terminos.php?id=<?php echo $id;?>"><i class="fa fa-angle-right" aria-hidden="true"></i>Términos y Condiciones</a></li>
 												<li><a href="Preguntas.php?id=<?php echo $id;?>"><i class="fa fa-angle-right" aria-hidden="true"></i>Preguntas Frecuentes</a></li>
 											</ul>
 										</div>
 										<div class="col-sm-4 w3l">
-											<a href="#"><img src="images/Productos/celus.jpg" class="img-responsive" alt=""></a>
+											<a href="#"><img src="images/Productos/menu2.jpeg" class="img-responsive" alt=""></a>
 										</div>
 										<div class="clearfix"></div>
 									</div>	
@@ -424,7 +454,7 @@ else
 								</ul>
 						</li>
 						<li><a href="Marcas.php?id=<?php echo $id;?>" class="hyper"><span>Marcas</span></a></li>
-
+						
 						<li><a href="Contacto.php?id=<?php echo $id;?>" class="hyper"><span>Contacto</span></a></li>
 						<li class="dropdown">
 							<li class="nav-menu-item"><form method="post" action=""><button type="submit" name="btnsalir" class="btn btn-outline-danger"><font style="color: red">Cerrar sesion</font></button></form></li>
@@ -447,7 +477,6 @@ else
 					);
 				});
 				</script>
-
 		<div class="col-md-4 search-agileinfo">
 			<form action="#" method="post">
 				<input type="search" name="Search" placeholder="Buscar" required="">
@@ -462,109 +491,191 @@ else
 		<div class="clearfix"></div>
 	</div>
 </div>
-<div class="banner-agile">
-	<div class="container">
-		<h2>BIENVENIDOS</h2>
-		<h3>SMART<span>ZONE</span></h3>
-		<p>La mejor tecnología con los mejores precios</p>
-		<a href="Productos.php?id=<?php echo $id;?>&cat=7">COMPRAR</a>
-	</div>
-</div>
 
-<div class="banner-bootom-w3-agileits">
-	<div class="container">
-		<div class="col-md-5 bb-grids bb-left-agileits-w3layouts">
-			<a href="Productos.php?id=<?php echo $id;?>&cat=10"><div class="bb-left-agileits-w3layouts-inner">
-					<h3>Oferta</h3>
-					<h4>Descuento del<span>20%</span></h4>
-					<h4>en Celulares</h4>
-			</div></a>
-		</div>
-		<div class="col-md-4 bb-grids bb-middle-agileits-w3layouts">
-			<a href="Productos.php?cat=13"><div class="bb-middle-top">
-				<h3>Oferta</h3>
-				<h4>Descuento del<span>10%</span></h4>
-				<h4>en Zona Gamer</h4>
-			</div></a>
-			<a href="Productos.php?id=<?php echo $id;?>&cat=9"><div class="bb-middle-bottom">
-				<h3>Oferta</h3>
-				<h4>Descuento del<span>5%</span></h4>
-				<h4>en Laptop`s</h4>
-			</div></a>
-		</div>
-		<div class="col-md-3 bb-grids bb-right-agileits-w3layouts">
-			<a href="Productos.php?id=<?php echo $id;?>&cat=12"><div class="bb-right-top">
-				<h3>Oferta</h3>
-				<h4>Descuento del<span>15%</span></h4>
-				<h4>en Accesorios</h4>
-			</div></a>
-			<a href="Productos.php?id=<?php echo $id;?>&cat=14"><div class="bb-right-bottom">
-				<h3>Oferta</h3>
-				<h4>Descuento del<span>25%</span></h4>
-				<h4>en Otros</h4>
-			</div></a>
-		</div>
-		<div class="clearfix"></div>
-	</div>
-</div>
 
-<div class="fandt">
-	<div class="container">
-		<div class="col-md-6 features">
-			<h3>Nuestros Servicios</h3>
-			<div class="support">
-				<div class="col-md-2 ficon hvr-rectangle-out">
-					<i class="fa fa-user " aria-hidden="true"></i>
-				</div>
-				<div class="col-md-10 ftext">
-					<h4>Soporte gratuito</h4>
-					<p>Soporte gratuito en línea las 24 horas, los 7 días de la semana</p>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-			<div class="shipping">
-				<div class="col-md-2 ficon hvr-rectangle-out">
-					<i class="fa fa-bus" aria-hidden="true"></i>
-				</div>
-				<div class="col-md-10 ftext">
-					<h4>Envíos Gratuitos</h4>
-					<p>Aplica únicamente a los productos comprados dentro de la provincia.</p>
-				</div>	
-				<div class="clearfix"></div>
-			</div>
-			<div class="money-back">
-				<div class="col-md-2 ficon hvr-rectangle-out">
-					<i class="fa fa-money" aria-hidden="true"></i>
-				</div>
-				<div class="col-md-10 ftext">
-					<h4>100% de devolución de dinero</h4>
-					<p>Compra segura, si hay imperfectos de fábrica se devolvera el dinero y tarjeta de regalo.</p>
-				</div>	
-				<div class="clearfix"></div>				
-			</div>
-		</div>
-		<div class="col-md-6 testimonials">
-			<div class="test-inner">
-				<div class="wmuSlider example1 animated wow slideInUp" data-wow-delay=".5s">
-					<div class="wmuSliderWrapper">
-						<article style="position: absolute; width: 100%; opacity: 0;"> 
-							<div class="banner-wrap">
-								<img src="https://media.istockphoto.com/vectors/closeup-portrait-of-an-ordinary-caucasian-man-vector-id1262973430?k=20&m=1262973430&s=612x612&w=0&h=VdlBdO82UtiNjNthRvNOU1GFvHUkPTXSerNoQJt78H4=" alt=" " class="img-responsive" />
-								<p>Dueño y Fundador de la marca TIENDA MICHELITA, con ideas innovadoras y mejores precios en sus productos.</p>
-								<h4># David Avila</h4>
-							</div>
-						</article>
+<div class="sub-banner">
+</div>
+<div class="about">
+	<div class="container"> 
+		<h3>¿Quiénes Somos?</h3>
+		<div class="about-info">
+			<div class="col-md-8 about-grids">
+				<h4>TIENDA MICHELITA</h4>
+				<div align="justify"><p>Es una empresa joven Online, que busca ofrecer un modelo integral de servicio para satisfacer tus necesidades de compra, de productos de calidad, originalidad y seleccionados, para toda clase de personas que amen la tecnología tanto como nosotros, a un precio competitivo en el mercado por medio de una tienda virtual abierta las 24 hrs. desde cualquier lugar de Ecuador. Inicialmente vamos a vender solo a Ecuador, en una años más nos abriremos al mercado internacional. </p></div>
+					<div class="about-w3ls-row">
+						<script type="text/javascript">
+								 $(window).load(function() {
+									$("#flexiselDemo3").flexisel({
+										visibleItems:2,
+										animationSpeed: 1000,
+										autoPlay: false,
+										autoPlaySpeed: 3000,    		
+										pauseOnHover: true,
+										enableResponsiveBreakpoints: true,
+										responsiveBreakpoints: { 
+											portrait: { 
+												changePoint:480,
+												visibleItems:2
+											}, 
+											landscape: { 
+												changePoint:640,
+												visibleItems:2
+											},
+											tablet: { 
+												changePoint:768,
+												visibleItems:2
+											}
+										}
+									});
+									
+								});
+						</script>
+						<script type="text/javascript" src="js/jquery.flexisel.js"></script> 
+						<ul id="flexiselDemo3">
+							<li>
+								<img src="images/Productos/sb1.jpg" class="img-responsive" alt="" />
+							</li>
+							<li> 
+								<img src="images/Productos/sb2.jpg" class="img-responsive" alt="" />
+							</li>
+							<li> 
+								<img src="images/Productos/sb3.jpg" class="img-responsive" alt="" />
+							</li>
+							<li> 
+								<img src="images/Productos/sb4.jpg" class="img-responsive" alt="" />
+							</li>
+						</ul> 
+						<div class="clearfix"> </div>
 					</div>
-				</div>
 			</div>
+
+
+			<div class="col-md-4 about-grids">
+					<h4>Ventajas de TIENDA MICHELITA</h4>
+					<div class="pince">
+						<div class="pince-left">
+							<h5>01</h5>
+						</div>
+						<div class="pince-right" align="justify">
+							<p>Disponemos de las Mejores Marcas <b>Gamers.</b></p>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="pince">
+						<div class="pince-left">
+							<h5>02</h5>
+						</div>
+						<div class="pince-right" align="justify">
+							<p>Contamos con un Programa de Reembolso en caso de algún daño.</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="pince">
+						<div class="pince-left">
+							<h5>03</h5>
+						</div>
+						<div class="pince-right" align="justify">
+							<p>Envíos dentro del País Totalmente <B>Gratis</B></p>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="pince">
+						<div class="pince-left">
+							<h5>04</h5>
+						</div>
+						<div class="pince-right" align="justify">
+							<p>Disponemos de Soporte y Mantenimiento de las Manos de Expertos</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+			</div>
+			<div class="clearfix"> </div>
 		</div>
-		<div class="clearfix"></div>
 	</div>
-				<script src="js/jquery.wmuSlider.js"></script> 
-								<script>
-									$('.example1').wmuSlider();         
-								</script> 
 </div>
+<!-- //about -->
+
+<!-- about-bottom -->
+	<div class="about-bottom">
+		<div class="container">
+			<h3> Descuentos hasta del <span>50%,</span> aprovecha!</h3>
+			<h4>Computadoras, Laptop`s, Zona Gamer, Celulares y más</h4>
+			<a href="#">COMPRAR</a>
+		</div>
+	</div>
+<!-- //about-bottom -->
+
+
+<!--team-->
+<div class="team" id="team">
+	<div class="container">
+		<h3>Directiva de TIENDA MICHELITA</h3>
+		<div class="team-grids">
+			<div class="col-md-3 team-grid">
+									<div class="team-img">
+										<img src="images/Banner/8.jfif" class="img-responsive" alt=" " />
+										<figcaption class="overlay">
+											<div class="social-icon">
+												<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+												<a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+												<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+												<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+											</div>
+										</figcaption>
+									</div>
+									<h4>Diana Rosalia</h4>
+									<h5>Directora y Fundadora</h5>
+			</div>
+			<div class="col-md-3 team-grid">
+				<div class="8.jfif">
+					<img src="images/2.jfif" class="img-responsive" alt=" " />
+					<figcaption class="overlay">
+						<div class="social-icon">
+							<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+						</div>
+					</figcaption>
+				</div>
+				<h4>Sindy Angulo</h4>
+				<h5>Directora de Finanzas</h5>
+			</div>
+			<div class="col-md-3 team-grid">
+				<div class="team-img">
+					<img src="images/jas.jfif" class="img-responsive" alt=" " />
+					<figcaption class="overlay">
+						<div class="social-icon">
+							<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+						</div>
+					</figcaption>
+				</div>
+				<h4>Jasmany Riera </h4>
+				<h5>Director de Sistemas</h5>
+			</div>
+			<div class="col-md-3 team-grid">
+				<div class="team-img">
+					<img src="images/6.jfif" class="img-responsive" alt=" " />
+					<figcaption class="overlay">
+						<div class="social-icon">
+							<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+						</div>
+					</figcaption>
+				</div>
+				<h4>Bairon Fabian Meirno </h4>
+				<h5>Desarrollador y Programador de S/W</h5>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
+<!--team-->
 
 
 <!-- newsletter -->
@@ -579,15 +690,15 @@ else
 <div class="footer">
 	<div class="container">
 		<div class="col-md-3 footer-grids fgd1">
-		<a href="index.php"><img src="images/Logos/pc.png" alt=" " /><h3>TIENDDA MICHELITA </h3></a>
+		<a href="index.php"><img src="images/Logos/pc.png" alt=" " /><h3>TIENDA MICHELITA</h3></a>
 		<ul>
-		<li>Rocendo Torres y Domingo Comin</li>
+		<li>Victorino Abarca s/n y Domingo Comin</li>
             <li>Sucúa / Morona Santiago  / Ecuador</li>
-            <li><a href="#">micheliata_jaya@outlook.es</a></li>
+            <li><a href="#">david_avila85@hotmail.com</a></li>
 
-			<a href="https://www.twitter.com"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-			<a href="https://www.facebook.com"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-			<a href="https://www.instagram.com"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+			<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+			<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+			<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
 		</ul>
 		</div>
 		<div class="col-md-3 footer-grids fgd2">
@@ -604,7 +715,7 @@ else
 				<li><a href="MisionVision.php?id=<?php echo $id;?>">Misión</a></li>
 				<li><a href="MisionVision.php?id=<?php echo $id;?>">Visión</a></li>
 				<li><a href="Quienes.php?id=<?php echo $id;?>">¿Quiénes Somos?</a></li>
-				<li><a href="Pagos.php?id=<?php echo $id;?>"></a></li>
+				
 			</ul>
 		</div>
 		<div class="col-md-3 footer-grids fgd4">
@@ -614,11 +725,11 @@ else
 			</ul>
 		</div>
 		<div class="clearfix"></div>
-		<p class="copy-right">© 2022 TIENDA MICHELITA . Todos los Derechos Reservados | Por: <a href="#">TIENDA MICHELITA</a></p>
+		<p class="copy-right">© 2021 TIENDA MICHELITA. Todos los Derechos Reservados | Por: <a href="#">TIENDA MICHELITA</a></p>
 	</div>
 </div>
 <?php
 }
-?>	
+?>
 </body>
 </html>

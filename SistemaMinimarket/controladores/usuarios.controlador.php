@@ -32,6 +32,7 @@ class ControladorUsuarios{
 						$_SESSION["foto"] = $respuesta["foto"];
 						$_SESSION["perfil"] = $respuesta["perfil"];
 
+					
 						/*=============================================
 						REGISTRAR FECHA PARA SABER EL ÚLTIMO LOGIN
 						=============================================*/
@@ -55,7 +56,7 @@ class ControladorUsuarios{
 
 							echo '<script>
 
-								window.location = "inicio";
+								window.location = "inicio.php";
 
 							</script>';
 

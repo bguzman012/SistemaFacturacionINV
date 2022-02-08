@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-<title>¿Quiénes Somos?</title>
+<title>Misión / Visión</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -10,8 +10,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- css -->
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link rel="stylesheet" href="../css/Quienes.css" type="text/css" media="all" />
-<link rel="stylesheet" href="../css/font-awesome.min.css" type="text/css" media="all" />
+<link rel="stylesheet" href="css/Mision.css" type="text/css" media="all" />
+<link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" media="all" />
 <!--// css -->
 <!-- font -->
 <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
@@ -24,13 +24,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 <body>
-<?php
-session_start();
-error_reporting(0);
-$validacion=$_SESSION['nombres'];
-if($validacion== null || $validacion ='')
-{
-?>
 <div class="header-top-w3layouts">
 	<div class="container">
 		<div class="col-md-6 logo-w3">
@@ -66,14 +59,13 @@ if($validacion== null || $validacion ='')
 									<div class="row">
 										<div class="col-sm-4">
 											<ul class="multi-column-dropdown">
-												<li><a href="vistas/Quienes.php"><i class="fa fa-angle-right" aria-hidden="true"></i>¿Quiénes Somos?</a></li>
-												<li><a href="MisionVision.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Misiòn/Visiòn/Servicios</a></li>
-											
+												<li><a href="Quienes.php"><i class="fa fa-angle-right" aria-hidden="true"></i>¿Quiénes Somos?</a></li>
+												<li><a href="MisionVision.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Mision/Visiòn/Servicios </a></li>
+												
 											</ul>
 										</div>
 										<div class="col-sm-4">
 											<ul class="multi-column-dropdown">
-												<li><a href="Pagos.php"> <i class="fa fa-angle-right" aria-hidden="true"></i>Tipos de Pagos</a></li>
 												<li><a href="Terminos.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Términos y Condiciones</a></li>
 												<li><a href="Preguntas.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Preguntas Frecuentes</a></li>
 											</ul>
@@ -107,7 +99,7 @@ if($validacion== null || $validacion ='')
 												<li><a href="Productos.php?cat=14"><i class="fa fa-angle-right" aria-hidden="true"></i>Otros</a></li>
 												<li><a href="Productos.php?cat=15"><i class="fa fa-angle-right" aria-hidden="true"></i>Todos los productos</a></li>
 											</ul>						
-										</div>iv>
+										</div>>
 										<div class="col-sm-4 w3l">
 											<a href="#"><img src="images/Productos/Menu.jpg" class="img-responsive" alt=""></a>
 										</div>
@@ -161,168 +153,81 @@ if($validacion== null || $validacion ='')
 				</button>
 			</form>
 		</div>
-		<div class="clearfix"></div>
 	</div>
 </div>
 
 
 <div class="sub-banner">
 </div>
-<div class="about">
-	<div class="container"> 
-		<h3>¿Quiénes Somos?</h3>
-		<div class="about-info">
-			<div class="col-md-8 about-grids">
-				<h4>TIENDA MICHELITA</h4>
-				<div align="justify"><p>Es una empresa joven Online, que busca ofrecer un modelo integral de servicio para satisfacer tus necesidades de compra, de productos de calidad, originalidad y seleccionados, para toda clase de personas que amen la tecnología tanto como nosotros, a un precio competitivo en el mercado por medio de una tienda virtual abierta las 24 hrs. desde cualquier lugar de Ecuador. Inicialmente vamos a vender solo a Ecuador, en una años más nos abriremos al mercado internacional. </p></div>
-					<div class="about-w3ls-row">
-						<script type="text/javascript">
-								 $(window).load(function() {
-									$("#flexiselDemo3").flexisel({
-										visibleItems:2,
-										animationSpeed: 1000,
-										autoPlay: false,
-										autoPlaySpeed: 3000,    		
-										pauseOnHover: true,
-										enableResponsiveBreakpoints: true,
-										responsiveBreakpoints: { 
-											portrait: { 
-												changePoint:480,
-												visibleItems:2
-											}, 
-											landscape: { 
-												changePoint:640,
-												visibleItems:2
-											},
-											tablet: { 
-												changePoint:768,
-												visibleItems:2
-											}
-										}
-									});
-									
-								});
-						</script>
-						<script type="text/javascript" src="js/jquery.flexisel.js"></script> 
-						<ul id="flexiselDemo3">
-							<li>
-								<img src="images/Productos/sb1.jpg" class="img-responsive" alt="" />
-							</li>
-							<li> 
-								<img src="images/Productos/t1.jfif" class="img-responsive" alt="" />
-							</li>
-							<li> 
-								<img src="images/Productos/sb3.jpg" class="img-responsive" alt="" />
-							</li>
-							<li> 
-								<img src="images/Productos/sb4.jpg" class="img-responsive" alt="" />
-							</li>
-						</ul> 
-						<div class="clearfix"> </div>
-					</div>
-			</div>
+<!-- top-brands -->
+	<div class="top-brands">
+		<div class="container">
+			<h3>Misión</h3>
+		<div class="container" align="justify">
+			<p><b>TIENDA MICHELITA</b> busca satisfacer las necesidades de compra que tenemos todos, a través de bienes de excelencia, originalidad y calidad. Nuestro modelo de negocio se basa en procesos de comercio electrónico, seguros y eficientes. Contamos con un equipo de trabajo altamente capacitado, con la mejor aptitud de servicio, sentido de la responsabilidad y ética, que busca dar un buen servicio y de calidad en el mejor tiempo posible. La innovación constante nos permite llegar al cliente con eficiencia en nuestros productos tecnológicos.</p></div>
+		</div>
+	</div>
 
-
-			<div class="col-md-4 about-grids">
-					<h4>Ventajas de TIENDA MICHELITA</h4>
-					<div class="pince">
-						<div class="pince-left">
-							<h5>01</h5>
-						</div>
-						<div class="pince-right" align="justify">
-							<p>Disponemos de las Mejores Marcas <b>Gamers.</b></p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="pince">
-						<div class="pince-left">
-							<h5>02</h5>
-						</div>
-						<div class="pince-right" align="justify">
-							<p>Contamos con un Programa de Reembolso en caso de algún daño.</p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="pince">
-						<div class="pince-left">
-							<h5>03</h5>
-						</div>
-						<div class="pince-right" align="justify">
-							<p>Envíos dentro del País Totalmente <B>Gratis</B></p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="pince">
-						<div class="pince-left">
-							<h5>04</h5>
-						</div>
-						<div class="pince-right" align="justify">
-							<p>Disponemos de Soporte y Mantenimiento de las Manos de Expertos</p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-			</div>
+<!-- newsletter -->
+	<div class="newsletter">
+		<div class="container">
 			<div class="clearfix"> </div>
 		</div>
 	</div>
-</div>
-<!-- //about -->
+<!-- //newsletter -->
 
-<!-- about-bottom -->
-	<div class="about-bottom">
+		<div class="top-brands">
 		<div class="container">
-			<h3> Descuentos hasta del <span>50%,</span> aprovecha!</h3>
-			<h4>Computadoras, Laptop`s, Zona Gamer, Celulares y más</h4>
-			<a href="#">COMPRAR</a>
+			<h3>Visión</h3>
+		<div class="container" align="justify">
+			<p>Queremos que <b>TIENDA MICHELITA</b> en el 2025 sea una de las empresas líder en el mercado online. Vamos a desarrollar un canal fuerte de ventas por medio de nuestra Tienda Virtual, con los mejores productos, en la que encontrarás nuestro apoyo y la solución, de una manera fácil, cómoda y segura, buscando constantemente nuevas alternativas, basados en el conocimiento profundo de las necesidades de nuestra distinguida clientela.</p>
+		</div>
 		</div>
 	</div>
-<!-- //about-bottom -->
 
+<!-- newsletter -->
+	<div class="newsletter">
+		<div class="container">
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+<!-- //newsletter -->
 
-<!--team-->
-
-<div class="team" id="team">
+<div class="top-brands">
+		<div class="container">
+			<div class="fandt">
 	<div class="container">
-		<h3>Directiva de TIENDA MICHELITA</h3>
-		<div class="team-grids">
-			
-			
-			<div class="col-md-3 team-grid">
-				<div class="team-img">
-					<img src="https://scontent.fuio5-1.fna.fbcdn.net/v/t31.18172-8/12890988_1119162974782270_3736026909062289196_o.jpg?_nc_cat=100&ccb=1-5&_nc_sid=174925&_nc_eui2=AeG2smKtoBMCL7oCF9TUD_Sk_IomVhHlUWr8iiZWEeVRakAKPf2fsSLjEGpg5QXgd1HUcOHKZ_ZdDslk6539_TGD&_nc_ohc=gdV4a54Qxb4AX85Y4eE&_nc_ht=scontent.fuio5-1.fna&oh=dc3e1ae84509eb5ea87118bf3e5bc259&oe=6172E7F1" class="img-responsive" alt=" " />
-					<figcaption class="overlay">
-						<div class="social-icon">
-							<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-							<a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-							<a href="https://www.facebook.com/smart.zone.779"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-							<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-						</div>
-					</figcaption>
+			<h3>Nuestros Servicios</h3>
+			<div class="support">
+					<i class="fa fa-user " aria-hidden="true"></i>
+				<div class="col-md-10 ftext">
+					<p><b>SOPORTE TÉCNICO:</b> en línea las 24 horas, los 7 días de la semana</p>
 				</div>
-				<h4>Administrador General  TIENDA MICHELITA</h4>
-				<h5>david Avila</h5>
+				<div class="clearfix"></div>
 			</div>
-			<div class="col-md-3 team-grid">
-				<div class="team-img">
-					<img src="images/Banner/Foto11.jpg" class="img-responsive" alt=" " />
-					<figcaption class="overlay">
-						<div class="social-icon">
-							<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-							<a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-							<a href="https://www.facebook.com/smart.zone.779"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-							<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-						</div>
-					</figcaption>
-				</div>
-				<h4>Coordinadora de Pedidos TIENDA MICHELITA</h4>
-				<h5>Mari Elizabeth Astudillo</h5>
+			<div class="shipping">
+					<i class="fa fa-bus" aria-hidden="true"></i>
+				<div class="col-md-10 ftext">
+					<p><b>ENVÍOS GRATUITOS:</b> aplica únicamente a los productos comprados dentro de la provincia.</p>
+				</div>	
+				<div class="clearfix"></div>
 			</div>
-			<div class="clearfix"></div>
+			<div class="money-back">
+					<i class="fa fa-money" aria-hidden="true"></i>
+				<div class="col-md-10 ftext">
+					<p><b>COMPRA SEGURA:</b> si hay imperfectos de fábrica se devolvera el dinero y tarjeta de regalo.</p>
+				</div>	
+				<div class="clearfix"></div>				
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+			<script src="js/jquery.wmuSlider.js"></script> 
+			<script>
+				$('.example1').wmuSlider();         
+			</script> 
 		</div>
 	</div>
-</div>
-<!--team-->
-
 
 <!-- newsletter -->
 	<div class="newsletter">
@@ -336,9 +241,9 @@ if($validacion== null || $validacion ='')
 <div class="footer">
 	<div class="container">
 		<div class="col-md-3 footer-grids fgd1">
-		<a href="index.php"><img src="images/Logos/pc.png" alt=" " /><h3>TIENDA MICHELITA</h3></a>
+		<a href="index.php"><img src="images/Logos/compu.png" alt=" " /><h3>TIENDA MICHELITA</h3></a>
 		<ul>
-		<li>Victorino Abarca s/n y Domingo Comin</li>
+			<li>Victorino Abarca s/n y Domingo Comin</li>
             <li>Sucúa / Morona Santiago  / Ecuador</li>
             <li><a href="#">david_avila85@hotmail.com</a></li>
 
@@ -360,8 +265,7 @@ if($validacion== null || $validacion ='')
 			<ul>
 				<li><a href="MisionVision.php">Misión</a></li>
 				<li><a href="MisionVision.php">Visión</a></li>
-				<li><a href="vistas/Quienes.php">¿Quiénes Somos?</a></li>
-				<li><a href="Pagos.php">Tipos de Pagos</a></li>
+				<li><a href="Quienes.php">¿Quiénes Somos?</a></li>
 			</ul>
 		</div>
 		<div class="col-md-3 footer-grids fgd4">
@@ -374,18 +278,8 @@ if($validacion== null || $validacion ='')
 		<div class="clearfix"></div>
 		<p class="copy-right">© 2021 TIENDA MICHELITA. Todos los Derechos Reservados | Por: <a href="#">TIENDA MICHELITA</a></p>
 	</div>
-</div> 
-<?php
-}
-else
-{
-    if(isset($_POST["btnsalir"]))
-    {
-        session_destroy();
-        header("location: index.php");
-    }
-    $id= trim($_GET["id"]);
-?>
+</div>
+
 <div class="header-top-w3layouts">
 	<div class="container">
 		<div class="col-md-6 logo-w3">
@@ -421,15 +315,13 @@ else
 									<div class="row">
 										<div class="col-sm-4">
 											<ul class="multi-column-dropdown">
-												<li><a href="vistas/Quienes.php?id=<?php echo $id;?>"><i class="fa fa-angle-right" aria-hidden="true"></i>¿Quiénes Somos?</a></li>
+												<li><a href="Quienes.php?id=<?php echo $id;?>"><i class="fa fa-angle-right" aria-hidden="true"></i>¿Quiénes Somos?</a></li>
 												<li><a href="MisionVision.php?id=<?php echo $id;?>"><i class="fa fa-angle-right" aria-hidden="true"></i>Misión</a></li>
-												<li><a href="MisionVision.php?id=<?php echo $id;?>"><i class="fa fa-angle-right" aria-hidden="true"></i>Visión</a></li>
-												<li><a href="MisionVision.php?id=<?php echo $id;?>"><i class="fa fa-angle-right" aria-hidden="true"></i>Servicios</a></li>
+												
 											</ul>
 										</div>
 										<div class="col-sm-4">
 											<ul class="multi-column-dropdown">
-												<li><a href="Pagos.php?id=<?php echo $id;?>"> <i class="fa fa-angle-right" aria-hidden="true"></i>Tipos de Pagos</a></li>
 												<li><a href="Terminos.php?id=<?php echo $id;?>"><i class="fa fa-angle-right" aria-hidden="true"></i>Términos y Condiciones</a></li>
 												<li><a href="Preguntas.php?id=<?php echo $id;?>"><i class="fa fa-angle-right" aria-hidden="true"></i>Preguntas Frecuentes</a></li>
 											</ul>
@@ -513,188 +405,75 @@ else
 
 <div class="sub-banner">
 </div>
-<div class="about">
-	<div class="container"> 
-		<h3>¿Quiénes Somos?</h3>
-		<div class="about-info">
-			<div class="col-md-8 about-grids">
-				<h4>TIENDA MICHELITA</h4>
-				<div align="justify"><p>Es una empresa joven Online, que busca ofrecer un modelo integral de servicio para satisfacer tus necesidades de compra, de productos de calidad, originalidad y seleccionados, para toda clase de personas que amen la tecnología tanto como nosotros, a un precio competitivo en el mercado por medio de una tienda virtual abierta las 24 hrs. desde cualquier lugar de Ecuador. Inicialmente vamos a vender solo a Ecuador, en una años más nos abriremos al mercado internacional. </p></div>
-					<div class="about-w3ls-row">
-						<script type="text/javascript">
-								 $(window).load(function() {
-									$("#flexiselDemo3").flexisel({
-										visibleItems:2,
-										animationSpeed: 1000,
-										autoPlay: false,
-										autoPlaySpeed: 3000,    		
-										pauseOnHover: true,
-										enableResponsiveBreakpoints: true,
-										responsiveBreakpoints: { 
-											portrait: { 
-												changePoint:480,
-												visibleItems:2
-											}, 
-											landscape: { 
-												changePoint:640,
-												visibleItems:2
-											},
-											tablet: { 
-												changePoint:768,
-												visibleItems:2
-											}
-										}
-									});
-									
-								});
-						</script>
-						<script type="text/javascript" src="js/jquery.flexisel.js"></script> 
-						<ul id="flexiselDemo3">
-							<li>
-								<img src="images/Productos/sb1.jpg" class="img-responsive" alt="" />
-							</li>
-							<li> 
-								<img src="images/Productos/sb2.jpg" class="img-responsive" alt="" />
-							</li>
-							<li> 
-								<img src="images/Productos/sb3.jpg" class="img-responsive" alt="" />
-							</li>
-							<li> 
-								<img src="images/Productos/sb4.jpg" class="img-responsive" alt="" />
-							</li>
-						</ul> 
-						<div class="clearfix"> </div>
-					</div>
-			</div>
+<!-- top-brands -->
+	<div class="top-brands">
+		<div class="container">
+			<h3>Misión</h3>
+		<div class="container" align="justify">
+			<p><b>TIENDA MICHELITA</b> busca satisfacer las necesidades de compra que tenemos todos, a través de bienes de excelencia, originalidad y calidad. Nuestro modelo de negocio se basa en procesos de comercio electrónico, seguros y eficientes. Contamos con un equipo de trabajo altamente capacitado, con la mejor aptitud de servicio, sentido de la responsabilidad y ética, que busca dar un buen servicio y de calidad en el mejor tiempo posible. La innovación constante nos permite llegar al cliente con eficiencia en nuestros productos tecnológicos.</p></div>
+		</div>
+	</div>
 
-
-			<div class="col-md-4 about-grids">
-					<h4>Ventajas de TIENDA MICHELITA</h4>
-					<div class="pince">
-						<div class="pince-left">
-							<h5>01</h5>
-						</div>
-						<div class="pince-right" align="justify">
-							<p>Disponemos de las Mejores Marcas <b>Gamers.</b></p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="pince">
-						<div class="pince-left">
-							<h5>02</h5>
-						</div>
-						<div class="pince-right" align="justify">
-							<p>Contamos con un Programa de Reembolso en caso de algún daño.</p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="pince">
-						<div class="pince-left">
-							<h5>03</h5>
-						</div>
-						<div class="pince-right" align="justify">
-							<p>Envíos dentro del País Totalmente <B>Gratis</B></p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="pince">
-						<div class="pince-left">
-							<h5>04</h5>
-						</div>
-						<div class="pince-right" align="justify">
-							<p>Disponemos de Soporte y Mantenimiento de las Manos de Expertos</p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-			</div>
+<!-- newsletter -->
+	<div class="newsletter">
+		<div class="container">
 			<div class="clearfix"> </div>
 		</div>
 	</div>
-</div>
-<!-- //about -->
+<!-- //newsletter -->
 
-<!-- about-bottom -->
-	<div class="about-bottom">
+		<div class="top-brands">
 		<div class="container">
-			<h3> Descuentos hasta del <span>50%,</span> aprovecha!</h3>
-			<h4>Computadoras, Laptop`s, Zona Gamer, Celulares y más</h4>
-			<a href="#">COMPRAR</a>
+			<h3>Visión</h3>
+		<div class="container" align="justify">
+			<p>Queremos que <b>TIENDA MICHELITA</b> en el 2025 sea una de las empresas líder en el mercado online. Vamos a desarrollar un canal fuerte de ventas por medio de nuestra Tienda Virtual, con los mejores productos, en la que encontrarás nuestro apoyo y la solución, de una manera fácil, cómoda y segura, buscando constantemente nuevas alternativas, basados en el conocimiento profundo de las necesidades de nuestra distinguida clientela.</p>
+		</div>
 		</div>
 	</div>
-<!-- //about-bottom -->
 
+<!-- newsletter -->
+	<div class="newsletter">
+		<div class="container">
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+<!-- //newsletter -->
 
-<!--team-->
-<div class="team" id="team">
+<div class="top-brands">
+		<div class="container">
+			<div class="fandt">
 	<div class="container">
-		<h3>Directiva de TIENDA MICHELITA</h3>
-		<div class="team-grids">
-			<div class="col-md-3 team-grid">
-									<div class="team-img">
-										<img src="images/Banner/8.jfif" class="img-responsive" alt=" " />
-										<figcaption class="overlay">
-											<div class="social-icon">
-												<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-												<a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-												<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-												<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-											</div>
-										</figcaption>
-									</div>
-									<h4>Diana Rosalia</h4>
-									<h5>Directora y Fundadora</h5>
-			</div>
-			<div class="col-md-3 team-grid">
-				<div class="8.jfif">
-					<img src="images/2.jfif" class="img-responsive" alt=" " />
-					<figcaption class="overlay">
-						<div class="social-icon">
-							<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-							<a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-							<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-							<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-						</div>
-					</figcaption>
+			<h3>Nuestros Servicios</h3>
+			<div class="support">
+					<i class="fa fa-user " aria-hidden="true"></i>
+				<div class="col-md-10 ftext">
+					<p><b>SOPORTE TÉCNICO:</b> en línea las 24 horas, los 7 días de la semana</p>
 				</div>
-				<h4>Sindy Angulo</h4>
-				<h5>Directora de Finanzas</h5>
+				<div class="clearfix"></div>
 			</div>
-			<div class="col-md-3 team-grid">
-				<div class="team-img">
-					<img src="images/jas.jfif" class="img-responsive" alt=" " />
-					<figcaption class="overlay">
-						<div class="social-icon">
-							<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-							<a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-							<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-							<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-						</div>
-					</figcaption>
-				</div>
-				<h4>Jasmany Riera </h4>
-				<h5>Director de Sistemas</h5>
+			<div class="shipping">
+					<i class="fa fa-bus" aria-hidden="true"></i>
+				<div class="col-md-10 ftext">
+					<p><b>ENVÍOS GRATUITOS:</b> aplica únicamente a los productos comprados dentro de la provincia.</p>
+				</div>	
+				<div class="clearfix"></div>
 			</div>
-			<div class="col-md-3 team-grid">
-				<div class="team-img">
-					<img src="images/6.jfif" class="img-responsive" alt=" " />
-					<figcaption class="overlay">
-						<div class="social-icon">
-							<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-							<a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-							<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-							<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-						</div>
-					</figcaption>
-				</div>
-				<h4>Bairon Fabian Meirno </h4>
-				<h5>Desarrollador y Programador de S/W</h5>
+			<div class="money-back">
+					<i class="fa fa-money" aria-hidden="true"></i>
+				<div class="col-md-10 ftext">
+					<p><b>COMPRA SEGURA:</b> si hay imperfectos de fábrica se devolvera el dinero y tarjeta de regalo.</p>
+				</div>	
+				<div class="clearfix"></div>				
 			</div>
-			<div class="clearfix"></div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+			<script src="js/jquery.wmuSlider.js"></script> 
+			<script>
+				$('.example1').wmuSlider();         
+			</script> 
 		</div>
 	</div>
-</div>
-<!--team-->
-
 
 <!-- newsletter -->
 	<div class="newsletter">
@@ -708,7 +487,7 @@ else
 <div class="footer">
 	<div class="container">
 		<div class="col-md-3 footer-grids fgd1">
-		<a href="index.php"><img src="images/Logos/pc.png" alt=" " /><h3>TIENDA MICHELITA</h3></a>
+		<a href="index.php"><img src="images/Logos/compu.png" alt=" " /><h3>TIENDA MICHELITA</h3></a>
 		<ul>
 		<li>Victorino Abarca s/n y Domingo Comin</li>
             <li>Sucúa / Morona Santiago  / Ecuador</li>
@@ -732,13 +511,13 @@ else
 			<ul>
 				<li><a href="MisionVision.php?id=<?php echo $id;?>">Misión</a></li>
 				<li><a href="MisionVision.php?id=<?php echo $id;?>">Visión</a></li>
-				<li><a href="vistas/Quienes.php?id=<?php echo $id;?>">¿Quiénes Somos?</a></li>
-				<li><a href="Pagos.php?id=<?php echo $id;?>">Tipos de Pagos</a></li>
+				<li><a href="Quienes.php?id=<?php echo $id;?>">¿Quiénes Somos?</a></li>
+				
 			</ul>
 		</div>
 		<div class="col-md-3 footer-grids fgd4">
 			<h4>Mi Cuenta</h4> 
-			<ul>
+			<ul>>
 				<li><a href="Carrito.php?id=<?php echo $id;?>">Carrito </a></li>
 			</ul>
 		</div>
@@ -748,6 +527,6 @@ else
 </div>
 <?php
 }
-?>
+?>	
 </body>
 </html>

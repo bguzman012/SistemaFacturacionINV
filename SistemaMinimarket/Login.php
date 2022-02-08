@@ -9,16 +9,16 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- css -->
-<link href="../../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link rel="stylesheet" href="../../css/login.css" type="text/css" media="all" />
-<link rel="stylesheet" href="../../css/font-awesome.min.css" type="text/css" media="all" />
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" href="css/Login.css" type="text/css" media="all" />
+<link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" media="all" />
 <!--// css -->
 <!-- font -->
 <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
 <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 <!-- //font -->
-<script src="../../js/jquery-1.11.1.min.js"></script>
-<script src="../../js/bootstrap.js"></script>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/bootstrap.js"></script>
 
 </head>
 
@@ -26,8 +26,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <?php
 
 
-include "../../controladores/usuarios.controlador.php";
-require_once "../../modelos/usuarios.modelo.php";
+include "controladores/usuarios.controlador.php";
+require_once "modelos/usuarios.modelo.php";
+
+require_once "controladores/plantilla.controlador.php";
+require_once "controladores/usuarios.controlador.php";
+require_once "controladores/categorias.controlador.php";
+require_once "controladores/productos.controlador.php";
+require_once "controladores/clientes.controlador.php";
+require_once "controladores/ventas.controlador.php";
+require_once "modelos/categorias.modelo.php";
+require_once "modelos/productos.modelo.php";
+require_once "modelos/clientes.modelo.php";
+require_once "modelos/ventas.modelo.php";
+require_once "extensiones/vendor/autoload.php";
 
  $login = new ControladorUsuarios();
  $login -> ctrIngresoUsuario();
@@ -37,7 +49,7 @@ require_once "../../modelos/usuarios.modelo.php";
 <div class="header-top-w3layouts">
 	<div class="container">
 		<div class="col-md-6 logo-w3">
-			<a href="index.php"><img src="../../images/Logos/pc.png" alt=" " /><h1>TIENDA MICHELITA<span></span></h1></a>
+			<a href="index.php"><img src="images/Logos/pc.png" alt=" " /><h1>TIENDA MICHELITA<span></span></h1></a>
 		</div>
 		<div class="col-md-6 phone-w3l">
 			<ul>
@@ -62,27 +74,27 @@ require_once "../../modelos/usuarios.modelo.php";
 				</div> 
 				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 					<ul class="nav navbar-nav ">
-						<li><a href="../index.php" class="hyper "><span>Inicio</span></a></li>	
+						<li><a href="index.php" class="hyper "><span>Inicio</span></a></li>	
 						<li class="dropdown">
 								<a href="#" class="dropdown-toggle hyper" data-toggle="dropdown" ><span>Nosotros<b class="caret"></b></span></a>
 								<ul class="dropdown-menu multi multi1">
 									<div class="row">
 										<div class="col-sm-4">
 											<ul class="multi-column-dropdown">
-												<li><a href="../../Quienes.php"><i class="fa fa-angle-right" aria-hidden="true"></i>¿Quiénes Somos?</a></li>
-												<li><a href="../../MisionVision.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Misiòn/Visiòn/Servicios</a></li>
+												<li><a href="Quienes.php"><i class="fa fa-angle-right" aria-hidden="true"></i>¿Quiénes Somos?</a></li>
+												<li><a href="MisionVision.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Misiòn/Visiòn/Servicios</a></li>
 												
 											</ul>
 										</div>
 										<div class="col-sm-4">
 											<ul class="multi-column-dropdown">
-												<li><a href="../../Pagos.php"> <i class="fa fa-angle-right" aria-hidden="true"></i>Tipos de Pagos</a></li>
-												<li><a href="../../Terminos.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Términos y Condiciones</a></li>
-												<li><a href="../../Preguntas.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Preguntas Frecuentes</a></li>
+												<li><a href="Pagos.php"> <i class="fa fa-angle-right" aria-hidden="true"></i>Tipos de Pagos</a></li>
+												<li><a href="Terminos.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Términos y Condiciones</a></li>
+												<li><a href="Preguntas.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Preguntas Frecuentes</a></li>
 											</ul>
 										</div>
 										<div class="col-sm-4 w3l">
-											<a href="#"><img src="../../images/Productos/menu2.jpeg" class="img-responsive" alt=""></a>
+											<a href="#"><img src="images/Productos/menu2.jpeg" class="img-responsive" alt=""></a>
 										</div>
 										<div class="clearfix"></div>
 									</div>	
@@ -95,44 +107,44 @@ require_once "../../modelos/usuarios.modelo.php";
 										<div class="col-sm-4">
 											<ul class="multi-column-dropdown">
 			
-												<li><a href="../../Productos.php?cat=7"><i class="fa fa-angle-right" aria-hidden="true"></i>Computadoras</a></li>
-												<li><a href="../../Productos.php?cat=9"><i class="fa fa-angle-right" aria-hidden="true"></i>Laptop`s</a></li>
-												<li><a href="../../Productos.php?cat=10"> <i class="fa fa-angle-right" aria-hidden="true"></i>Celulares</a></li>
-												<li><a href="../../Productos.php?cat=11"><i class="fa fa-angle-right" aria-hidden="true"></i>Impresoras</a></li>
+												<li><a href="Productos.php?cat=7"><i class="fa fa-angle-right" aria-hidden="true"></i>Computadoras</a></li>
+												<li><a href="Productos.php?cat=9"><i class="fa fa-angle-right" aria-hidden="true"></i>Laptop`s</a></li>
+												<li><a href="Productos.php?cat=10"> <i class="fa fa-angle-right" aria-hidden="true"></i>Celulares</a></li>
+												<li><a href="Productos.php?cat=11"><i class="fa fa-angle-right" aria-hidden="true"></i>Impresoras</a></li>
 										
 											</ul>
 										
 										</div>
 										<div class="col-sm-4">
 											<ul class="multi-column-dropdown">
-												<li><a href="../../Productos.php?cat=12"><i class="fa fa-angle-right" aria-hidden="true"></i>Accesorios</a></li>
-												<li><a href="../../Productos.php?cat=13"><i class="fa fa-angle-right" aria-hidden="true"></i>Zona Gamer</a></li>
-												<li><a href="../../Productos.php?cat=14"><i class="fa fa-angle-right" aria-hidden="true"></i>Otros</a></li>
-												<li><a href="../../Productos.php?cat=15"><i class="fa fa-angle-right" aria-hidden="true"></i>Todos los productos</a></li>
+												<li><a href="Productos.php?cat=12"><i class="fa fa-angle-right" aria-hidden="true"></i>Accesorios</a></li>
+												<li><a href="Productos.php?cat=13"><i class="fa fa-angle-right" aria-hidden="true"></i>Zona Gamer</a></li>
+												<li><a href="Productos.php?cat=14"><i class="fa fa-angle-right" aria-hidden="true"></i>Otros</a></li>
+												<li><a href="Productos.php?cat=15"><i class="fa fa-angle-right" aria-hidden="true"></i>Todos los productos</a></li>
 											</ul>						
 										</div>
 										<div class="col-sm-4 w3l">
-											<a href="#"><img src="../../images/Productos/Menu.jpg" class="img-responsive" alt=""></a>
+											<a href="#"><img src="images/Productos/Menu.jpg" class="img-responsive" alt=""></a>
 										</div>
 										<div class="clearfix"></div>
 									</div>	
 								</ul>
 						</li>
-						<li><a href="../Marcas.php" class="hyper"><span>Marcas</span></a></li>
+						<li><a href="Marcas.php" class="hyper"><span>Marcas</span></a></li>
 						
-						<li><a href="../Contacto.php" class="hyper"><span>Contacto</span></a></li>
+						<li><a href="Contacto.php" class="hyper"><span>Contacto</span></a></li>
 						<li class="dropdown">
 								<a href="#" class="dropdown-toggle hyper" data-toggle="dropdown" ><span>Mi Cuenta<b class="caret"></b></span></a>
 								<ul class="dropdown-menu multi multi1">
 									<div class="row">
 										<div class="col-sm-4">
 											<ul class="multi-column-dropdown">
-												<li><a href="../../login.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Iniciar Sesión</a></li>
-												<li><a href="../../Registrarse.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Registrarse</a></li>
+												<li><a href="Login.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Iniciar Sesión</a></li>
+												<li><a href="Registrarse.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Registrarse</a></li>
 											</ul>
 										</div>
 										<div class="col-sm-4">
-											<a href="#"><img src="../images/Productos/Logo/pc.png" class="img-responsive" alt=""></a>
+											<a href="#"><img src="images/Productos/Logo/pc.png" class="img-responsive" alt=""></a>
 										</div>
 										<div class="clearfix"></div>
 									</div>	
