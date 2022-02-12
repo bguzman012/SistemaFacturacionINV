@@ -24,6 +24,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 <body>
+<?php
+session_start();
+error_reporting(0);
+$validacion=$_SESSION['nombres'];
+if($validacion== null || $validacion ='')
+{
+?>
 <div class="header-top-w3layouts">
 	<div class="container">
 		<div class="col-md-6 logo-w3">
@@ -66,6 +73,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										</div>
 										<div class="col-sm-4">
 											<ul class="multi-column-dropdown">
+												<li><a href="Pagos.php"> <i class="fa fa-angle-right" aria-hidden="true"></i>Tipos de Pagos</a></li>
 												<li><a href="Terminos.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Términos y Condiciones</a></li>
 												<li><a href="Preguntas.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Preguntas Frecuentes</a></li>
 											</ul>
@@ -266,6 +274,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<li><a href="MisionVision.php">Misión</a></li>
 				<li><a href="MisionVision.php">Visión</a></li>
 				<li><a href="Quienes.php">¿Quiénes Somos?</a></li>
+				<li><a href="Pagos.php">Tipos de Pagos</a></li>
 			</ul>
 		</div>
 		<div class="col-md-3 footer-grids fgd4">
@@ -279,7 +288,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<p class="copy-right">© 2021 TIENDA MICHELITA. Todos los Derechos Reservados | Por: <a href="#">TIENDA MICHELITA</a></p>
 	</div>
 </div>
-
+<?php
+}
+else
+{
+    if(isset($_POST["btnsalir"]))
+    {
+        session_destroy();
+        header("location: index.php");
+    }
+    $id= trim($_GET["id"]);
+?>
 <div class="header-top-w3layouts">
 	<div class="container">
 		<div class="col-md-6 logo-w3">
@@ -322,6 +341,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										</div>
 										<div class="col-sm-4">
 											<ul class="multi-column-dropdown">
+												<li><a href="Pagos.php?id=<?php echo $id;?>"> <i class="fa fa-angle-right" aria-hidden="true"></i>Tipos de Pagos</a></li>
 												<li><a href="Terminos.php?id=<?php echo $id;?>"><i class="fa fa-angle-right" aria-hidden="true"></i>Términos y Condiciones</a></li>
 												<li><a href="Preguntas.php?id=<?php echo $id;?>"><i class="fa fa-angle-right" aria-hidden="true"></i>Preguntas Frecuentes</a></li>
 											</ul>
@@ -512,7 +532,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<li><a href="MisionVision.php?id=<?php echo $id;?>">Misión</a></li>
 				<li><a href="MisionVision.php?id=<?php echo $id;?>">Visión</a></li>
 				<li><a href="Quienes.php?id=<?php echo $id;?>">¿Quiénes Somos?</a></li>
-				
+				<li><a href="Pagos.php?id=<?php echo $id;?>">Tipos de Pagos</a></li>
 			</ul>
 		</div>
 		<div class="col-md-3 footer-grids fgd4">

@@ -1,4 +1,5 @@
 <?php
+    session_start();
 
 if ($_SESSION["perfil"] == "Especial" || $_SESSION["perfil"] == "Vendedor") {
 

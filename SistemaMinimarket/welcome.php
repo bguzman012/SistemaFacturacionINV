@@ -25,7 +25,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 
 <body>
+<?php
 
+error_reporting(0);
+$validacion=$_SESSION['nombres'];
+if($validacion== null || $validacion ='')
+{
+?>
 
 <div class="header-top-w3layouts">
 	<div class="container">
@@ -69,6 +75,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										</div>
 										<div class="col-sm-4">
 											<ul class="multi-column-dropdown">
+												<li><a href="Pagos.php"> <i class="fa fa-angle-right" aria-hidden="true"></i>Tipos de Pagos</a></li>
 												<li><a href="Terminos.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Términos y Condiciones</a></li>
 												<li><a href="Preguntas.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Preguntas Frecuentes</a></li>
 											</ul>
@@ -118,7 +125,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<div class="row">
 										<div class="col-sm-4">
 											<ul class="multi-column-dropdown">
-												<li><a href="vistas/modulos/Login.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Iniciar Sesión</a></li>
+												<li><a href="Login.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Iniciar Sesión</a></li>
 												<li><a href="Registrarse.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Registrarse</a></li>
 											</ul>
 										</div>
@@ -314,7 +321,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="col-md-3 footer-grids fgd4">
 			<h4>Mi Cuenta</h4> 
 			<ul>
-				<li><a href="vistas/modulos/Login.php">Iniciar Sesión</a></li>
+				<li><a href="Login.php">Iniciar Sesión</a></li>
 				
 			</ul>
 		</div>
@@ -322,7 +329,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<p class="copy-right">© 2022 TIENDA MICHELITA. Todos los Derechos Reservados | Por: <a href="#">TIENDA MICHELITA</a></p>
 	</div>
 </div>
-
+<?php
+}
+else
+{
+    if(isset($_POST["btnsalir"]))
+    {
+        session_destroy();
+        header("location: index.php");
+    }
+    $id= trim($_GET["id"]);
+?>
 <div class="header-top-w3layouts">
 	<div class="container">
 		<div class="col-md-6 logo-w3">
@@ -364,6 +381,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										</div>
 										<div class="col-sm-4">
 											<ul class="multi-column-dropdown">
+												<li><a href="Pagos.php?id=<?php echo $id;?>"> <i class="fa fa-angle-right" aria-hidden="true"></i>Tipos de Pagos</a></li>
 												<li><a href="Terminos.php?id=<?php echo $id;?>"><i class="fa fa-angle-right" aria-hidden="true"></i>Términos y Condiciones</a></li>
 												<li><a href="Preguntas.php?id=<?php echo $id;?>"><i class="fa fa-angle-right" aria-hidden="true"></i>Preguntas Frecuentes</a></li>
 											</ul>
@@ -599,6 +617,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<p class="copy-right">© 2022 TIENDA MICHELITA . Todos los Derechos Reservados | Por: <a href="#">TIENDA MICHELITA</a></p>
 	</div>
 </div>
-
+<?php
+}
+?>	
 </body>
 </html>

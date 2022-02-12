@@ -1,259 +1,177 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<title>Iniciar Sesión</title>
+<?php
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Fashion Club Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- css -->
-<link href="../../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link rel="stylesheet" href="../../css/login.css" type="text/css" media="all" />
-<link rel="stylesheet" href="../../css/font-awesome.min.css" type="text/css" media="all" />
-<!--// css -->
-<!-- font -->
-<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
-<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-<!-- //font -->
-<script src="../../js/jquery-1.11.1.min.js"></script>
-<script src="../../js/bootstrap.js"></script>
+session_start();
+
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>SISTEMTAIPE VENTAS 2022</title>
+
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+  <link rel="icon" href="img/plantilla/sistemtaipe.png">
+
+   <!--=====================================
+  PLUGINS DE CSS
+  ======================================-->
+
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
+
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../dist/css/AdminLTE.css">
+  
+  <!-- AdminLTE Skins -->
+  <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+
+  <!-- Google Font -->
+  <link rel="stylesheet" href="../https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+   <!-- DataTables -->
+  <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/responsive.bootstrap.min.css">
+
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="../plugins/iCheck/all.css">
+
+   <!-- Daterange picker -->
+  <link rel="stylesheet" href="../bower_components/bootstrap-daterangepicker/daterangepicker.css">
+
+  <!-- Morris chart -->
+  <link rel="stylesheet" href="../bower_components/morris.js/morris.css">
+
+  <!--=====================================
+  PLUGINS DE JAVASCRIPT
+  ======================================-->
+
+  <!-- jQuery 3 -->
+  <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+  
+  <!-- Bootstrap 3.3.7 -->
+  <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  <!-- FastClick -->
+  <script src="../bower_components/fastclick/lib/fastclick.js"></script>
+  
+  <!-- AdminLTE App -->
+  <script src="../dist/js/adminlte.min.js"></script>
+
+  <!-- DataTables -->
+  <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+  <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+  <script src="../bower_components/datatables.net-bs/js/dataTables.responsive.min.js"></script>
+  <script src="../bower_components/datatables.net-bs/js/responsive.bootstrap.min.js"></script>
+
+  <!-- SweetAlert 2 -->
+  <script src="../plugins/sweetalert2/sweetalert2.all.js"></script>
+   <!-- By default SweetAlert2 doesn't support IE. To enable IE 11 support, include Promise polyfill:-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+
+  <!-- iCheck 1.0.1 -->
+  <script src="../plugins/iCheck/icheck.min.js"></script>
+
+  <!-- InputMask -->
+  <script src="../plugins/input-mask/jquery.inputmask.js"></script>
+  <script src="../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+  <script src="../plugins/input-mask/jquery.inputmask.extensions.js"></script>
+
+  <!-- jQuery Number -->
+  <script src="../plugins/jqueryNumber/jquerynumber.min.js"></script>
+
+  <!-- daterangepicker http://www.daterangepicker.com/-->
+  <script src="../bower_components/moment/min/moment.min.js"></script>
+  <script src="../bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+  <!-- Morris.js charts http://morrisjs.github.io/morris.js/-->
+  <script src="../bower_components/raphael/raphael.min.js"></script>
+  <script src="../bower_components/morris.js/morris.min.js"></script>
+
+  <!-- ChartJS http://www.chartjs.org/-->
+  <script src="../bower_components/Chart.js/Chart.js"></script>
+
+
+
 
 </head>
 
-<body>
-<?php
+<body class="hold-transition skin-blue sidebar-collapse sidebar-mini login-page">
+ 
+
+<div id="back"></div>
+
+<div class="login-box">
+  
+  <div class="login-logo">
+
+    <img src="../img/plantilla/login.png" class="img-responsive">
+
+  </div>
+
+  <div class="login-box-body">
+
+    <p class="login-box-msg">INGRESAR AL SISTEMTAIPE</p>
+
+    <form method="post">
+
+      <div class="form-group has-feedback">
+
+        <input type="text" class="form-control" placeholder="Usuario" name="ingUsuario" required>
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+
+      </div>
+
+      <div class="form-group has-feedback">
+
+        <input type="password" class="form-control" placeholder="Contraseña" name="ingPassword" required>
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      
+      </div>
+
+      <div class="row">
+       
+        <div class="col-xs-4">
+
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Ingresar</button>
+        
+        </div>
+
+      </div>
+
+      <?php
+	  
 
 
-include "../../controladores/usuarios.controlador.php";
-require_once "../../modelos/usuarios.modelo.php";
+	      require "../../controladores/usuarios.controlador.php";
+	      require "../../modelos/usuarios.modelo.php";
+        $login = new ControladorUsuarios();
+        $login -> ctrIngresoUsuario();
+        
+      ?>
 
- $login = new ControladorUsuarios();
- $login -> ctrIngresoUsuario();
+    </form>
 
+  </div>
 
-?>
-<div class="header-top-w3layouts">
-	<div class="container">
-		<div class="col-md-6 logo-w3">
-			<a href="index.php"><img src="../../images/Logos/pc.png" alt=" " /><h1>TIENDA MICHELITA<span></span></h1></a>
-		</div>
-		<div class="col-md-6 phone-w3l">
-			<ul>
-				<li><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span></li>
-				<li>+593 980414756</li>
-			</ul>
-		</div>
-		<div class="clearfix"></div>
-	</div>
-</div>
-<div class="header-bottom-w3ls">
-	<div class="container">
-		<div class="col-md-7 navigation-agileits">
-			<nav class="navbar navbar-default">
-				<div class="navbar-header nav_2">
-					<button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
-						<span class="sr-only">Menú</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-				</div> 
-				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
-					<ul class="nav navbar-nav ">
-						<li><a href="../index.php" class="hyper "><span>Inicio</span></a></li>	
-						<li class="dropdown">
-								<a href="#" class="dropdown-toggle hyper" data-toggle="dropdown" ><span>Nosotros<b class="caret"></b></span></a>
-								<ul class="dropdown-menu multi multi1">
-									<div class="row">
-										<div class="col-sm-4">
-											<ul class="multi-column-dropdown">
-												<li><a href="../../Quienes.php"><i class="fa fa-angle-right" aria-hidden="true"></i>¿Quiénes Somos?</a></li>
-												<li><a href="../../MisionVision.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Misiòn/Visiòn/Servicios</a></li>
-												
-											</ul>
-										</div>
-										<div class="col-sm-4">
-											<ul class="multi-column-dropdown">
-												<li><a href="../../Pagos.php"> <i class="fa fa-angle-right" aria-hidden="true"></i>Tipos de Pagos</a></li>
-												<li><a href="../../Terminos.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Términos y Condiciones</a></li>
-												<li><a href="../../Preguntas.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Preguntas Frecuentes</a></li>
-											</ul>
-										</div>
-										<div class="col-sm-4 w3l">
-											<a href="#"><img src="../../images/Productos/menu2.jpeg" class="img-responsive" alt=""></a>
-										</div>
-										<div class="clearfix"></div>
-									</div>	
-								</ul>
-						</li>
-						<li class="dropdown ">
-							<a href="#" class="dropdown-toggle  hyper" data-toggle="dropdown" ><span>Productos<b class="caret"></b></span></a>
-								<ul class="dropdown-menu multi">
-									<div class="row">
-										<div class="col-sm-4">
-											<ul class="multi-column-dropdown">
-			
-												<li><a href="../../Productos.php?cat=7"><i class="fa fa-angle-right" aria-hidden="true"></i>Computadoras</a></li>
-												<li><a href="../../Productos.php?cat=9"><i class="fa fa-angle-right" aria-hidden="true"></i>Laptop`s</a></li>
-												<li><a href="../../Productos.php?cat=10"> <i class="fa fa-angle-right" aria-hidden="true"></i>Celulares</a></li>
-												<li><a href="../../Productos.php?cat=11"><i class="fa fa-angle-right" aria-hidden="true"></i>Impresoras</a></li>
-										
-											</ul>
-										
-										</div>
-										<div class="col-sm-4">
-											<ul class="multi-column-dropdown">
-												<li><a href="../../Productos.php?cat=12"><i class="fa fa-angle-right" aria-hidden="true"></i>Accesorios</a></li>
-												<li><a href="../../Productos.php?cat=13"><i class="fa fa-angle-right" aria-hidden="true"></i>Zona Gamer</a></li>
-												<li><a href="../../Productos.php?cat=14"><i class="fa fa-angle-right" aria-hidden="true"></i>Otros</a></li>
-												<li><a href="../../Productos.php?cat=15"><i class="fa fa-angle-right" aria-hidden="true"></i>Todos los productos</a></li>
-											</ul>						
-										</div>
-										<div class="col-sm-4 w3l">
-											<a href="#"><img src="../../images/Productos/Menu.jpg" class="img-responsive" alt=""></a>
-										</div>
-										<div class="clearfix"></div>
-									</div>	
-								</ul>
-						</li>
-						<li><a href="../Marcas.php" class="hyper"><span>Marcas</span></a></li>
-						
-						<li><a href="../Contacto.php" class="hyper"><span>Contacto</span></a></li>
-						<li class="dropdown">
-								<a href="#" class="dropdown-toggle hyper" data-toggle="dropdown" ><span>Mi Cuenta<b class="caret"></b></span></a>
-								<ul class="dropdown-menu multi multi1">
-									<div class="row">
-										<div class="col-sm-4">
-											<ul class="multi-column-dropdown">
-												<li><a href="../../login.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Iniciar Sesión</a></li>
-												<li><a href="../../Registrarse.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Registrarse</a></li>
-											</ul>
-										</div>
-										<div class="col-sm-4">
-											<a href="#"><img src="../images/Productos/Logo/pc.png" class="img-responsive" alt=""></a>
-										</div>
-										<div class="clearfix"></div>
-									</div>	
-								</ul>
-						</li>
-					</ul>
-				</div>
-			</nav>
-		</div>
-<script>
-				$(document).ready(function(){
-					$(".dropdown").hover(            
-						function() {
-							$('.dropdown-menu', this).stop( true, true ).slideDown("fast");
-							$(this).toggleClass('open');        
-						},
-						function() {
-							$('.dropdown-menu', this).stop( true, true ).slideUp("fast");
-							$(this).toggleClass('open');       
-						}
-					);
-				});
-				</script>
-		<div class="col-md-4 search-agileinfo">
-			<form action="#" method="post">
-				<input type="search" name="Search" placeholder="Buscar" required="">
-				<button type="submit" class="btn btn-default search" aria-label="Left Align">
-					<i class="fa fa-search" aria-hidden="true"> </i>
-				</button>
-			</form>
-		</div>
-		<div class="clearfix"></div>
-	</div>
 </div>
 
-
-<div class="sub-banner">
-</div>
-
-
-	<div class="login">
-	
-		<div class="main-agileits">
-				<div class="form-w3agile">
-					<h3>Iniciar Sesión</h3>
-					<form action="" method="post">
-						<div class="key">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-							<input  type="text" name="ingUsuario" required="" placeholder="E-mail">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-							<input  type="password" name="ingPassword" required="" placeholder="Contraseña">
-							<div class="clearfix"></div>
-						</div>
-						 
-						<input type="submit" name="btningresar" value="INGRESAR">
-					</form>
-				</div>
-				<div class="forg">
-					<a href="Registrarse.php" class="forg-right">Crear Cuenta</a>
-				<div class="clearfix"></div>
-				</div>
-			</div>
-		</div>
-
-
-
-<!-- newsletter -->
-	<div class="newsletter">
-		<div class="container">
-			<div class="clearfix"> </div>
-		</div>
-	</div>
-<!-- //newsletter -->
-
-
-
-
-<div class="footer">
-	<div class="container">
-		<div class="col-md-3 footer-grids fgd1">
-		<a href="index.php"><img src="images/Logos/compu.png" alt=" " /><h3>TIENDA MICHELITA</h3></a>
-		<ul>
-		<li>Victorino Abarca s/n y Domingo Comin</li>
-            <li>Sucúa / Morona Santiago  / Ecuador</li>
-            <li><a href="#">david_avila85@hotmail.com</a></li>
-
-			<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-			<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-			<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-		</ul>
-		</div>
-		<div class="col-md-3 footer-grids fgd2">
-			<h4>Menú</h4> 
-			<ul>
-				<li><a href="index.php">Inicio</a></li>
-				<li><a href="Marcas.php">Marcas</a></li>
-				<li><a href="Contacto.php">Contacto</a></li>
-			</ul>
-		</div>
-		<div class="col-md-3 footer-grids fgd3">
-			<h4>Nosotros</h4> 
-			<ul>
-				<li><a href="MisionVision.php">Misión</a></li>
-				<li><a href="MisionVision.php">Visión</a></li>
-				<li><a href="Quienes.php">¿Quiénes Somos?</a></li>
-				<li><a href="Pagos.php">Tipos de Pagos</a></li>
-			</ul>
-		</div>
-		<div class="col-md-3 footer-grids fgd4">
-			<h4>Mi Cuenta</h4> 
-			<ul>
-				<li><a href="Login.php">Iniciar Sesión</a></li>
-				<li><a href="Registrarse.php">Registrarse</a></li>
-			</ul>
-		</div>
-		<div class="clearfix"></div>
-		<p class="copy-right">© 2021 TIENDA MICHELITA. Todos los Derechos Reservados | Por: <a href="#">TIENDA MICHELITA</a></p>
-	</div>
-</div>
+<script src="../js/plantilla.js"></script>
+<script src="../js/usuarios.js"></script>
+<script src="../js/categorias.js"></script>
+<script src="../js/productos.js"></script>
+<script src="../js/clientes.js"></script>
+<script src="../js/ventas.js"></script>
+<script src="../js/reportes.js"></script>
 </body>
 </html>

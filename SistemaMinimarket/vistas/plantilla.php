@@ -168,7 +168,11 @@ session_start();
 
   }else{
 
-    include "welcome.php";
+    echo '<script>
+
+								window.location = "welcome.php";
+
+							</script>';
 
   }
 

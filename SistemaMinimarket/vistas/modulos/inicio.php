@@ -25,8 +25,6 @@
     <div class="row">
       
     <?php
-    $usuario=  $_SESSION['perfil'];
-     echo "Hola $usuario ya has iniciado sesion <a href=\"logout.php\">Cerrar Sesion</a>"; 
 
     if($_SESSION["perfil"] =="Administrador"){
 
