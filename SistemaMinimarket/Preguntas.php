@@ -73,7 +73,6 @@ if($validacion== null || $validacion ='')
 										</div>
 										<div class="col-sm-4">
 											<ul class="multi-column-dropdown">
-												<li><a href="Pagos.php"> <i class="fa fa-angle-right" aria-hidden="true"></i>Tipos de Pagos</a></li>
 												<li><a href="Terminos.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Términos y Condiciones</a></li>
 												<li><a href="Preguntas.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Preguntas Frecuentes</a></li>
 											</ul>
@@ -115,7 +114,7 @@ if($validacion== null || $validacion ='')
 									</div>	
 								</ul>
 						</li>
-						<li><a href="Marcas.php" class="hyper"><span>Marcas</span></a></li>
+						
 						
 						<li><a href="Contacto.php" class="hyper"><span>Contacto</span></a></li>
 						<li class="dropdown">
@@ -334,7 +333,7 @@ if($validacion== null || $validacion ='')
 			<h4>Menú</h4> 
 			<ul>
 				<li><a href="index.php">Inicio</a></li>
-				<li><a href="Marcas.php">Marcas</a></li>
+			
 				<li><a href="Contacto.php">Contacto</a></li>
 			</ul>
 		</div>
@@ -344,7 +343,7 @@ if($validacion== null || $validacion ='')
 				<li><a href="MisionVision.php">Misión</a></li>
 				<li><a href="MisionVision.php">Visión</a></li>
 				<li><a href="Quienes.php">¿Quiénes Somos?</a></li>
-				<li><a href="Pagos.php">Tipos de Pagos</a></li>
+			
 			</ul>
 		</div>
 		<div class="col-md-3 footer-grids fgd4">
@@ -412,7 +411,6 @@ else
 										</div>
 										<div class="col-sm-4">
 											<ul class="multi-column-dropdown">
-												<li><a href="Pagos.php?id=<?php echo $id;?>"> <i class="fa fa-angle-right" aria-hidden="true"></i>Tipos de Pagos</a></li>
 												<li><a href="Terminos.php?id=<?php echo $id;?>"><i class="fa fa-angle-right" aria-hidden="true"></i>Términos y Condiciones</a></li>
 												<li><a href="Preguntas.php?id=<?php echo $id;?>"><i class="fa fa-angle-right" aria-hidden="true"></i>Preguntas Frecuentes</a></li>
 											</ul>
@@ -454,7 +452,6 @@ else
 									</div>	
 								</ul>
 						</li>
-						<li><a href="Marcas.php?id=<?php echo $id;?>" class="hyper"><span>Marcas</span></a></li>
 						
 						<li><a href="Contacto.php?id=<?php echo $id;?>" class="hyper"><span>Contacto</span></a></li>
 						<li class="dropdown">
@@ -661,7 +658,7 @@ else
 			<h4>Menú</h4> 
 			<ul>
 				<li><a href="index.php?id=<?php echo $id;?>">Inicio</a></li>
-				<li><a href="Marcas.php?id=<?php echo $id;?>">Marcas</a></li>
+			
 				<li><a href="Contacto.php?id=<?php echo $id;?>">Contacto</a></li>
 			</ul>
 		</div>
@@ -671,7 +668,7 @@ else
 				<li><a href="MisionVision.php?id=<?php echo $id;?>">Misión</a></li>
 				<li><a href="MisionVision.php?id=<?php echo $id;?>">Visión</a></li>
 				<li><a href="Quienes.php?id=<?php echo $id;?>">¿Quiénes Somos?</a></li>
-				<li><a href="Pagos.php?id=<?php echo $id;?>">Tipos de Pagos</a></li>
+				
 			</ul>
 		</div>
 		<div class="col-md-3 footer-grids fgd4">

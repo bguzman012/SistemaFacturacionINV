@@ -1,3 +1,9 @@
+<?php
+
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,23 +32,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <?php
 
 
-include "controladores/usuarios.controlador.php";
-require_once "modelos/usuarios.modelo.php";
+require "controladores/usuarios.controlador.php";
+require "modelos/usuarios.modelo.php";
+$login = new ControladorUsuarios();
+$login -> ctrIngresoUsuario();
 
-require_once "controladores/plantilla.controlador.php";
-require_once "controladores/usuarios.controlador.php";
-require_once "controladores/categorias.controlador.php";
-require_once "controladores/productos.controlador.php";
-require_once "controladores/clientes.controlador.php";
-require_once "controladores/ventas.controlador.php";
-require_once "modelos/categorias.modelo.php";
-require_once "modelos/productos.modelo.php";
-require_once "modelos/clientes.modelo.php";
-require_once "modelos/ventas.modelo.php";
-require_once "extensiones/vendor/autoload.php";
-
- $login = new ControladorUsuarios();
- $login -> ctrIngresoUsuario();
 
 
 ?>
@@ -130,7 +124,6 @@ require_once "extensiones/vendor/autoload.php";
 									</div>	
 								</ul>
 						</li>
-						<li><a href="Marcas.php" class="hyper"><span>Marcas</span></a></li>
 						
 						<li><a href="Contacto.php" class="hyper"><span>Contacto</span></a></li>
 						<li class="dropdown">
@@ -243,7 +236,7 @@ require_once "extensiones/vendor/autoload.php";
 			<h4>Menú</h4> 
 			<ul>
 				<li><a href="index.php">Inicio</a></li>
-				<li><a href="Marcas.php">Marcas</a></li>
+			
 				<li><a href="Contacto.php">Contacto</a></li>
 			</ul>
 		</div>

@@ -75,7 +75,6 @@ if($validacion== null || $validacion ='')
 										</div>
 										<div class="col-sm-4">
 											<ul class="multi-column-dropdown">
-												<li><a href="Pagos.php"> <i class="fa fa-angle-right" aria-hidden="true"></i>Tipos de Pagos</a></li>
 												<li><a href="Terminos.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Términos y Condiciones</a></li>
 												<li><a href="Preguntas.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Preguntas Frecuentes</a></li>
 											</ul>
@@ -117,7 +116,6 @@ if($validacion== null || $validacion ='')
 									</div>	
 								</ul>
 						</li>
-						<li><a href="Marcas.php" class="hyper"><span>Marcas</span></a></li>
 						<li><a href="Contacto.php" class="hyper"><span>Contacto</span></a></li>
 						<li class="dropdown">
 								<a href="#" class="dropdown-toggle hyper" data-toggle="dropdown" ><span>Mi Cuenta<b class="caret"></b></span></a>
@@ -171,7 +169,7 @@ if($validacion== null || $validacion ='')
 		<h2>BIENVENIDOS</h2>
 		<h3>TIENDA<span>MICHELITA</span></h3>
 		<h3>PRODUCTOS DE PRIMERA NECECIDAD </h3>
-		<a href="Productos.php?cat=7">COMPRAR</a>
+	
 	</div>
 </div>
 
@@ -381,7 +379,6 @@ else
 										</div>
 										<div class="col-sm-4">
 											<ul class="multi-column-dropdown">
-												<li><a href="Pagos.php?id=<?php echo $id;?>"> <i class="fa fa-angle-right" aria-hidden="true"></i>Tipos de Pagos</a></li>
 												<li><a href="Terminos.php?id=<?php echo $id;?>"><i class="fa fa-angle-right" aria-hidden="true"></i>Términos y Condiciones</a></li>
 												<li><a href="Preguntas.php?id=<?php echo $id;?>"><i class="fa fa-angle-right" aria-hidden="true"></i>Preguntas Frecuentes</a></li>
 											</ul>
@@ -423,7 +420,6 @@ else
 									</div>	
 								</ul>
 						</li>
-						<li><a href="Marcas.php?id=<?php echo $id;?>" class="hyper"><span>Marcas</span></a></li>
 
 						<li><a href="Contacto.php?id=<?php echo $id;?>" class="hyper"><span>Contacto</span></a></li>
 						<li class="dropdown">
@@ -594,7 +590,6 @@ else
 			<h4>Menú</h4> 
 			<ul>
 				<li><a href="index.php?id=<?php echo $id;?>">Inicio</a></li>
-				<li><a href="Marcas.php?id=<?php echo $id;?>">Marcas</a></li>
 				<li><a href="Contacto.php?id=<?php echo $id;?>">Contacto</a></li>
 			</ul>
 		</div>
