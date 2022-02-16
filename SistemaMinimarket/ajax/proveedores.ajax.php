@@ -1,7 +1,7 @@
 <?php
 
-require_once "../controladores/proovedores.controlador.php";
-require_once "../modelos/proovedores.modelo.php";
+require_once "../controladores/proveedores.controlador.php";
+require_once "../modelos/proveedores.modelo.php";
 
 class AjaxProveedores{
 
@@ -13,6 +13,7 @@ class AjaxProveedores{
 
 	public function ajaxEditarProveedor(){
 
+		
 		$item = "id";
 		$valor = $this->idProveedor;
 

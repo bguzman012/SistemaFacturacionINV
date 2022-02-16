@@ -2,12 +2,11 @@
 EDITAR CLIENTE
 =============================================*/
 $(".tablas").on("click", ".btnEditarProveedor", function(){
-
+  
 	var idProveedor = $(this).attr("idProveedor");
-
-	var datos = new FormData();
+  var datos = new FormData();
     datos.append("idProveedor", idProveedor);
-
+    console.log(datos);
     $.ajax({
 
       url:"ajax/proveedores.ajax.php",
@@ -18,6 +17,8 @@ $(".tablas").on("click", ".btnEditarProveedor", function(){
       processData: false,
       dataType:"json",
       success:function(respuesta){
+
+        console.log("JJJJJSON" + JSON.stringify(respuesta));
       
       	   $("#idProveedor").val(respuesta["id"]);
            
@@ -40,7 +41,7 @@ ELIMINAR CLIENTE
 $(".tablas").on("click", ".btnEliminarProveedor", function(){
 
 	var idProveedor = $(this).attr("idProveedor");
-	
+	console.log("Lllegee " + idProveedor);
 	swal({
         title: '¿Está seguro de borrar el proveedor?',
         text: "¡Si no lo está puede cancelar la acción!",

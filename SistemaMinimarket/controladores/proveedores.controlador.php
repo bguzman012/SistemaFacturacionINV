@@ -10,7 +10,10 @@ class ControladorProveedor{
 
 		if(isset($_POST["nuevoProveedor"])){
 
+ 			$console = $_POST["nuevoProveedor"];
 
+ 			echo "<script>console.log('Console: " . $console . "' );</script>";
+			
 			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoProveedor"]) &&
 			   preg_match('/^[0-9]+$/', $_POST["nuevoDocumentoId"]) &&
 			   preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["nuevoEmail"]) && 
@@ -20,16 +23,17 @@ class ControladorProveedor{
 
 			   	$tabla = "proveedores";
 
-			   	$datos = array("nombre_"=>$_POST["nuevoProveedor"],
+			   	$datos = array("nombre"=>$_POST["nuevoProveedor"],
 					           "n_identificacion"=>$_POST["nuevoDocumentoId"],
 					           "correo"=>$_POST["nuevoEmail"],
 					           "telefono"=>$_POST["nuevoTelefono"],
 					           "direccion"=>$_POST["nuevaDireccion"],
 					           "empresa"=>$_POST["nuevaEmpresa"]);
 
+				echo "<script>console.log('RAPDER: " . $datos['nombre'] . "' );</script>";
+			   	
 			   	$respuesta = ModeloProveedor::mdlIngresarProveedor($tabla, $datos);
-
-			   	if($respuesta == "ok"){
+				if($respuesta == "ok"){
 
 					echo'<script>
 
@@ -115,6 +119,8 @@ class ControladorProveedor{
 					           "telefono"=>$_POST["editarTelefono"],
 					           "direccion"=>$_POST["editarDireccion"],
 					           "empresa"=>$_POST["editarEmpresa"]);
+
+				
 
 			   	$respuesta = ModeloProveedor::mdlEditarProveedor($tabla, $datos);
 

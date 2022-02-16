@@ -7,7 +7,7 @@ $(".tablas").on("click", ".btnEditarCliente", function(){
 
 	var datos = new FormData();
     datos.append("idCliente", idCliente);
-
+    console.log(datos);
     $.ajax({
 
       url:"ajax/clientes.ajax.php",
@@ -18,7 +18,7 @@ $(".tablas").on("click", ".btnEditarCliente", function(){
       processData: false,
       dataType:"json",
       success:function(respuesta){
-      
+        
       	   $("#idCliente").val(respuesta["id"]);
 	       $("#editarCliente").val(respuesta["nombre"]);
 	       $("#editarDocumentoId").val(respuesta["documento"]);

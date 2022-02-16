@@ -13,6 +13,8 @@ class ModeloProveedor{
 		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(empresa, nombre, n_identificacion, direccion, correo, telefono) 
 											VALUES (:empresa, :nombre, :n_identificacion, :direccion, :correo, :telefono)");
 
+
+		echo "<script>console.log('DATOS: " . $datos["nombre"] . "' );</script>";
 		$stmt->bindParam(":empresa", $datos["empresa"], PDO::PARAM_STR);
 		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
 		$stmt->bindParam(":n_identificacion", $datos["n_identificacion"], PDO::PARAM_STR);
@@ -74,13 +76,14 @@ class ModeloProveedor{
 
 	static public function mdlEditarProveedor($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET empresa = :empresa, nombre =:nombre, n_identificacion = :n_identificacion, direccion = :direccion, correo = :correo, telefono = : telefono WHERE id = :id"); 
-			
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET empresa = :empresa, nombre =:nombre, n_identificacion = :n_identificacion, direccion = :direccion, correo = :correo, telefono = :telefono WHERE id = :id"); 
+		
+		$stmt->bindParam(":id", $datos["id"], PDO::PARAM_INT);
 		$stmt->bindParam(":empresa", $datos["empresa"], PDO::PARAM_STR);
 		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
-		$stmt->bindParam(":n_identificacion", $datos["n_identificacion"], PDO::PARAM_STR);
+		$stmt->bindParam(":n_identificacion", $datos["documento"], PDO::PARAM_STR);
 		$stmt->bindParam(":direccion", $datos["direccion"], PDO::PARAM_STR);
-		$stmt->bindParam(":correo", $datos["correo"], PDO::PARAM_STR);
+		$stmt->bindParam(":correo", $datos["email"], PDO::PARAM_STR);
 		$stmt->bindParam(":telefono", $datos["telefono"], PDO::PARAM_STR);
 		
 		if($stmt->execute()){
