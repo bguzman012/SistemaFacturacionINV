@@ -223,6 +223,9 @@ $(".tablaProductos tbody").on("click", "button.btnEditarProducto", function(){
           var datosCategoria = new FormData();
           datosCategoria.append("idCategoria",respuesta["id_categoria"]);
 
+		  var datosProveedor = new FormData();
+          datosProveedor.append("idProveedor",respuesta["id_proveedor"]);
+
            $.ajax({
 
               url:"ajax/categorias.ajax.php",
@@ -240,6 +243,24 @@ $(".tablaProductos tbody").on("click", "button.btnEditarProducto", function(){
               }
 
           })
+
+		  $.ajax({
+
+			url:"ajax/proveedores.ajax.php",
+			method: "POST",
+			data: datosProveedor,
+			cache: false,
+			contentType: false,
+			processData: false,
+			dataType:"json",
+			success:function(respuesta){
+				
+				$("#editarProveedor").val(respuesta["id"]);
+				$("#editarProveedor").html(respuesta["empresa"]);
+
+			}
+
+		})
 
            $("#editarCodigo").val(respuesta["codigo"]);
 

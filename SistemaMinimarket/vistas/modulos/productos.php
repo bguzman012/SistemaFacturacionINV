@@ -60,6 +60,8 @@ if ($_SESSION["perfil"] == "Vendedor") {
               <th>Código</th>
               <th>Descripción</th>
               <th>Categoría</th>
+              <th>Proveedores</th>
+              
               <th>Stock</th>
               <th>Precio de compra</th>
               <th>Precio de venta</th>
@@ -146,6 +148,41 @@ MODAL AGREGAR PRODUCTO
               </div>
 
             </div>
+
+
+
+
+  <!-- ENTRADA PARA SELECCIONAR PROVEEDOR -->
+
+  <div class="form-group">
+
+    <div class="input-group">
+
+      <span class="input-group-addon"><i class="fa fa-truck"></i></span>
+
+      <select class="form-control input-lg" id="nuevoProveedor" name="nuevoProveedor" required>
+
+        <option value="">Selecionar proveedor</option>
+
+        <?php
+
+        $item = null;
+        $valor = null;
+
+        $respuesta = ControladorProveedor::ctrMostrarProveedores($item, $valor);
+     
+        foreach ($respuesta as $key => $value) {
+
+          echo '<option value="' . $value["id"] . '">' . $value["empresa"] . '</option>';
+        }
+
+        ?>
+
+      </select>
+
+    </div>
+
+  </div>
 
             <!-- ENTRADA PARA EL CÓDIGO -->
 
@@ -331,23 +368,40 @@ MODAL EDITAR PRODUCTO
           <div class="box-body">
 
 
+          <div class="form-group">
+
+<div class="input-group">
+
+  <span class="input-group-addon"><i class="fa fa-th"></i></span>
+
+  <select class="form-control input-lg" name="editarCategoria" readonly required>
+
+    <option id="editarCategoria"></option>
+
+  </select>
+
+</div>
+
+</div>
             <!-- ENTRADA PARA SELECCIONAR CATEGORÍA -->
 
             <div class="form-group">
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fa fa-th"></i></span>
+                <span class="input-group-addon"><i class="fa fa-truck"></i></span>
 
-                <select class="form-control input-lg" name="editarCategoria" readonly required>
+                <select class="form-control input-lg" name="editarProveedor" readonly required>
 
-                  <option id="editarCategoria"></option>
+                  <option id="editarProveedor"></option>
 
                 </select>
 
               </div>
 
             </div>
+
+         
 
             <!-- ENTRADA PARA EL CÓDIGO -->
 

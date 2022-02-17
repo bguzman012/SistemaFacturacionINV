@@ -58,11 +58,15 @@ class ControladorVentas{
 
 			$listaProductos = json_decode($_POST["listaProductos"], true);
 
+			
+
 			$totalProductosComprados = array();
 
 			foreach ($listaProductos as $key => $value) {
 
 			   array_push($totalProductosComprados, $value["cantidad"]);
+
+			   echo "<script>console.log('listaProductos: " . $value["id"] . "' );</script>";
 				
 			   $tablaProductos = "productos";
 

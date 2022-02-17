@@ -6,6 +6,9 @@ require_once "../modelos/productos.modelo.php";
 require_once "../controladores/categorias.controlador.php";
 require_once "../modelos/categorias.modelo.php";
 
+require_once "../controladores/proveedores.controlador.php";
+require_once "../modelos/proveedores.modelo.php";
+
 
 class TablaProductos
 {
@@ -50,6 +53,12 @@ class TablaProductos
 
 			$categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
 
+
+			$item = "id";
+			$valor = $productos[$i]["id_proveedor"];
+
+			$proveedores = ControladorProveedor::ctrMostrarProveedores($item, $valor);
+
 			/*=============================================
  	 		VALIDACION DE STOCK
   			=============================================*/
@@ -84,6 +93,7 @@ class TablaProductos
 			      "' . $productos[$i]["codigo"] . '",
 			      "' . $productos[$i]["descripcion"] . '",
 			      "' . $categorias["categoria"] . '",
+				  "' . $proveedores["empresa"] . '",
 			      "' . $stock . '",
 			      "' . $productos[$i]["precio_compra"] . '",
 			      "' . $productos[$i]["precio_venta"] . '",

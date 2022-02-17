@@ -21,6 +21,8 @@ class imprimirFactura
 	{
 
 		//TRAEMOS LA INFORMACIÓN DE LA VENTA
+		
+		echo "<script>console.log('Console: " . $productos . "' );</script>";
 
 		$itemVenta = "codigo";
 		$valorVenta = $this->codigo;
@@ -30,6 +32,7 @@ class imprimirFactura
 		$fecha = substr($respuestaVenta["fecha"], 0, -8);
 		// $codigo = json_decode($respuestaVenta['codigo'], true); No se Usa
 		$productos = json_decode($respuestaVenta["productos"], true);
+		echo "<script>console.log('Console: " . $productos . "' );</script>";
 		$neto = number_format($respuestaVenta["neto"], 2);
 		$impuesto = number_format($respuestaVenta["impuesto"], 2);
 		$total = number_format($respuestaVenta["total"], 2);

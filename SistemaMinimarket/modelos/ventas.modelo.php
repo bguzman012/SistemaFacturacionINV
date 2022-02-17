@@ -36,13 +36,16 @@ class ModeloVentas{
 
 	}
 
+
+
 	/*=============================================
 	REGISTRO DE VENTA
 	=============================================*/
 
 	static public function mdlIngresarVenta($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(codigo, id_cliente, id_vendedor, productos, impuesto, neto, total, metodo_pago) VALUES (:codigo, :id_cliente, :id_vendedor, :productos, :impuesto, :neto, :total, :metodo_pago)");
+		$conexion = Conexion::conectar();
+		$stmt = $conexion ->prepare("INSERT INTO $tabla(codigo, id_cliente, id_vendedor, productos, impuesto, neto, total, metodo_pago) VALUES (:codigo, :id_cliente, :id_vendedor, :productos, :impuesto, :neto, :total, :metodo_pago)");
 
 		$stmt->bindParam(":codigo", $datos["codigo"], PDO::PARAM_INT);
 		$stmt->bindParam(":id_cliente", $datos["id_cliente"], PDO::PARAM_INT);
@@ -53,7 +56,27 @@ class ModeloVentas{
 		$stmt->bindParam(":total", $datos["total"], PDO::PARAM_STR);
 		$stmt->bindParam(":metodo_pago", $datos["metodo_pago"], PDO::PARAM_STR);
 
+		
 		if($stmt->execute()){
+			$tabla_detalle="ventas_detalle";
+			$lastId = $conexion->lastInsertId();
+			echo "<script>console.log('KKK: " . $lastId . "' );</script>";
+			$jArr = json_decode($datos["productos"], true);
+			foreach ($jArr as $key => $value) {
+				$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla_detalle(cantidad, precio, total_detalle, ventas, id_producto) 
+				VALUES (:cantidad, :precio, :total_detalle, :ventas, :id_producto)");
+
+				echo "<script>console.log('BEETH: " . $value["id"]. "' );</script>";
+				echo "<script>console.log('BEETH: " . $value["cantidad"]. "' );</script>";
+				$stmt->bindParam(":cantidad", $value["cantidad"], PDO::PARAM_STR);
+				$stmt->bindParam(":precio", $value["precio"], PDO::PARAM_STR);
+				$stmt->bindParam(":total_detalle", $value["total"], PDO::PARAM_STR);
+				$stmt->bindParam(":ventas", $lastId, PDO::PARAM_INT);
+				$stmt->bindParam(":id_producto", $value["id"], PDO::PARAM_STR);
+				$stmt->execute();
+				
+			}
+			
 
 			return "ok";
 
@@ -67,6 +90,7 @@ class ModeloVentas{
 		$stmt = null;
 
 	}
+
 
 	/*=============================================
 	EDITAR VENTA

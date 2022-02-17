@@ -147,6 +147,51 @@
 
 			</li>';
 
+			echo '<li class="treeview">
+
+				<a href="#">
+
+					<i class="fa fa-list-ul"></i>
+					
+					<span>Compras</span>
+					
+					<span class="pull-right-container">
+					
+						<i class="fa fa-angle-left pull-right"></i>
+
+					</span>
+
+				</a>
+
+				<ul class="treeview-menu">
+					
+					<li>
+
+						<a href="compras">
+							
+							<i class="fa fa-circle-o"></i>
+							<span>Administrar compras</span>
+
+						</a>
+
+					</li>
+
+					<li>
+
+						<a href="crear-venta">
+							
+							<i class="fa fa-circle-o"></i>
+							<span>Crear compra</span>
+
+						</a>
+
+					</li>';
+				
+
+				echo '</ul>
+
+			</li>';
+
 		}
 
 		?>
