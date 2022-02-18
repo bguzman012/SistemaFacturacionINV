@@ -40,6 +40,9 @@ class TablaProductosCompras{
  	 		STOCK
   			=============================================*/ 
 
+			
+
+
   			if($productos[$i]["stock"] <= 10){
 
   				$stock = "<button class='btn btn-danger'>".$productos[$i]["stock"]."</button>";

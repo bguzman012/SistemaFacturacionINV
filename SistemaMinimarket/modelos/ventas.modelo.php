@@ -98,7 +98,7 @@ class ModeloVentas{
 
 				$last_detalle_inserted = $conexion_inserted->lastInsertId();
 
-				$stmt = Conexion::conectar()->prepare("SELECT * FROM inventario where id_producto = $id_producto_final AND id = (SELECT max(id) from inventario)");
+				$stmt = Conexion::conectar()->prepare("SELECT * FROM inventario where id = (SELECT max(id) from inventario WHERE id_producto = $id_producto_final)");
 				$stmt -> execute();
 				$ROAD = $stmt -> fetch();
 

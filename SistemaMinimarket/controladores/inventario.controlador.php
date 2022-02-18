@@ -16,5 +16,19 @@ class ControladorInventario{
 
 	}
 
+		/*=============================================
+	MOSTRAR Compras
+	=============================================*/
+
+	static public function ctrlGetMaxPrice($valor){
+
+		$tabla = "inventario";
+
+		$respuesta = ModeloInvenario::mdlGetMaxPrice($tabla, $valor);
+ 
+		return $respuesta;
+
+	}
+
 }
 
