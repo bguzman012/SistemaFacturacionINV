@@ -2,18 +2,18 @@
 
 require_once "conexion.php";
 
-class ModeloVentas{
+class ModeloCompras{
 
 		/*=============================================
-	MOSTRAR VENTAS DETALLE
+	MOSTRAR Compras DETALLE
 	=============================================*/
 
-	static public function mdlMostrarVentasDetalle($valor){
+	static public function mdlMostrarComprasDetalle($valor){
 
-		$stmt = Conexion::conectar()->prepare("SELECT ve.cantidad, ve.precio, ve.total_detalle, ve.ventas,pr.descripcion FROM ventas_detalle AS ve  JOIN productos AS pr WHERE ve.id_producto = pr.id and ve.ventas =  :id_ventas ORDER BY ve.id_ventas_detalle ASC");
+		$stmt = Conexion::conectar()->prepare("SELECT ve.cantidad, ve.precio, ve.total_detalle, ve.compras,pr.descripcion FROM compras_detalle AS ve  JOIN productos AS pr WHERE ve.id_producto = pr.id and ve.compras =  :id_compras ORDER BY ve.id_compras_detalle ASC");
 
 		
-		$stmt->bindParam(":id_ventas", $valor, PDO::PARAM_INT);
+		$stmt->bindParam(":id_compras", $valor, PDO::PARAM_INT);
 		$stmt -> execute();
 
 		$final_array = $stmt -> fetchAll();	
@@ -25,10 +25,10 @@ class ModeloVentas{
 	}
 
 	/*=============================================
-	MOSTRAR VENTAS
+	MOSTRAR compras
 	=============================================*/
 
-	static public function mdlMostrarVentas($tabla, $item, $valor){
+	static public function mdlMostrarCompras($tabla, $item, $valor){
 
 		if($item != null){
 
@@ -59,40 +59,41 @@ class ModeloVentas{
 
 
 	/*=============================================
-	REGISTRO DE VENTA
+	REGISTRO DE compra
 	=============================================*/
 
-	static public function mdlIngresarVenta($tabla, $datos){
+	static public function mdlIngresarCompra($tabla, $datos){
 
+		$fecha = date('Y-m-d');
+		$hora = date('H:i:s');
+		$fecha_hora = $fecha.' '.$hora;
 		$conexion = Conexion::conectar();
-		$stmt = $conexion ->prepare("INSERT INTO $tabla(codigo, id_cliente, id_vendedor, productos, impuesto, neto, total, metodo_pago) VALUES (:codigo, :id_cliente, :id_vendedor, :productos, :impuesto, :neto, :total, :metodo_pago)");
+		$stmt = $conexion ->prepare("INSERT INTO $tabla(id_vendedor, impuesto, neto, total, codigo, fecha) VALUES (:id_vendedor, :impuesto, :neto, :total, :codigo, :fecha)");
 
 		$stmt->bindParam(":codigo", $datos["codigo"], PDO::PARAM_INT);
-		$stmt->bindParam(":id_cliente", $datos["id_cliente"], PDO::PARAM_INT);
 		$stmt->bindParam(":id_vendedor", $datos["id_vendedor"], PDO::PARAM_INT);
-		$stmt->bindParam(":productos", $datos["productos"], PDO::PARAM_STR);
 		$stmt->bindParam(":impuesto", $datos["impuesto"], PDO::PARAM_STR);
 		$stmt->bindParam(":neto", $datos["neto"], PDO::PARAM_STR);
 		$stmt->bindParam(":total", $datos["total"], PDO::PARAM_STR);
-		$stmt->bindParam(":metodo_pago", $datos["metodo_pago"], PDO::PARAM_STR);
+		$stmt->bindParam(":fecha", $fecha_hora, PDO::PARAM_STR);
 
 		
 		if($stmt->execute()){
-			$tabla_detalle="ventas_detalle";
+			$tabla_detalle="compras_detalle";
 			$lastId = $conexion->lastInsertId();
 			echo "<script>console.log('KKK: " . $lastId . "' );</script>";
 			$jArr = json_decode($datos["productos"], true);
 			foreach ($jArr as $key => $value) {
 				$conexion_inserted = Conexion::conectar();
-				$stmt = $conexion_inserted->prepare("INSERT INTO $tabla_detalle(cantidad, precio, total_detalle, ventas, id_producto) 
-				VALUES (:cantidad, :precio, :total_detalle, :ventas, :id_producto)");
+				$stmt = $conexion_inserted->prepare("INSERT INTO $tabla_detalle(cantidad, precio, total_detalle, compras, id_producto) 
+				VALUES (:cantidad, :precio, :total_detalle, :compras, :id_producto)");
 
 				$id_producto_final=$value["id"];
 				$candidad_final=$value["cantidad"];
 				$stmt->bindParam(":cantidad", $value["cantidad"], PDO::PARAM_STR);
 				$stmt->bindParam(":precio", $value["precio"], PDO::PARAM_STR);
 				$stmt->bindParam(":total_detalle", $value["total"], PDO::PARAM_STR);
-				$stmt->bindParam(":ventas", $lastId, PDO::PARAM_INT);
+				$stmt->bindParam(":compras", $lastId, PDO::PARAM_INT);
 				$stmt->bindParam(":id_producto", $value["id"], PDO::PARAM_STR);
 				$stmt->execute();
 
@@ -100,6 +101,7 @@ class ModeloVentas{
 
 				$stmt = Conexion::conectar()->prepare("SELECT * FROM inventario where id_producto = $id_producto_final AND id = (SELECT max(id) from inventario)");
 				$stmt -> execute();
+				/** 
 				$ROAD = $stmt -> fetch();
 
 				if ($ROAD["id"]!=null ){
@@ -113,14 +115,14 @@ class ModeloVentas{
 					$hora = date('H:i:s');
 					$fecha_hora = $fecha.' '.$hora;
 
-					$tipo_accion = "venta";
+					$tipo_accion = "compra";
 
-					$stmt = Conexion::conectar()->prepare("INSERT INTO inventario(existencias, tipo_accion, id_detalle_venta, nombre_producto, cantidad, existencias_ahora, id_producto, fecha_hora_accion) 
-					VALUES (:existencias, :tipo_accion, :id_detalle_venta, (Select descripcion from productos as  pr  where pr.id = :id_producto), :cantidad, :existencias_ahora, :id_producto, :fecha_hora_accion)");
+					$stmt = Conexion::conectar()->prepare("INSERT INTO inventario(existencias, tipo_accion, id_detalle_compra, nombre_producto, cantidad, existencias_ahora, id_producto, fecha_hora_accion) 
+					VALUES (:existencias, :tipo_accion, :id_detalle_compra, (Select descripcion from productos as  pr  where pr.id = :id_producto), :cantidad, :existencias_ahora, :id_producto, :fecha_hora_accion)");
 					
 					$stmt->bindParam(":existencias", $existencias_antes, PDO::PARAM_INT);
 					$stmt->bindParam(":tipo_accion", $tipo_accion, PDO::PARAM_STR);
-					$stmt->bindParam(":id_detalle_venta", $last_detalle_inserted, PDO::PARAM_INT);
+					$stmt->bindParam(":id_detalle_compra", $last_detalle_inserted, PDO::PARAM_INT);
 					$stmt->bindParam(":id_producto", $id_producto_final, PDO::PARAM_INT);
 					$stmt->bindParam(":cantidad", $candidad_final, PDO::PARAM_INT);
 					$stmt->bindParam(":existencias_ahora", $existencias_ahora, PDO::PARAM_INT);
@@ -133,6 +135,7 @@ class ModeloVentas{
 
 				}
 
+				*/
 
 				 
 
@@ -157,10 +160,10 @@ class ModeloVentas{
 
 
 	/*=============================================
-	EDITAR VENTA
+	EDITAR Compra
 	=============================================*/
 
-	static public function mdlEditarVenta($tabla, $datos){
+	static public function mdlEditarCompra($tabla, $datos){
 
 		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET  id_cliente = :id_cliente, id_vendedor = :id_vendedor, productos = :productos, impuesto = :impuesto, neto = :neto, total= :total, metodo_pago = :metodo_pago WHERE codigo = :codigo");
 
@@ -189,10 +192,10 @@ class ModeloVentas{
 	}
 
 	/*=============================================
-	ELIMINAR VENTA
+	ELIMINAR Compra
 	=============================================*/
 
-	static public function mdlEliminarVenta($tabla, $datos){
+	static public function mdlEliminarCompra($tabla, $datos){
 
 		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
 
@@ -218,7 +221,7 @@ class ModeloVentas{
 	RANGO FECHAS
 	=============================================*/	
 
-	static public function mdlRangoFechasVentas($tabla, $fechaInicial, $fechaFinal){
+	static public function mdlRangoFechasCompras($tabla, $fechaInicial, $fechaFinal){
 
 		if($fechaInicial == null){
 
@@ -269,10 +272,10 @@ class ModeloVentas{
 	}
 
 	/*=============================================
-	SUMAR EL TOTAL DE VENTAS
+	SUMAR EL TOTAL DE Compras
 	=============================================*/
 
-	static public function mdlSumaTotalVentas($tabla){	
+	static public function mdlSumaTotalCompras($tabla){	
 
 		$stmt = Conexion::conectar()->prepare("SELECT SUM(neto) as total FROM $tabla");
 

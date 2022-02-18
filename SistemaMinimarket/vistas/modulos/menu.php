@@ -178,17 +178,28 @@
 
 					<li>
 
-						<a href="crear-venta">
+						<a href="crear-compra">
 							
 							<i class="fa fa-circle-o"></i>
 							<span>Crear compra</span>
 
 						</a>
 
-					</li>';
+					</li>
+					';
 				
 
 				echo '</ul>
+
+			</li>';
+			echo '<li>
+
+				<a href="inventario">
+
+				<i class="fa fa-clipboard"></i>
+					<span>Inventario</span>
+
+				</a>
 
 			</li>';
 

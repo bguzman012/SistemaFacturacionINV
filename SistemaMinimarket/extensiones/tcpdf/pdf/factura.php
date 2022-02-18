@@ -199,9 +199,9 @@ EOF;
 
 			//$respuestaProducto = ControladorProductos::ctrMostrarProductos($itemProducto, $valorProducto, $orden);
 
-			//$valorUnitario = number_format($respuestaProducto["precio_venta"], 2);
+			$valorUnitario = number_format($item["precio"], 2);
 
-			//$precioTotal = number_format($item["total"], 2);
+			$precioTotal = number_format($item["total_detalle"], 2);
 			echo "<script>console.log('Console: " . $item['descripcion'] . "' );</script>";
 
 			$bloque4 = <<<EOF
@@ -219,11 +219,11 @@ EOF;
 			</td>
 
 			<td style="border: 1px solid #666; color:#333; background-color:white; width:100px; text-align:center">$ 
-				$item[precio]
+				$valorUnitario
 			</td>
 
 			<td style="border: 1px solid #666; color:#333; background-color:white; width:100px; text-align:center">$ 
-				$item[total_detalle]
+				$precioTotal 
 			</td>
 
 

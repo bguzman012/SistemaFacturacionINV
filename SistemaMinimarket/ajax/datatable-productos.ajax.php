@@ -59,20 +59,6 @@ class TablaProductos
 
 			$proveedores = ControladorProveedor::ctrMostrarProveedores($item, $valor);
 
-			/*=============================================
- 	 		VALIDACION DE STOCK
-  			=============================================*/
-
-			if ($productos[$i]["stock"] <= 10) {
-
-				$stock = "<button class='btn btn-danger'>" . $productos[$i]["stock"] . "</button>";
-			} else if ($productos[$i]["stock"] > 11 && $productos[$i]["stock"] <= 15) {
-
-				$stock = "<button class='btn btn-warning'>" . $productos[$i]["stock"] . "</button>";
-			} else {
-
-				$stock = "<button class='btn btn-success'>" . $productos[$i]["stock"] . "</button>";
-			}
 
 			/*=============================================
  	 		TRAEMOS LAS ACCIONES
@@ -94,9 +80,6 @@ class TablaProductos
 			      "' . $productos[$i]["descripcion"] . '",
 			      "' . $categorias["categoria"] . '",
 				  "' . $proveedores["empresa"] . '",
-			      "' . $stock . '",
-			      "' . $productos[$i]["precio_compra"] . '",
-			      "' . $productos[$i]["precio_venta"] . '",
 			      "' . $productos[$i]["fecha"] . '",
 			      "' . $botones . '"
 			    ],';

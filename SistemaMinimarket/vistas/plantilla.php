@@ -140,10 +140,12 @@ session_start();
          $_GET["ruta"] == "clientes" ||
          $_GET["ruta"] == "proveedores" ||
          $_GET["ruta"] == "ventas" ||
+         $_GET["ruta"] == "crear-compra" ||
          $_GET["ruta"] == "compras" ||
          $_GET["ruta"] == "crear-venta" ||
          $_GET["ruta"] == "editar-venta" ||
          $_GET["ruta"] == "reportes" ||
+         $_GET["ruta"] == "inventario" ||
          $_GET["ruta"] == "salir"){
 
         include "modulos/".$_GET["ruta"].".php";
@@ -188,6 +190,7 @@ session_start();
 <script src="vistas/js/clientes.js"></script>
 <script src="vistas/js/proveedores.js"></script>
 <script src="vistas/js/ventas.js"></script>
+<script src="vistas/js/compras.js"></script>
 <script src="vistas/js/reportes.js"></script>
 
 </body>

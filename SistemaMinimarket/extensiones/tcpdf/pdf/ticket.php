@@ -26,7 +26,9 @@ $valorVenta = $this->codigo;
 $respuestaVenta = ControladorVentas::ctrMostrarVentas($itemVenta, $valorVenta);
 
 $fecha = substr($respuestaVenta["fecha"],0,-8);
-$productos = json_decode($respuestaVenta["productos"], true);
+
+$productos = ControladorVentas::ctrMostrarVentasDetalle($respuestaVenta["id"]);
+
 $neto = number_format($respuestaVenta["neto"],2);
 $impuesto = number_format($respuestaVenta["impuesto"],2);
 $total = number_format($respuestaVenta["total"],2);
@@ -112,7 +114,7 @@ foreach ($productos as $key => $item) {
 
 $valorUnitario = number_format($item["precio"], 2);
 
-$precioTotal = number_format($item["total"], 2);
+$precioTotal = number_format($item["total_detalle"], 2);
 
 $bloque2 = <<<EOF
 
@@ -121,7 +123,7 @@ $bloque2 = <<<EOF
 	<tr>
 	
 		<td style="width:160px; text-align:left">
-		$item[descripcion] 
+		$item[descripcion]
 		</td>
 
 	</tr>
