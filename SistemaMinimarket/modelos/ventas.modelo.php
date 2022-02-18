@@ -4,6 +4,26 @@ require_once "conexion.php";
 
 class ModeloVentas{
 
+		/*=============================================
+	MOSTRAR VENTAS DETALLE
+	=============================================*/
+
+	static public function mdlMostrarVentasDetalle($valor){
+
+		$stmt = Conexion::conectar()->prepare("SELECT ve.cantidad, ve.precio, ve.total_detalle, ve.ventas,pr.descripcion FROM ventas_detalle AS ve  JOIN productos AS pr WHERE ve.id_producto = pr.id and ve.ventas =  :id_ventas ORDER BY ve.id_ventas_detalle ASC");
+
+		
+		$stmt->bindParam(":id_ventas", $valor, PDO::PARAM_INT);
+		$stmt -> execute();
+
+		$final_array = $stmt -> fetchAll();	
+		
+		return $final_array;
+		$stmt -> close();
+
+		$stmt = null;
+	}
+
 	/*=============================================
 	MOSTRAR VENTAS
 	=============================================*/

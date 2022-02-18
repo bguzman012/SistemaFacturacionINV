@@ -17,22 +17,31 @@ class imprimirFactura
 
 	public $codigo;
 
+	
+
 	public function traerImpresionFactura()
 	{
 
 		//TRAEMOS LA INFORMACIÓN DE LA VENTA
 		
-		echo "<script>console.log('Console: " . $productos . "' );</script>";
 
 		$itemVenta = "codigo";
 		$valorVenta = $this->codigo;
 
 		$respuestaVenta = ControladorVentas::ctrMostrarVentas($itemVenta, $valorVenta);
+		
+		$respuestaVentaDetalle = ControladorVentas::ctrMostrarVentasDetalle($respuestaVenta["id"]);
+
+		
+
+		
 
 		$fecha = substr($respuestaVenta["fecha"], 0, -8);
 		// $codigo = json_decode($respuestaVenta['codigo'], true); No se Usa
 		$productos = json_decode($respuestaVenta["productos"], true);
-		echo "<script>console.log('Console: " . $productos . "' );</script>";
+
+
+
 		$neto = number_format($respuestaVenta["neto"], 2);
 		$impuesto = number_format($respuestaVenta["impuesto"], 2);
 		$total = number_format($respuestaVenta["total"], 2);
@@ -182,17 +191,18 @@ EOF;
 
 		// ---------------------------------------------------------
 
-		foreach ($productos as $key => $item) {
+		foreach ($respuestaVentaDetalle as $key => $item) {
 
-			$itemProducto = "descripcion";
-			$valorProducto = $item["descripcion"];
-			$orden = null;
+		//	$itemProducto = "descripcion";
+			//$valorProducto = $item["descripcion"];
+			//$orden = null;
 
-			$respuestaProducto = ControladorProductos::ctrMostrarProductos($itemProducto, $valorProducto, $orden);
+			//$respuestaProducto = ControladorProductos::ctrMostrarProductos($itemProducto, $valorProducto, $orden);
 
-			$valorUnitario = number_format($respuestaProducto["precio_venta"], 2);
+			//$valorUnitario = number_format($respuestaProducto["precio_venta"], 2);
 
-			$precioTotal = number_format($item["total"], 2);
+			//$precioTotal = number_format($item["total"], 2);
+			echo "<script>console.log('Console: " . $item['descripcion'] . "' );</script>";
 
 			$bloque4 = <<<EOF
 
@@ -209,11 +219,11 @@ EOF;
 			</td>
 
 			<td style="border: 1px solid #666; color:#333; background-color:white; width:100px; text-align:center">$ 
-				$valorUnitario
+				$item[precio]
 			</td>
 
 			<td style="border: 1px solid #666; color:#333; background-color:white; width:100px; text-align:center">$ 
-				$precioTotal
+				$item[total_detalle]
 			</td>
 
 

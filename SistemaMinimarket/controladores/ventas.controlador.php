@@ -21,6 +21,20 @@ class ControladorVentas{
 
 	}
 
+	
+	/*=============================================
+	MOSTRAR VENTAS DETALLE
+	=============================================*/
+
+	static public function ctrMostrarVentasDetalle($valor){
+		
+		$respuesta = ModeloVentas::mdlMostrarVentasDetalle($valor);
+ 
+		return $respuesta;
+
+	}
+
+
 	/*=============================================
 	CREAR VENTA
 	=============================================*/
