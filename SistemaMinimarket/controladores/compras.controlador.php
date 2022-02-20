@@ -85,7 +85,7 @@ class ControladorCompras{
 			   echo "<script>console.log('listaProductos: " . $value["id"] . "' );</script>";
 				
 			   $tablaProductos = "productos";
-
+			   
 			    $item = "id";
 			    $valor = $value["id"];
 			    $orden = "id";

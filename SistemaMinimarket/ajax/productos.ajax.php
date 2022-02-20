@@ -65,6 +65,7 @@ class AjaxProductos{
       $valor = $this->idProducto;
       $orden = "id";
 
+      
       $respuesta = ControladorProductos::ctrMostrarProductos($item, $valor,
         $orden);
 

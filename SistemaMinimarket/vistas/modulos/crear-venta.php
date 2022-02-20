@@ -48,7 +48,7 @@ if($_SESSION["perfil"] == "Especial"){
           
           <div class="box-header with-border"></div>
 
-          <form role="form" method="post" class="formularioCompras">
+          <form role="form" method="post" class="formularioVenta">
 
             <div class="box-body">
   
@@ -155,6 +155,21 @@ if($_SESSION["perfil"] == "Especial"){
                 
                 </div>
 
+                <div class="form-row">
+                <div class="form-group col-md-6">
+      <label>Nombre</label>
+     
+    </div>
+    
+    <div class="form-group col-md-3">
+      <label>Precio</label>
+     
+    </div>
+    <div class="form-group col-md-3">
+      <label>Total</label>
+     
+    </div>
+              </div>
                 <!--=====================================
                 ENTRADA PARA AGREGAR PRODUCTO
                 ======================================--> 

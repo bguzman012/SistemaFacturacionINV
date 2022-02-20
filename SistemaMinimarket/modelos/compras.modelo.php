@@ -101,14 +101,14 @@ class ModeloCompras{
 
 				$stmt = Conexion::conectar()->prepare("SELECT * FROM inventario where id_producto = $id_producto_final AND id = (SELECT max(id) from inventario)");
 				$stmt -> execute();
-				/** 
+				
 				$ROAD = $stmt -> fetch();
 
-				if ($ROAD["id"]!=null ){
+				if ($ROAD!=null ){
 
 					//echo "<script>console.log('ROAD: " . $ROAD["id"]. "' );</script>";
 
-					$existencias_ahora = $ROAD["existencias_ahora"] - $candidad_final;
+					$existencias_ahora = $ROAD["existencias_ahora"] + $candidad_final;
 					$existencias_antes = $ROAD["existencias_ahora"]; 
 					date_default_timezone_set('America/Bogota');
 					$fecha = date('Y-m-d');
@@ -133,15 +133,34 @@ class ModeloCompras{
 	
 					
 
+				}else{
+					//echo "<script>console.log('ROAD: " . $ROAD["id"]. "' );</script>";
+
+					$existencias_ahora = $candidad_final;
+					$existencias_antes = 0; 
+					date_default_timezone_set('America/Bogota');
+					$fecha = date('Y-m-d');
+					$hora = date('H:i:s');
+					$fecha_hora = $fecha.' '.$hora;
+
+					$tipo_accion = "compra";
+
+					$stmt = Conexion::conectar()->prepare("INSERT INTO inventario(existencias, tipo_accion, id_detalle_compra, nombre_producto, cantidad, existencias_ahora, id_producto, fecha_hora_accion) 
+					VALUES (:existencias, :tipo_accion, :id_detalle_compra, (Select descripcion from productos as  pr  where pr.id = :id_producto), :cantidad, :existencias_ahora, :id_producto, :fecha_hora_accion)");
+					
+					$stmt->bindParam(":existencias", $existencias_antes, PDO::PARAM_INT);
+					$stmt->bindParam(":tipo_accion", $tipo_accion, PDO::PARAM_STR);
+					$stmt->bindParam(":id_detalle_compra", $last_detalle_inserted, PDO::PARAM_INT);
+					$stmt->bindParam(":id_producto", $id_producto_final, PDO::PARAM_INT);
+					$stmt->bindParam(":cantidad", $candidad_final, PDO::PARAM_INT);
+					$stmt->bindParam(":existencias_ahora", $existencias_ahora, PDO::PARAM_INT);
+					$stmt->bindParam(":fecha_hora_accion", $fecha_hora, PDO::PARAM_STR);
+
+					
+					$stmt->execute();
+	
 				}
 
-				*/
-
-				 
-
-
-				
-				
 			}
 			
 

@@ -129,7 +129,7 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function() {
 
                 '<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>' +
 
-                '<input type="text" class="form-control nuevoPrecioProducto" onchange="cambios()" precioReal="' + precio + '" name="nuevoPrecioProducto" value="' + precio + '" required>' +
+                '<input type="text" class="form-control nuevoPrecioProducto" onchange="cambiosFinal()" precioReal="' + precio + '" name="nuevoPrecioProducto" value="' + precio + '" required>' +
 
                 '</div>' +
 
@@ -139,19 +139,20 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function() {
 
             // SUMAR TOTAL DE PRECIOS
 
-            sumarTotalPrecios()
+            sumarTotalPreciosVentas()
 
             // AGREGAR IMPUESTO
 
-            agregarImpuesto()
+            agregarImpuestoVentas()
 
             // AGRUPAR PRODUCTOS EN FORMATO JSON
 
-            listarProductos()
+            listarProductosVentas()
 
             // PONER FORMATO AL PRECIO DE LOS PRODUCTOS
 
             $(".nuevoPrecioProducto").number(true, 2);
+            $(".nuevoPrecioProductoFinal").number(true, 2);
 
 
             localStorage.removeItem("quitarProducto");
@@ -162,16 +163,16 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function() {
 
 });
 
-function cambios() {
-    sumarTotalPrecios();
+function cambiosFinal() {
+    sumarTotalPreciosVentas();
 
     // AGREGAR IMPUESTO
 
-    agregarImpuesto();
+    agregarImpuestoVentas();
 
     // AGRUPAR PRODUCTOS EN FORMATO JSON
 
-    listarProductos();
+    listarProductosVentas();
 }
 
 /*=============================================
@@ -245,15 +246,15 @@ $(".formularioVenta").on("click", "button.quitarProducto", function() {
 
         // SUMAR TOTAL DE PRECIOS
 
-        sumarTotalPrecios()
+        sumarTotalPreciosVentas()
 
         // AGREGAR IMPUESTO
 
-        agregarImpuesto()
+        agregarImpuestoVentas()
 
         // AGRUPAR PRODUCTOS EN FORMATO JSON
 
-        listarProductos()
+        listarProductosVentas()
 
     }
 
@@ -350,11 +351,11 @@ $(".btnAgregarProducto").click(function() {
 
             // SUMAR TOTAL DE PRECIOS
 
-            sumarTotalPrecios()
+            sumarTotalPreciosVentas()
 
             // AGREGAR IMPUESTO
 
-            agregarImpuesto()
+            agregarImpuestoVentas()
 
             // PONER FORMATO AL PRECIO DE LOS PRODUCTOS
 
@@ -441,7 +442,7 @@ $(".formularioVenta").on("change", "input.nuevaCantidadProducto", function() {
 
         precio.val(precioFinal);
 
-        sumarTotalPrecios();
+        sumarTotalPreciosVentas();
 
         swal({
             title: "La cantidad supera el Stock",
@@ -456,15 +457,15 @@ $(".formularioVenta").on("change", "input.nuevaCantidadProducto", function() {
 
     // SUMAR TOTAL DE PRECIOS
 
-    sumarTotalPrecios()
+    sumarTotalPreciosVentas()
 
     // AGREGAR IMPUESTO
 
-    agregarImpuesto()
+    agregarImpuestoVentas()
 
     // AGRUPAR PRODUCTOS EN FORMATO JSON
 
-    listarProductos()
+    listarProductosVentas()
 
 })
 
@@ -472,7 +473,7 @@ $(".formularioVenta").on("change", "input.nuevaCantidadProducto", function() {
 SUMAR TODOS LOS PRECIOS
 =============================================*/
 
-function sumarTotalPrecios() {
+function sumarTotalPreciosVentas() {
 
     var precioItem = $(".nuevoPrecioProducto");
 
@@ -485,13 +486,13 @@ function sumarTotalPrecios() {
 
     }
 
-    function sumaArrayPrecios(total, numero) {
+    function sumaArrayPreciosVentas(total, numero) {
 
         return total + numero;
 
     }
 
-    var sumaTotalPrecio = arraySumaPrecio.reduce(sumaArrayPrecios);
+    var sumaTotalPrecio = arraySumaPrecio.reduce(sumaArrayPreciosVentas);
 
     $("#nuevoTotalVenta").val(sumaTotalPrecio);
     $("#totalVenta").val(sumaTotalPrecio);
@@ -504,7 +505,7 @@ function sumarTotalPrecios() {
 FUNCIÓN AGREGAR IMPUESTO
 =============================================*/
 
-function agregarImpuesto() {
+function agregarImpuestoVentas() {
 
     var impuesto = $("#nuevoImpuestoVenta").val();
     var precioTotal = $("#nuevoTotalVenta").attr("total");
@@ -647,7 +648,7 @@ $(".formularioVenta").on("change", "input#nuevoCodigoTransaccion", function() {
 LISTAR TODOS LOS PRODUCTOS
 =============================================*/
 
-function listarProductos() {
+function listarProductosVentas() {
 
     var listaProductos = [];
 

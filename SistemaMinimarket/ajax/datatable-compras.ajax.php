@@ -2,7 +2,9 @@
 
 require_once "../controladores/productos.controlador.php";
 require_once "../modelos/productos.modelo.php";
+require_once "../controladores/inventario.controlador.php";
 
+require_once "../modelos/inventario.modelo.php";
 
 class TablaProductosCompras{
 
@@ -35,25 +37,38 @@ class TablaProductosCompras{
   			=============================================*/ 
 
 		  	$imagen = "<img src='".$productos[$i]["imagen"]."' width='40px'>";
+			  
+
+			$item = "id_producto";
+			$valor = $productos[$i]["id"];
+  
+			
+			$traerMaxPrice = ControladorInventario::ctrlGetMaxPrice($item, $valor);
 
 		  	/*=============================================
  	 		STOCK
   			=============================================*/ 
 
+			if($traerMaxPrice['existencias_ahora'] != null){
+				$stock_fin = $traerMaxPrice['existencias_ahora'];
+			}else{
+				$stock_fin = 0;
+			}
+
 			
 
 
-  			if($productos[$i]["stock"] <= 10){
+  			if($stock_fin <= 10){
 
-  				$stock = "<button class='btn btn-danger'>".$productos[$i]["stock"]."</button>";
+  				$stock = "<button class='btn btn-danger'>".$stock_fin."</button>";
 
-  			}else if($productos[$i]["stock"] > 11 && $productos[$i]["stock"] <= 15){
+  			}else if($stock_fin > 11 && $stock_fin <= 15){
 
-  				$stock = "<button class='btn btn-warning'>".$productos[$i]["stock"]."</button>";
+  				$stock = "<button class='btn btn-warning'>".$stock_fin."</button>";
 
   			}else{
 
-  				$stock = "<button class='btn btn-success'>".$productos[$i]["stock"]."</button>";
+  				$stock = "<button class='btn btn-success'>".$stock_fin."</button>";
 
   			}
 

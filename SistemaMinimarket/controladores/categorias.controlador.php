@@ -18,6 +18,8 @@ class ControladorCategorias{
 
 				$respuesta = ModeloCategorias::mdlIngresarCategoria($tabla, $datos);
 
+				
+
 				if($respuesta == "ok"){
 
 					echo'<script>
@@ -70,7 +72,6 @@ class ControladorCategorias{
 	=============================================*/
 
 	static public function ctrMostrarCategorias($item, $valor){
-
 		$tabla = "categorias";
 
 		$respuesta = ModeloCategorias::mdlMostrarCategorias($tabla, $item, $valor);

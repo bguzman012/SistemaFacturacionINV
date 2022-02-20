@@ -29,7 +29,7 @@ if($xml){
     
     <h1>
       
-      Administrar ventas
+      Administrar compras
     
     </h1>
 

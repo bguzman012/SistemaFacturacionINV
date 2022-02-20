@@ -38,6 +38,38 @@ class ModeloInvenario{
 
 	}
 
+	static public function mdlGetMaxPrice($tabla, $item, $valor){
+
+		if($item != null){
+
+			
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM inventario where id = (SELECT max(id) from inventario WHERE id_producto = :$item)");
+
+			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_INT);
+
+			$stmt -> execute();
+
+			return $stmt -> fetch();
+
+		}else{
+
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM inventario");
+
+			$stmt -> execute();
+
+			return $stmt -> fetchAll();
+
+		}
+
+		$stmt -> close();
+
+		$stmt = null;
+
+
+	}
+
+	
+
 
 
 }

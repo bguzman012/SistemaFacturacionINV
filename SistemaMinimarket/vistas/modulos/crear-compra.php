@@ -72,6 +72,11 @@ if($_SESSION["perfil"] == "Especial"){
 
                 </div> 
 
+
+                
+            
+                
+
                 <!--=====================================
                 ENTRADA DEL CÓDIGO
                 ======================================--> 
@@ -118,6 +123,25 @@ if($_SESSION["perfil"] == "Especial"){
                 
                 </div>
 
+                <div class="form-row">
+                <div class="form-group col-md-4">
+      <label>Nombre</label>
+     
+    </div>
+    <div class="form-group col-md-2">
+      <label>Cantidad</label>
+     
+    </div>
+    <div class="form-group col-md-3">
+      <label>Precio</label>
+     
+    </div>
+    <div class="form-group col-md-3">
+      <label>Total</label>
+     
+    </div>
+              </div>
+                
                 <!--=====================================
                 ENTRADA DEL CLIENTE
                 ======================================--> 
@@ -162,15 +186,17 @@ if($_SESSION["perfil"] == "Especial"){
 
                 <div class="form-group row nuevoProducto">
 
+                      </div>
+
                 
-
-                </div>
-
-                <input type="hidden" id="listaProductos" name="listaProductos">
+                      <input type="hidden" id="listaProductos" name="listaProductos">
 
                 <!--=====================================
                 BOTÓN PARA AGREGAR PRODUCTO
                 ======================================-->
+
+
+
 
                 <button type="button" class="btn btn-default hidden-lg btnAgregarProducto">Agregar producto</button>
 
