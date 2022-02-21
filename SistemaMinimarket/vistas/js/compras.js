@@ -51,7 +51,7 @@ $('.tablaCompras').DataTable({
 AGREGANDO PRODUCTOS A LA compra DESDE LA TABLA
 =============================================*/
 
-$(".tablaCompras tbody").on("click", "button.agregarProducto", function () {
+$(".tablaCompras tbody").on("click", "button.agregarProducto", function() {
 
     var idProducto = $(this).attr("idProducto");
 
@@ -71,7 +71,7 @@ $(".tablaCompras tbody").on("click", "button.agregarProducto", function () {
         contentType: false,
         processData: false,
         dataType: "json",
-        success: function (respuesta) {
+        success: function(respuesta) {
 
             var descripcion = respuesta["descripcion"];
             var stock = respuesta["stock"];
@@ -79,67 +79,66 @@ $(".tablaCompras tbody").on("click", "button.agregarProducto", function () {
 
             console.log(precio, " GIRL")
             console.log(stock, " make")
-            /*=============================================
-            EVITAR AGREGAR PRODUTO CUANDO EL STOCK ESTÁ EN CERO
-            =============================================*/
+                /*=============================================
+                EVITAR AGREGAR PRODUTO CUANDO EL STOCK ESTÁ EN CERO
+                =============================================*/
 
 
 
             $(".nuevoProducto").append(
 
-                '<div class="row" style="padding:5px 15px">' +
+                    '<div class="row" style="padding:5px 15px">' +
 
-                '<!-- Descripción del producto -->' +
+                    '<!-- Descripción del producto -->' +
 
-                '<div class="col-xs-4" style="padding-right:0px">' +
+                    '<div class="col-xs-4" style="padding-right:0px">' +
 
-                '<div class="input-group">' +
+                    '<div class="input-group">' +
 
-                '<span class="input-group-addon"><button type="button" class="btn btn-danger btn-xs quitarProducto" idProducto="' + idProducto + '"><i class="fa fa-times"></i></button></span>' +
+                    '<span class="input-group-addon"><button type="button" class="btn btn-danger btn-xs quitarProducto" idProducto="' + idProducto + '"><i class="fa fa-times"></i></button></span>' +
 
-                '<input type="text" class="form-control nuevaDescripcionProducto" idProducto="' + idProducto + '" name="agregarProducto" value="' + descripcion + '" readonly required>' +
+                    '<input type="text" class="form-control nuevaDescripcionProducto" idProducto="' + idProducto + '" name="agregarProducto" value="' + descripcion + '" readonly required>' +
 
-                '</div>' +
+                    '</div>' +
 
-                '</div>' +
+                    '</div>' +
 
-                '<!-- Cantidad del producto -->' +
+                    '<!-- Cantidad del producto -->' +
 
-                '<div class="col-xs-2">' +
+                    '<div class="col-xs-2">' +
 
-                '<input type="number" class="form-control nuevaCantidadProducto" name="nuevaCantidadProducto" min="1" value="1" stock="' + stock + '" nuevoStock="' + Number(stock) + '" required>' +
+                    '<input type="number" class="form-control nuevaCantidadProducto" name="nuevaCantidadProducto" min="1" value="1" stock="' + stock + '" nuevoStock="' + Number(stock) + '" required>' +
 
-                '</div>' +
-                '<!-- Cantidad del producto -->' +
+                    '</div>' +
+                    '<!-- Cantidad del producto -->' +
 
-                '<div class="col-xs-3 ingresoPrecio"   style="padding-left:0px">' +
-                '<div class="input-group">' +
+                    '<div class="col-xs-3 ingresoPrecio"   style="padding-left:0px">' +
+                    '<div class="input-group">' +
 
-                '<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>' +
+                    '<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>' +
 
 
-                '<input type="text" class="form-control nuevoPrecioProducto" onchange="cambios()" precioReal="' + precio + '" name="nuevoPrecioProducto" value="' + precio + '" required>' +
+                    '<input type="text" class="form-control nuevoPrecioProducto" onchange="cambios()" precioReal="' + precio + '" name="nuevoPrecioProducto" value="' + precio + '" required>' +
 
-                '</div>' +
+                    '</div>' +
 
-                '</div>' +
-               
+                    '</div>' +
 
-                '<div class="col-xs-3 ingresoPrecioFinal" >' +
 
-                '<div class="input-group">' +
+                    '<div class="col-xs-3 ingresoPrecioFinal" >' +
 
-                '<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>' +
+                    '<div class="input-group">' +
 
-                '<input type="text" class="form-control nuevoPrecioProductoFinal"  precioRealFinal="" name="nuevoPrecioProductoFinal" value="' + precio + '" required readonly>' +
+                    '<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>' +
 
-                '</div>' +
+                    '<input type="text" class="form-control nuevoPrecioProductoFinal"  precioRealFinal="" name="nuevoPrecioProductoFinal" value="' + precio + '" required readonly>' +
 
-                '</div>' +
+                    '</div>' +
 
-                '</div>')
+                    '</div>' +
 
-            // SUMAR TOTAL DE PRECIOS
+                    '</div>')
+                // SUMAR TOTAL DE PRECIOS
 
             sumarTotalPrecios()
 
@@ -176,14 +175,14 @@ function cambios() {
 
     for (var i = 0; i < descripcion.length; i++) {
 
-       
-        $(precio_final[i]).val($(precio[i]).val()*$(cantidad[i]).val());
+
+        $(precio_final[i]).val($(precio[i]).val() * $(cantidad[i]).val());
 
     }
 
-    
-    
-    
+
+
+
 
     sumarTotalPrecios();
 
@@ -200,7 +199,7 @@ function cambios() {
 CUANDO CARGUE LA TABLA CADA VEZ QUE NAVEGUE EN ELLA
 =============================================*/
 
-$(".tablaCompras").on("draw.dt", function () {
+$(".tablaCompras").on("draw.dt", function() {
 
     if (localStorage.getItem("quitarProducto") != null) {
 
@@ -228,7 +227,7 @@ var idQuitarProducto = [];
 
 localStorage.removeItem("quitarProducto");
 
-$(".formularioCompras").on("click", "button.quitarProducto", function () {
+$(".formularioCompras").on("click", "button.quitarProducto", function() {
 
     $(this).parent().parent().parent().parent().remove();
 
@@ -287,7 +286,7 @@ AGREGANDO PRODUCTOS DESDE EL BOTÓN PARA DISPOSITIVOS
 
 var numProducto = 0;
 
-$(".btnAgregarProducto").click(function () {
+$(".btnAgregarProducto").click(function() {
 
     numProducto++;
 
@@ -303,7 +302,7 @@ $(".btnAgregarProducto").click(function () {
         contentType: false,
         processData: false,
         dataType: "json",
-        success: function (respuesta) {
+        success: function(respuesta) {
 
             $(".nuevoProducto").append(
 
@@ -393,7 +392,7 @@ $(".btnAgregarProducto").click(function () {
 SELECCIONAR PRODUCTO
 =============================================*/
 
-$(".formularioCompras").on("change", "select.nuevaDescripcionProducto", function () {
+$(".formularioCompras").on("change", "select.nuevaDescripcionProducto", function() {
 
     var nombreProducto = $(this).val();
 
@@ -404,7 +403,7 @@ $(".formularioCompras").on("change", "select.nuevaDescripcionProducto", function
     var ingresoPrecioFinal = $(this).parent().parent().parent().children(".ingresoPrecioFinal").children().children(".precioFinal");
 
     var nuevaCantidadProducto = $(this).parent().parent().parent().children(".ingresoCantidad").children(".nuevaCantidadProducto");
-    
+
     var datos = new FormData();
     datos.append("nombreProducto", nombreProducto);
 
@@ -418,7 +417,7 @@ $(".formularioCompras").on("change", "select.nuevaDescripcionProducto", function
         contentType: false,
         processData: false,
         dataType: "json",
-        success: function (respuesta) {
+        success: function(respuesta) {
 
             $(nuevaDescripcionProducto).attr("idProducto", respuesta["id"]);
             $(nuevaCantidadProducto).attr("stock", respuesta["stock"]);
@@ -439,11 +438,11 @@ $(".formularioCompras").on("change", "select.nuevaDescripcionProducto", function
 MODIFICAR LA CANTIDAD
 =============================================*/
 
-$(".formularioCompras").on("change", "input.nuevaCantidadProducto", function () {
+$(".formularioCompras").on("change", "input.nuevaCantidadProducto", function() {
 
     var precio = $(this).parent().parent().children(".ingresoPrecio").children().children(".nuevoPrecioProducto");
 
-    var precioFinalSecond= $(this).parent().parent().children(".ingresoPrecioFinal").children().children(".nuevoPrecioProductoFinal");
+    var precioFinalSecond = $(this).parent().parent().children(".ingresoPrecioFinal").children().children(".nuevoPrecioProductoFinal");
 
 
     var precioFinalFinal = $(this).val() * precio.val();
@@ -452,11 +451,11 @@ $(".formularioCompras").on("change", "input.nuevaCantidadProducto", function () 
 
     console.log("  bit ", $(this).val())
 
-console.log("  bit2 ", precio.val())
+    console.log("  bit2 ", precio.val())
 
-console.log("  bit33 ", precioFinalSecond.val())
+    console.log("  bit33 ", precioFinalSecond.val())
 
-    
+
     var nuevoStock = Number($(this).attr("stock")) - $(this).val();
 
     $(this).attr("nuevoStock", nuevoStock);
@@ -535,7 +534,7 @@ function agregarImpuesto() {
 CUANDO CAMBIA EL IMPUESTO
 =============================================*/
 
-$("#nuevoImpuestoCompra").change(function () {
+$("#nuevoImpuestoCompra").change(function() {
 
     agregarImpuesto();
 
@@ -551,7 +550,7 @@ $("#nuevoTotalCompra").number(true, 2);
 SELECCIONAR MÉTODO DE PAGO
 =============================================*/
 
-$("#nuevoMetodoPago").change(function () {
+$("#nuevoMetodoPago").change(function() {
 
     var metodo = $(this).val();
 
@@ -627,7 +626,7 @@ $("#nuevoMetodoPago").change(function () {
 /*=============================================
 CAMBIO EN EFECTIVO
 =============================================*/
-$(".formularioCompras").on("change", "input#nuevoValorEfectivo", function () {
+$(".formularioCompras").on("change", "input#nuevoValorEfectivo", function() {
 
     var efectivo = $(this).val();
 
@@ -642,7 +641,7 @@ $(".formularioCompras").on("change", "input#nuevoValorEfectivo", function () {
 /*=============================================
 CAMBIO TRANSACCIÓN
 =============================================*/
-$(".formularioCompras").on("change", "input#nuevoCodigoTransaccion", function () {
+$(".formularioCompras").on("change", "input#nuevoCodigoTransaccion", function() {
 
     // Listar método en la entrada
     listarMetodos()
@@ -708,7 +707,7 @@ function listarMetodos() {
 /*=============================================
 BOTON EDITAR Compra
 =============================================*/
-$(".tablas").on("click", ".btnEditarCompra", function () {
+$(".tablas").on("click", ".btnEditarCompra", function() {
 
     var idCompra = $(this).attr("idCompra");
 
@@ -754,7 +753,7 @@ function quitarAgregarProducto() {
 CADA VEZ QUE CARGUE LA TABLA CUANDO NAVEGAMOS EN ELLA EJECUTAR LA FUNCIÓN:
 =============================================*/
 
-$('.tablaCompras').on('draw.dt', function () {
+$('.tablaCompras').on('draw.dt', function() {
 
     quitarAgregarProducto();
 
@@ -764,7 +763,7 @@ $('.tablaCompras').on('draw.dt', function () {
 /*=============================================
 BORRAR Compra
 =============================================*/
-$(".tablas").on("click", ".btnEliminarCompra", function () {
+$(".tablas").on("click", ".btnEliminarCompra", function() {
 
     var idCompra = $(this).attr("idCompra");
 
@@ -777,7 +776,7 @@ $(".tablas").on("click", ".btnEliminarCompra", function () {
         cancelButtonColor: '#d33',
         cancelButtonText: 'Cancelar',
         confirmButtonText: 'Si, borrar compra!'
-    }).then(function (result) {
+    }).then(function(result) {
         if (result.value) {
 
             window.location = "index.php?ruta=compras&idCompra=" + idCompra;
@@ -791,7 +790,7 @@ $(".tablas").on("click", ".btnEliminarCompra", function () {
 IMPRIMIR FACTURA
 =============================================*/
 
-$(".tablas").on("click", ".btnImprimirFactura", function () {
+$(".tablas").on("click", ".btnImprimirFactura", function() {
 
     var codigoCompra = $(this).attr("codigoCompra");
 
@@ -805,7 +804,7 @@ $(".tablas").on("click", ".btnImprimirFactura", function () {
 IMPRIMIR Ticket
 =============================================*/
 
-$(".tablas").on("click", ".btnImprimirTicket", function () {
+$(".tablas").on("click", ".btnImprimirTicket", function() {
 
     var codigoCompra = $(this).attr("codigoCompra");
 
@@ -818,18 +817,18 @@ RANGO DE FECHAS
 =============================================*/
 
 $('#daterange-btn').daterangepicker({
-    ranges: {
-        'Hoy': [moment(), moment()],
-        'Ayer': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-        'Últimos 7 días': [moment().subtract(6, 'days'), moment()],
-        'Últimos 30 días': [moment().subtract(29, 'days'), moment()],
-        'Este mes': [moment().startOf('month'), moment().endOf('month')],
-        'Último mes': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        ranges: {
+            'Hoy': [moment(), moment()],
+            'Ayer': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+            'Últimos 7 días': [moment().subtract(6, 'days'), moment()],
+            'Últimos 30 días': [moment().subtract(29, 'days'), moment()],
+            'Este mes': [moment().startOf('month'), moment().endOf('month')],
+            'Último mes': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        },
+        startDate: moment(),
+        endDate: moment()
     },
-    startDate: moment(),
-    endDate: moment()
-},
-    function (start, end) {
+    function(start, end) {
         $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
 
         var fechaInicial = start.format('YYYY-MM-DD');
@@ -850,7 +849,7 @@ $('#daterange-btn').daterangepicker({
 CANCELAR RANGO DE FECHAS
 =============================================*/
 
-$(".daterangepicker.opensleft .range_inputs .cancelBtn").on("click", function () {
+$(".daterangepicker.opensleft .range_inputs .cancelBtn").on("click", function() {
 
     localStorage.removeItem("capturarRango");
     localStorage.clear();
@@ -861,7 +860,7 @@ $(".daterangepicker.opensleft .range_inputs .cancelBtn").on("click", function ()
 CAPTURAR HOY
 =============================================*/
 
-$(".daterangepicker.opensleft .ranges li").on("click", function () {
+$(".daterangepicker.opensleft .ranges li").on("click", function() {
 
     var textoHoy = $(this).attr("data-range-key");
 
@@ -913,7 +912,7 @@ $(".daterangepicker.opensleft .ranges li").on("click", function () {
 ABRIR ARCHIVO XML EN NUEVA PESTAÑA
 =============================================*/
 
-$(".abrirXML").click(function () {
+$(".abrirXML").click(function() {
 
     var archivo = $(this).attr("archivo");
     window.open(archivo, "_blank");
