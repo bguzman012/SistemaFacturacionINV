@@ -9,8 +9,8 @@ class ModeloCompras{
 	=============================================*/
 
 	static public function mdlMostrarComprasDetalle($valor){
-
-		$stmt = Conexion::conectar()->prepare("SELECT ve.cantidad, ve.precio, ve.total_detalle, ve.compras,pr.descripcion FROM compras_detalle AS ve  JOIN productos AS pr WHERE ve.id_producto = pr.id and ve.compras =  :id_compras ORDER BY ve.id_compras_detalle ASC");
+		
+		$stmt = Conexion::conectar()->prepare("SELECT co.cantidad, co.precio, co.total_detalle, co.compras, pr.descripcion FROM compras_detalle AS co  JOIN productos AS pr WHERE co.id_producto = pr.id and co.compras =  :id_compras ORDER BY co.id ASC");
 
 		
 		$stmt->bindParam(":id_compras", $valor, PDO::PARAM_INT);

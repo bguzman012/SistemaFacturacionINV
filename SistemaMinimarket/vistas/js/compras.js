@@ -790,13 +790,13 @@ $(".tablas").on("click", ".btnEliminarCompra", function() {
 IMPRIMIR FACTURA
 =============================================*/
 
-$(".tablas").on("click", ".btnImprimirFactura", function() {
+$(".tablas").on("click", ".btnImprimirFacturaCompra", function() {
 
     var codigoCompra = $(this).attr("codigoCompra");
 
     console.log(codigoCompra)
 
-    window.open("extensiones/tcpdf/pdf/factura.php?codigo=" + codigoCompra, "_blank");
+    window.open("extensiones/tcpdf/pdf/factura_compra.php?codigo=" + codigoCompra, "_blank");
 
 })
 

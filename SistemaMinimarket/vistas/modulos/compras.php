@@ -37,7 +37,7 @@ if($xml){
       
       <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
       
-      <li class="active">Administrar ventas</li>
+      <li class="active">Administrar compras</li>
     
     </ol>
 
@@ -49,11 +49,11 @@ if($xml){
 
       <div class="box-header with-border">
   
-        <a href="crear-venta">
+        <a href="crear-compra">
 
           <button class="btn btn-primary">
             
-            Agregar venta
+            Agregar compra
 
           </button>
 
@@ -95,9 +95,7 @@ if($xml){
            
            <th style="width:10px">#</th>
            <th>Código factura</th>
-           <th>Cliente</th>
            <th>Vendedor</th>
-           <th>Forma de pago</th>
            <th>Neto</th>
            <th>Total</th> 
            <th>Fecha</th>
@@ -123,7 +121,7 @@ if($xml){
 
           }
 
-          $respuesta = ControladorVentas::ctrRangoFechasVentas($fechaInicial, $fechaFinal);
+          $respuesta = ControladorCompras::ctrRangoFechasCompras($fechaInicial, $fechaFinal);
 
           foreach ($respuesta as $key => $value) {
            
@@ -134,22 +132,14 @@ if($xml){
                   <td>'.$value["codigo"].'</td>';
 
                   $itemCliente = "id";
-                  $valorCliente = $value["id_cliente"];
+                  $valorCliente = $value["id_vendedor"];
 
-                  $respuestaCliente = ControladorClientes::ctrMostrarClientes($itemCliente, $valorCliente);
+                  $respuestaCliente = ControladorUsuarios::ctrMostrarUsuarios($itemCliente, $valorCliente);
 
                   echo '<td>'.$respuestaCliente["nombre"].'</td>';   //Comentado SistemTaipe
 
-                  $itemUsuario = "id";
-                  $valorUsuario = $value["id_vendedor"];
-
-                  $respuestaUsuario = ControladorUsuarios::ctrMostrarUsuarios($itemUsuario, $valorUsuario);
-
-                  echo '<td>'.$respuestaUsuario["nombre"].'</td>
-
-                  <td>'.$value["metodo_pago"].'</td>
-
-                  <td>$ '.number_format($value["neto"],2).'</td>
+                  
+                  echo '<td>$ '.number_format($value["neto"],2).'</td>
 
                   <td>$ '.number_format($value["total"],2).'</td>
 
@@ -161,13 +151,8 @@ if($xml){
 
 
 
-                      <button class="btn btn-success btnImprimirTicket" codigoVenta="'.$value["codigo"].'">
-
-                        <i class="fa fa-print">Ticket</i>
-
-                      </button>
-                        
-                      <button class="btn btn-info btnImprimirFactura" codigoVenta="'.$value["codigo"].'">
+            
+                      <button class="btn btn-info btnImprimirFacturaCompra" codigoCompra="'.$value["codigo"].'">
 
                         <i class="fa fa-print"></i>PDF
 

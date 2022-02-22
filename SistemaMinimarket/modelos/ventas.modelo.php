@@ -10,7 +10,7 @@ class ModeloVentas{
 
 	static public function mdlMostrarVentasDetalle($valor){
 
-		$stmt = Conexion::conectar()->prepare("SELECT ve.cantidad, ve.precio, ve.total_detalle, ve.ventas,pr.descripcion FROM ventas_detalle AS ve  JOIN productos AS pr WHERE ve.id_producto = pr.id and ve.ventas =  :id_ventas ORDER BY ve.id_ventas_detalle ASC");
+		$stmt = Conexion::conectar()->prepare("SELECT ve.cantidad, ve.precio, ve.total_detalle, ve.ventas,pr.descripcion, ve.id_producto, ve.id_ventas_detalle,  (Select inv.existencias_ahora FROM inventario as inv where inv.id_detalle_venta = ve.id_ventas_detalle) AS stock FROM ventas_detalle AS ve  JOIN productos AS pr WHERE ve.id_producto = pr.id and ve.ventas =  :id_ventas AND ve.estado = 'ACEP' ORDER BY ve.id_ventas_detalle ASC");
 
 		
 		$stmt->bindParam(":id_ventas", $valor, PDO::PARAM_INT);
@@ -24,6 +24,59 @@ class ModeloVentas{
 		$stmt = null;
 	}
 
+	
+	/*=============================================
+	EDITAR VENTA
+	=============================================*/
+
+	static public function mdlEditarAnulados($id_ventas_detalle, $estado){
+
+		$stmt = Conexion::conectar()->prepare("UPDATE ventas_detalle SET  estado = :estado WHERE id_ventas_detalle = :id_ventas_detalle");
+
+		$stmt->bindParam(":id_ventas_detalle", $id_ventas_detalle, PDO::PARAM_INT);
+		$stmt->bindParam(":estado", $estado, PDO::PARAM_STR);
+
+		if($stmt->execute()){
+
+			return "ok";
+
+		}else{
+
+			return "error";
+		
+		}
+
+		$stmt->close();
+		$stmt = null;
+
+	}
+
+		/*=============================================
+	ANULAR VENTA
+	=============================================*/
+
+	static public function mdlAnularVenta($id_ventas, $estado){
+
+		$stmt = Conexion::conectar()->prepare("UPDATE ventas SET  estado = :estado WHERE id = :id_ventas");
+
+		$stmt->bindParam(":id_ventas", $id_ventas, PDO::PARAM_INT);
+		$stmt->bindParam(":estado", $estado, PDO::PARAM_STR);
+
+		if($stmt->execute()){
+
+			return "ok";
+
+		}else{
+
+			return "error";
+		
+		}
+
+		$stmt->close();
+		$stmt = null;
+
+	}
+
 	/*=============================================
 	MOSTRAR VENTAS
 	=============================================*/
@@ -32,7 +85,7 @@ class ModeloVentas{
 
 		if($item != null){
 
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item ORDER BY id ASC");
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item AND estado = 'ACEP' ORDER BY id ASC");
 
 			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
 
@@ -42,7 +95,7 @@ class ModeloVentas{
 
 		}else{
 
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY id ASC");
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla AND estado = 'ACEP' ORDER BY id ASC");
 
 			$stmt -> execute();
 
@@ -222,7 +275,7 @@ class ModeloVentas{
 
 		if($fechaInicial == null){
 
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY id ASC");
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE estado = 'ACEP' ORDER BY id ASC");
 
 			$stmt -> execute();
 
@@ -231,7 +284,7 @@ class ModeloVentas{
 
 		}else if($fechaInicial == $fechaFinal){
 
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE fecha like '%$fechaFinal%'");
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE estado = 'ACEP' and fecha like '%$fechaFinal%'");
 
 			$stmt -> bindParam(":fecha", $fechaFinal, PDO::PARAM_STR);
 
@@ -251,12 +304,12 @@ class ModeloVentas{
 
 			if($fechaFinalMasUno == $fechaActualMasUno){
 
-				$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE fecha BETWEEN '$fechaInicial' AND '$fechaFinalMasUno'");
+				$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE fecha BETWEEN '$fechaInicial' AND '$fechaFinalMasUno' AND estado = 'ACEP'");
 
 			}else{
 
 
-				$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE fecha BETWEEN '$fechaInicial' AND '$fechaFinal'");
+				$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE fecha BETWEEN '$fechaInicial' AND '$fechaFinal' AND estado = 'ACEP'");
 
 			}
 		

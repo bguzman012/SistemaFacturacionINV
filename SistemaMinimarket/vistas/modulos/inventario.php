@@ -51,7 +51,7 @@ if($_SESSION["perfil"] == "Especial"){
            <th>Codigo Producto</th>           
            <th>Producto</th>
            <th>Existencias antes</th>
-           <th>Cantidad Vendida</th>
+           <th>Cantidad</th>
            <th>Existencias ahora</th>
            <th>Precio</th>
            <th>Fecha y hora</th>

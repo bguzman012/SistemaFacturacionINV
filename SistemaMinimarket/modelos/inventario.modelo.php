@@ -68,7 +68,31 @@ class ModeloInvenario{
 
 	}
 
-	
+		/*=============================================
+	EDITAR VENTA
+	=============================================*/
+
+	static public function mdlEliminarInventarioAnulado($id_ventas_detalle){
+
+		$stmt = Conexion::conectar()->prepare("DELETE FROM inventario WHERE id_detalle_venta = :id_ventas_detalle");
+
+		$stmt->bindParam(":id_ventas_detalle", $id_ventas_detalle, PDO::PARAM_INT);
+
+		if($stmt->execute()){
+
+			return "ok";
+
+		}else{
+
+			return "error";
+		
+		}
+
+		$stmt->close();
+		$stmt = null;
+
+	}
+
 
 
 

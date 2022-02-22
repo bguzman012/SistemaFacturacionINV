@@ -266,7 +266,7 @@ AGREGANDO PRODUCTOS DESDE EL BOTÓN PARA DISPOSITIVOS
 
 var numProducto = 0;
 
-$(".btnAgregarProducto").click(function() {
+$(".btnAgregarProductoVenta").click(function() {
 
     numProducto++;
 
@@ -530,7 +530,7 @@ CUANDO CAMBIA EL IMPUESTO
 
 $("#nuevoImpuestoVenta").change(function() {
 
-    agregarImpuesto();
+    agregarImpuestoVentas();
 
 });
 

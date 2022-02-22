@@ -139,17 +139,17 @@
 
                 <?php
 
-                $listaProducto = json_decode($venta["productos"], true);
+                $listaProducto = ControladorVentas::ctrMostrarVentasDetalle($venta["id"]);
 
                 foreach ($listaProducto as $key => $value) {
 
-                  $item = "id";
-                  $valor = $value["id"];
-                  $orden = "id";
+             
 
-                  $respuesta = ControladorProductos::ctrMostrarProductos($item, $valor, $orden);
+                  $item = "id_producto";
+                  $valor = $value["id_producto"];
+                  $respuesta = ControladorInventario::ctrlGetMaxPrice($item, $valor);
 
-                  $stockAntiguo = $respuesta["stock"] + $value["cantidad"];
+                  $stockAntiguo = $respuesta["existencias_ahora"] + $value["cantidad"];
                   
                   echo '<div class="row" style="padding:5px 15px">
             
@@ -157,9 +157,9 @@
             
                           <div class="input-group">
                 
-                            <span class="input-group-addon"><button type="button" class="btn btn-danger btn-xs quitarProducto" idProducto="'.$value["id"].'"><i class="fa fa-times"></i></button></span>
+                            <span class="input-group-addon"><button type="button" class="btn btn-danger btn-xs quitarProducto" idProducto="'.$value["id_ventas_detalle"].'"><i class="fa fa-times"></i></button></span>
 
-                            <input type="text" class="form-control nuevaDescripcionProducto" idProducto="'.$value["id"].'" name="agregarProducto" value="'.$value["descripcion"].'" readonly required>
+                            <input type="text" class="form-control nuevaDescripcionProducto" idProducto="'.$value["id_producto"].'" name="agregarProducto" value="'.$value["descripcion"].'" readonly required>
 
                           </div>
 
@@ -177,7 +177,7 @@
 
                             <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
                    
-                            <input type="text" class="form-control nuevoPrecioProducto" precioReal="'.$respuesta["precio_venta"].'" name="nuevoPrecioProducto" value="'.$value["total"].'" readonly required>
+                            <input type="text" class="form-control nuevoPrecioProducto" precioReal="'.$value["total_detalle"].'" name="nuevoPrecioProducto" value="'.$value["total_detalle"].'" readonly required>
    
                           </div>
                
@@ -197,7 +197,7 @@
                 BOTÓN PARA AGREGAR PRODUCTO
                 ======================================-->
 
-                <button type="button" class="btn btn-default hidden-lg btnAgregarProducto">Agregar producto</button>
+                <button type="button" class="btn btn-default hidden-lg btnAgregarProductoVenta">Agregar producto</button>
 
                 <hr>
 
