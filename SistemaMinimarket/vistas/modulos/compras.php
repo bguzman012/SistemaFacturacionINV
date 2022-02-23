@@ -12,13 +12,13 @@ if($_SESSION["perfil"] == "Especial"){
 
 }
 
-$xml = ControladorVentas::ctrDescargarXML();
+$xml = ControladorCompras::ctrDescargarXML();
 
 if($xml){
 
   rename($_GET["xml"].".xml", "xml/".$_GET["xml"].".xml");
 
-  echo '<a class="btn btn-block btn-success abrirXML" archivo="xml/'.$_GET["xml"].'.xml" href="ventas">Se ha creado correctamente el archivo XML <span class="fa fa-times pull-right"></span></a>';
+  echo '<a class="btn btn-block btn-success abrirXML" archivo="xml/'.$_GET["xml"].'.xml" href="compras">Se ha creado correctamente el archivo XML <span class="fa fa-times pull-right"></span></a>';
 
 }
 
@@ -160,9 +160,9 @@ if($xml){
 
                       if($_SESSION["perfil"] == "Administrador"){
 
-                      echo '<button class="btn btn-warning btnEditarVenta" idVenta="'.$value["id"].'"><i class="fa fa-pencil"></i></button>
+                      echo '<button class="btn btn-warning btnEditarCompra" idCompra="'.$value["id"].'"><i class="fa fa-pencil"></i></button>
 
-                      <button class="btn btn-danger btnEliminarVenta" idVenta="'.$value["id"].'"><i class="fa fa-times"></i></button>';
+                      <button class="btn btn-danger btnEliminarCompra" idCompra="'.$value["id"].'"><i class="fa fa-times"></i></button>';
 
                     }
 
@@ -181,8 +181,8 @@ if($xml){
 
        <?php
 
-      $eliminarVenta = new ControladorVentas();
-      $eliminarVenta -> ctrEliminarVenta();
+      $eliminarCompra = new ControladorCompras();
+      $eliminarCompra -> ctrEliminarCompra();
 
       ?>
        

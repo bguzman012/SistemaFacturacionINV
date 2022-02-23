@@ -4,13 +4,38 @@ require_once "conexion.php";
 
 class ModeloCompras{
 
+			/*=============================================
+	ANULAR COMPRA
+	=============================================*/
+
+	static public function mdlAnularCompra($id_compras, $estado){
+
+		$stmt = Conexion::conectar()->prepare("UPDATE compras SET  estado = :estado WHERE id = :id_compras");
+
+		$stmt->bindParam(":id_compras", $id_compras, PDO::PARAM_INT);
+		$stmt->bindParam(":estado", $estado, PDO::PARAM_STR);
+
+		if($stmt->execute()){
+
+			return "ok";
+
+		}else{
+
+			return "error";
+		
+		}
+
+		$stmt->close();
+		$stmt = null;
+
+	}
 		/*=============================================
 	MOSTRAR Compras DETALLE
 	=============================================*/
 
 	static public function mdlMostrarComprasDetalle($valor){
 		
-		$stmt = Conexion::conectar()->prepare("SELECT co.cantidad, co.precio, co.total_detalle, co.compras, pr.descripcion FROM compras_detalle AS co  JOIN productos AS pr WHERE co.id_producto = pr.id and co.compras =  :id_compras ORDER BY co.id ASC");
+		$stmt = Conexion::conectar()->prepare("SELECT co.cantidad, co.precio, co.total_detalle, co.compras, pr.descripcion, co.id_producto, co.id,  (Select inv.existencias_ahora FROM inventario as inv where inv.id_detalle_compra = co.id) AS stock FROM compras_detalle AS co  JOIN productos AS pr WHERE co.id_producto = pr.id and co.compras =  :id_compras AND co.estado = 'ACEP' ORDER BY co.id ASC");
 
 		
 		$stmt->bindParam(":id_compras", $valor, PDO::PARAM_INT);
@@ -32,7 +57,7 @@ class ModeloCompras{
 
 		if($item != null){
 
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item ORDER BY id ASC");
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE estado = 'ACEP' AND $item = :$item ORDER BY id ASC");
 
 			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
 
@@ -42,7 +67,7 @@ class ModeloCompras{
 
 		}else{
 
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY id ASC");
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE estado = 'ACEP' ORDER BY id ASC ");
 
 			$stmt -> execute();
 
@@ -84,6 +109,7 @@ class ModeloCompras{
 			echo "<script>console.log('KKK: " . $lastId . "' );</script>";
 			$jArr = json_decode($datos["productos"], true);
 			foreach ($jArr as $key => $value) {
+				echo "<script>console.log('PAREDES: " . $value["id"] . "' );</script>";
 				$conexion_inserted = Conexion::conectar();
 				$stmt = $conexion_inserted->prepare("INSERT INTO $tabla_detalle(cantidad, precio, total_detalle, compras, id_producto) 
 				VALUES (:cantidad, :precio, :total_detalle, :compras, :id_producto)");
@@ -99,7 +125,7 @@ class ModeloCompras{
 
 				$last_detalle_inserted = $conexion_inserted->lastInsertId();
 
-				$stmt = Conexion::conectar()->prepare("SELECT * FROM inventario where id_producto = $id_producto_final AND id = (SELECT max(id) from inventario)");
+				$stmt = Conexion::conectar()->prepare("SELECT * FROM inventario where id = (SELECT max(id) from inventario WHERE id_producto = $id_producto_final)");
 				$stmt -> execute();
 				
 				$ROAD = $stmt -> fetch();
@@ -163,6 +189,32 @@ class ModeloCompras{
 
 			}
 			
+
+			return "ok";
+
+		}else{
+
+			return "error";
+		
+		}
+
+		$stmt->close();
+		$stmt = null;
+
+	}
+
+		/*=============================================
+	EDITAR VENTA
+	=============================================*/
+
+	static public function mdlEditarAnulados($id_compras_detalle, $estado){
+
+		$stmt = Conexion::conectar()->prepare("UPDATE compras_detalle SET  estado = :estado WHERE id = :id_compras_detalle");
+
+		$stmt->bindParam(":id_compras_detalle", $id_compras_detalle, PDO::PARAM_INT);
+		$stmt->bindParam(":estado", $estado, PDO::PARAM_STR);
+
+		if($stmt->execute()){
 
 			return "ok";
 
@@ -244,7 +296,7 @@ class ModeloCompras{
 
 		if($fechaInicial == null){
 
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY id ASC");
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE estado = 'ACEP' ORDER BY id ASC");
 
 			$stmt -> execute();
 
@@ -253,7 +305,7 @@ class ModeloCompras{
 
 		}else if($fechaInicial == $fechaFinal){
 
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE fecha like '%$fechaFinal%'");
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE estado = 'ACEP' and fecha like '%$fechaFinal%'");
 
 			$stmt -> bindParam(":fecha", $fechaFinal, PDO::PARAM_STR);
 
@@ -273,12 +325,12 @@ class ModeloCompras{
 
 			if($fechaFinalMasUno == $fechaActualMasUno){
 
-				$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE fecha BETWEEN '$fechaInicial' AND '$fechaFinalMasUno'");
+				$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE estado = 'ACEP' and fecha BETWEEN '$fechaInicial' AND '$fechaFinalMasUno'");
 
 			}else{
 
 
-				$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE fecha BETWEEN '$fechaInicial' AND '$fechaFinal'");
+				$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE estado = 'ACEP' and fecha BETWEEN '$fechaInicial' AND '$fechaFinal'");
 
 			}
 		

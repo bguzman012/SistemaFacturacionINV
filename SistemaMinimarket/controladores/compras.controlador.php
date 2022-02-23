@@ -23,7 +23,44 @@ class ControladorCompras{
 
 	
 
-	
+	static public function ctrEliminarCompra(){
+
+		if(isset($_GET["idCompra"])){
+
+			$listaProductosActuales = ControladorCompras::ctrMostrarComprasDetalle($_GET["idCompra"]);
+
+			foreach ($listaProductosActuales as $key => $value) {
+
+				$anulados = ModeloCompras::mdlEditarAnulados($value["id"], "ANUL");
+				$eliminado_inventario = ModeloInvenario::mdlEliminarInventarioAnulado($value["id"]);
+			}
+			
+			 
+			$respuesta  = ModeloCompras::mdlAnularCompra($_GET["idCompra"], "ANUL");
+
+			if($respuesta == "ok"){
+
+				echo'<script>
+
+				swal({
+					  type: "success",
+					  title: "La compra ha sido borrada correctamente",
+					  showConfirmButton: true,
+					  confirmButtonText: "Cerrar"
+					  }).then(function(result){
+								if (result.value) {
+
+								window.location = "compras";
+
+								}
+							})
+
+				</script>';
+
+			}		
+		}
+
+	}
 	/*=============================================
 	MOSTRAR Compras DETALLE
 	=============================================*/
@@ -226,10 +263,9 @@ class ControladorCompras{
 	=============================================*/
 
 	static public function ctrEditarCompra(){
-
+		
 		if(isset($_POST["editarCompra"])){
-
-			/*=============================================
+					/*=============================================
 			FORMATEAR TABLA DE PRODUCTOS Y LA DE CLIENTES
 			=============================================*/
 			$tabla = "compras";
@@ -238,138 +274,30 @@ class ControladorCompras{
 			$valor = $_POST["editarCompra"];
 
 			$traerCompra = ModeloCompras::mdlMostrarCompras($tabla, $item, $valor);
+			
 
-			/*=============================================
-			REVISAR SI VIENE PRODUCTOS EDITADOS
-			=============================================*/
+			$listaProductosActuales = ModeloCompras::mdlMostrarComprasDetalle($traerCompra["id"]);
 
-			if($_POST["listaProductos"] == ""){
+			foreach ($listaProductosActuales as $key => $value) {
 
-				$listaProductos = $traerCompra["productos"];
-				$cambioProducto = false;
-
-
-			}else{
-
-				$listaProductos = $_POST["listaProductos"];
-				$cambioProducto = true;
+				$anulados = ModeloCompras::mdlEditarAnulados($value["id"], "ANUL");
+				$eliminado_inventario = ModeloInvenario::mdlEliminarInventarioAnuladoCompra($value["id"]);
 			}
+			
+			 
+			$compra_anulada  = ModeloCompras::mdlAnularCompra($traerCompra["id"], "ANUL");
 
-			if($cambioProducto){
-
-				$productos =  json_decode($traerCompra["productos"], true);
-
-				$totalProductosComprados = array();
-
-				foreach ($productos as $key => $value) {
-
-					array_push($totalProductosComprados, $value["cantidad"]);
-					
-					$tablaProductos = "productos";
-
-					$item = "id";
-					$valor = $value["id"];
-					$orden = "id";
-
-					$traerProducto = ModeloProductos::mdlMostrarProductos($tablaProductos, $item, $valor, $orden);
-
-					$item1a = "compras";
-					$valor1a = $traerProducto["compras"] - $value["cantidad"];
-
-					$nuevasCompras = ModeloProductos::mdlActualizarProducto($tablaProductos, $item1a, $valor1a, $valor);
-
-					$item1b = "stock";
-					$valor1b = $value["cantidad"] + $traerProducto["stock"];
-
-					$nuevoStock = ModeloProductos::mdlActualizarProducto($tablaProductos, $item1b, $valor1b, $valor);
-
-				}
-
-				$tablaClientes = "clientes";
-
-				$itemCliente = "id";
-				$valorCliente = $_POST["seleccionarCliente"];
-
-				$traerCliente = ModeloClientes::mdlMostrarClientes($tablaClientes, $itemCliente, $valorCliente);
-
-				$item1a = "compras";
-				$valor1a = $traerCliente["compras"] - array_sum($totalProductosComprados);		
-
-				$comprasCliente = ModeloClientes::mdlActualizarCliente($tablaClientes, $item1a, $valor1a, $valorCliente);
-
-				/*=============================================
-				ACTUALIZAR LAS COMPRAS DEL CLIENTE Y REDUCIR EL STOCK Y AUMENTAR LAS compras DE LOS PRODUCTOS
-				=============================================*/
-
-				$listaProductos_2 = json_decode($listaProductos, true);
-
-				$totalProductosComprados_2 = array();
-
-				foreach ($listaProductos_2 as $key => $value) {
-
-					array_push($totalProductosComprados_2, $value["cantidad"]);
-					
-					$tablaProductos_2 = "productos";
-
-					$item_2 = "id";
-					$valor_2 = $value["id"];
-					$orden = "id";
-
-					$traerProducto_2 = ModeloProductos::mdlMostrarProductos($tablaProductos_2, $item_2, $valor_2, $orden);
-
-					$item1a_2 = "compras";
-					$valor1a_2 = $value["cantidad"] + $traerProducto_2["compras"];
-
-					$nuevasCompras_2 = ModeloProductos::mdlActualizarProducto($tablaProductos_2, $item1a_2, $valor1a_2, $valor_2);
-
-					$item1b_2 = "stock";
-					$valor1b_2 = $value["stock"];
-
-					$nuevoStock_2 = ModeloProductos::mdlActualizarProducto($tablaProductos_2, $item1b_2, $valor1b_2, $valor_2);
-
-				}
-
-				$tablaClientes_2 = "clientes";
-
-				$item_2 = "id";
-				$valor_2 = $_POST["seleccionarCliente"];
-
-				$traerCliente_2 = ModeloClientes::mdlMostrarClientes($tablaClientes_2, $item_2, $valor_2);
-
-				$item1a_2 = "compras";
-
-				$valor1a_2 = array_sum($totalProductosComprados_2) + $traerCliente_2["compras"];
-
-				$comprasCliente_2 = ModeloClientes::mdlActualizarCliente($tablaClientes_2, $item1a_2, $valor1a_2, $valor_2);
-
-				$item1b_2 = "ultima_compra";
-
-				date_default_timezone_set('America/Bogota');
-
-				$fecha = date('Y-m-d');
-				$hora = date('H:i:s');
-				$valor1b_2 = $fecha.' '.$hora;
-
-				$fechaCliente_2 = ModeloClientes::mdlActualizarCliente($tablaClientes_2, $item1b_2, $valor1b_2, $valor_2);
-
-			}
-
-			/*=============================================
-			GUARDAR CAMBIOS DE LA COMPRA
-			=============================================*/	
+			$tabla = "compras";
 
 			$datos = array("id_vendedor"=>$_POST["idVendedor"],
-						   "id_cliente"=>$_POST["seleccionarCliente"],
 						   "codigo"=>$_POST["editarCompra"],
-						   "productos"=>$listaProductos,
 						   "impuesto"=>$_POST["nuevoPrecioImpuesto"],
 						   "neto"=>$_POST["nuevoPrecioNeto"],
-						   "total"=>$_POST["totalCompra"],
-						   "metodo_pago"=>$_POST["listaMetodoPago"]);
+						   "productos"=>$_POST["listaProductos"],
+						   "total"=>$_POST["totalCompra"]);
 
-
-			$respuesta = ModeloCompras::mdlEditarCompra($tabla, $datos);
-
+			$respuesta = ModeloCompras::mdlIngresarCompra($tabla, $datos);
+			
 			if($respuesta == "ok"){
 
 				echo'<script>
@@ -398,148 +326,6 @@ class ControladorCompras{
 	}
 
 
-	/*=============================================
-	ELIMINAR compra
-	=============================================*/
-
-	static public function ctrEliminarCompra(){
-
-		if(isset($_GET["idCompra"])){
-
-			$tabla = "compras";
-
-			$item = "id";
-			$valor = $_GET["idCompra"];
-
-			$traerCompra = ModeloCompras::mdlMostrarCompras($tabla, $item, $valor);
-
-			/*=============================================
-			ACTUALIZAR FECHA ÚLTIMA COMPRA
-			=============================================*/
-
-			$tablaClientes = "clientes";
-
-			$itemCompras = null;
-			$valorCompras = null;
-
-			$traerCompras = ModeloCompras::mdlMostrarCompras($tabla, $itemCompras, $valorCompras);
-
-			$guardarFechas = array();
-
-			foreach ($traerCompras as $key => $value) {
-				
-				if($value["id_cliente"] == $traerCompra["id_cliente"]){
-
-					array_push($guardarFechas, $value["fecha"]);
-
-				}
-
-			}
-
-			if(count($guardarFechas) > 1){
-
-				if($traerCompra["fecha"] > $guardarFechas[count($guardarFechas)-2]){
-
-					$item = "ultima_compra";
-					$valor = $guardarFechas[count($guardarFechas)-2];
-					$valorIdCliente = $traerCompra["id_cliente"];
-
-					$comprasCliente = ModeloClientes::mdlActualizarCliente($tablaClientes, $item, $valor, $valorIdCliente);
-
-				}else{
-
-					$item = "ultima_compra";
-					$valor = $guardarFechas[count($guardarFechas)-1];
-					$valorIdCliente = $traerCompra["id_cliente"];
-
-					$comprasCliente = ModeloClientes::mdlActualizarCliente($tablaClientes, $item, $valor, $valorIdCliente);
-
-				}
-
-
-			}else{
-
-				$item = "ultima_compra";
-				$valor = "0000-00-00 00:00:00";
-				$valorIdCliente = $traerCompra["id_cliente"];
-
-				$comprasCliente = ModeloClientes::mdlActualizarCliente($tablaClientes, $item, $valor, $valorIdCliente);
-
-			}
-
-			/*=============================================
-			FORMATEAR TABLA DE PRODUCTOS Y LA DE CLIENTES
-			=============================================*/
-
-			$productos =  json_decode($traerCompra["productos"], true);
-
-			$totalProductosComprados = array();
-
-			foreach ($productos as $key => $value) {
-
-				array_push($totalProductosComprados, $value["cantidad"]);
-				
-				$tablaProductos = "productos";
-
-				$item = "id";
-				$valor = $value["id"];
-				$orden = "id";
-
-				$traerProducto = ModeloProductos::mdlMostrarProductos($tablaProductos, $item, $valor, $orden);
-
-				$item1a = "compras";
-				$valor1a = $traerProducto["compras"] - $value["cantidad"];
-
-				$nuevasCompras = ModeloProductos::mdlActualizarProducto($tablaProductos, $item1a, $valor1a, $valor);
-
-				$item1b = "stock";
-				$valor1b = $value["cantidad"] + $traerProducto["stock"];
-
-				$nuevoStock = ModeloProductos::mdlActualizarProducto($tablaProductos, $item1b, $valor1b, $valor);
-
-			}
-
-			$tablaClientes = "clientes";
-
-			$itemCliente = "id";
-			$valorCliente = $traerCompra["id_cliente"];
-
-			$traerCliente = ModeloClientes::mdlMostrarClientes($tablaClientes, $itemCliente, $valorCliente);
-
-			$item1a = "compras";
-			$valor1a = $traerCliente["compras"] - array_sum($totalProductosComprados);
-
-			$comprasCliente = ModeloClientes::mdlActualizarCliente($tablaClientes, $item1a, $valor1a, $valorCliente);
-
-			/*=============================================
-			ELIMINAR Compra
-			=============================================*/
-
-			$respuesta = ModeloCompras::mdlEliminarCompra($tabla, $_GET["idCompra"]);
-
-			if($respuesta == "ok"){
-
-				echo'<script>
-
-				swal({
-					  type: "success",
-					  title: "La compra ha sido borrada correctamente",
-					  showConfirmButton: true,
-					  confirmButtonText: "Cerrar"
-					  }).then(function(result){
-								if (result.value) {
-
-								window.location = "compras";
-
-								}
-							})
-
-				</script>';
-
-			}		
-		}
-
-	}
 
 	/*=============================================
 	RANGO FECHAS

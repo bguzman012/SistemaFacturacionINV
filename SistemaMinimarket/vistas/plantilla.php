@@ -144,6 +144,7 @@ session_start();
          $_GET["ruta"] == "compras" ||
          $_GET["ruta"] == "crear-venta" ||
          $_GET["ruta"] == "editar-venta" ||
+         $_GET["ruta"] == "editar-compra" ||
          $_GET["ruta"] == "reportes" ||
          $_GET["ruta"] == "inventario" ||
          $_GET["ruta"] == "salir"){

@@ -118,12 +118,11 @@ class ModeloVentas{
 	static public function mdlIngresarVenta($tabla, $datos){
 
 		$conexion = Conexion::conectar();
-		$stmt = $conexion ->prepare("INSERT INTO $tabla(codigo, id_cliente, id_vendedor, productos, impuesto, neto, total, metodo_pago) VALUES (:codigo, :id_cliente, :id_vendedor, :productos, :impuesto, :neto, :total, :metodo_pago)");
+		$stmt = $conexion ->prepare("INSERT INTO $tabla(codigo, id_cliente, id_vendedor, impuesto, neto, total, metodo_pago) VALUES (:codigo, :id_cliente, :id_vendedor, :impuesto, :neto, :total, :metodo_pago)");
 
 		$stmt->bindParam(":codigo", $datos["codigo"], PDO::PARAM_INT);
 		$stmt->bindParam(":id_cliente", $datos["id_cliente"], PDO::PARAM_INT);
 		$stmt->bindParam(":id_vendedor", $datos["id_vendedor"], PDO::PARAM_INT);
-		$stmt->bindParam(":productos", $datos["productos"], PDO::PARAM_STR);
 		$stmt->bindParam(":impuesto", $datos["impuesto"], PDO::PARAM_STR);
 		$stmt->bindParam(":neto", $datos["neto"], PDO::PARAM_STR);
 		$stmt->bindParam(":total", $datos["total"], PDO::PARAM_STR);

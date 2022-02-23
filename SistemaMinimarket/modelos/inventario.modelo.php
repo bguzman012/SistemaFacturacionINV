@@ -23,7 +23,12 @@ class ModeloInvenario{
 
 		}else{
 
-			$stmt = Conexion::conectar()->prepare("SELECT inv.existencias, inv.tipo_accion, inv.nombre_producto, inv.cantidad, (Select deta.precio FROM ventas_detalle as deta WHERE deta.id_ventas_detalle = inv.id_detalle_venta) as precio,inv.existencias_ahora, inv.fecha_hora_accion, prod.codigo
+			$stmt = Conexion::conectar()->prepare("SELECT inv.existencias, inv.tipo_accion,
+			 inv.nombre_producto, inv.cantidad,
+			(Select deta.precio FROM ventas_detalle as deta 
+			WHERE deta.id_ventas_detalle = inv.id_detalle_venta) as precio_venta,
+			(Select deta.precio FROM compras_detalle as deta 
+			 WHERE deta.id = inv.id_detalle_compra) as precio_compra, inv.existencias_ahora, inv.fecha_hora_accion, prod.codigo
 			FROM inventario as inv, productos as prod WHERE inv.id_producto = prod.id ORDER BY fecha_hora_accion DESC");
 
 			$stmt -> execute();
@@ -93,6 +98,30 @@ class ModeloInvenario{
 
 	}
 
+		/*=============================================
+	EDITAR VENTA
+	=============================================*/
+
+	static public function mdlEliminarInventarioAnuladoCompra($id_detalle_compra){
+
+		$stmt = Conexion::conectar()->prepare("DELETE FROM inventario WHERE id_detalle_compra = :id_detalle_compra");
+
+		$stmt->bindParam(":id_detalle_compra", $id_detalle_compra, PDO::PARAM_INT);
+
+		if($stmt->execute()){
+
+			return "ok";
+
+		}else{
+
+			return "error";
+		
+		}
+
+		$stmt->close();
+		$stmt = null;
+
+	}
 
 
 

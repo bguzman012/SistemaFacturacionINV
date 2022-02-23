@@ -40,7 +40,7 @@ class ControladorVentas{
 	=============================================*/
 
 	static public function ctrCrearVenta(){
-
+		echo "<script>console.log('entroooo' );</script>";
 		if(isset($_POST["nuevaVenta"])){
 
 			/*=============================================
@@ -68,67 +68,7 @@ class ControladorVentas{
 
 				return;
 			}
-
-
-			$listaProductos = json_decode($_POST["listaProductos"], true);
-
-			
-
-			$totalProductosComprados = array();
-
-			foreach ($listaProductos as $key => $value) {
-
-			   array_push($totalProductosComprados, $value["cantidad"]);
-
-			   echo "<script>console.log('listaProductos: " . $value["id"] . "' );</script>";
-				
-			   $tablaProductos = "productos";
-
-			    $item = "id";
-			    $valor = $value["id"];
-			    $orden = "id";
-
-			    $traerProducto = ModeloProductos::mdlMostrarProductos($tablaProductos, $item, $valor, $orden);
-
-				$item1a = "ventas";
-				$valor1a = $value["cantidad"] + $traerProducto["ventas"];
-
-			    $nuevasVentas = ModeloProductos::mdlActualizarProducto($tablaProductos, $item1a, $valor1a, $valor);
-
-				$item1b = "stock";
-				$valor1b = $value["stock"];
-
-				$nuevoStock = ModeloProductos::mdlActualizarProducto($tablaProductos, $item1b, $valor1b, $valor);
-
-			}
-
-			$tablaClientes = "clientes";
-
-			$item = "id";
-			$valor = $_POST["seleccionarCliente"];
-
-			$traerCliente = ModeloClientes::mdlMostrarClientes($tablaClientes, $item, $valor);
-
-			$item1a = "compras";
-				
-			$valor1a = array_sum($totalProductosComprados) + $traerCliente["compras"];
-
-			$comprasCliente = ModeloClientes::mdlActualizarCliente($tablaClientes, $item1a, $valor1a, $valor);
-
-			$item1b = "ultima_compra";
-
-			date_default_timezone_set('America/Bogota');
-
-			$fecha = date('Y-m-d');
-			$hora = date('H:i:s');
-			$valor1b = $fecha.' '.$hora;
-
-			$fechaCliente = ModeloClientes::mdlActualizarCliente($tablaClientes, $item1b, $valor1b, $valor);
-
-			/*=============================================
-			GUARDAR LA COMPRA
-			=============================================*/	
-
+		
 			$tabla = "ventas";
 
 			$datos = array("id_vendedor"=>$_POST["idVendedor"],
@@ -246,6 +186,25 @@ class ControladorVentas{
 
 				</script>';
 
+			}else{
+				echo'<script>
+
+				localStorage.removeItem("rango");
+
+				swal({
+					  type: "success",
+					  title: "La venta no se ha realizado, algo salio mal",
+					  showConfirmButton: true,
+					  confirmButtonText: "Cerrar"
+					  }).then(function(result){
+								if (result.value) {
+
+								window.location = "ventas";
+
+								}
+							})
+
+				</script>';
 			}
 
 		}

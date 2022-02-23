@@ -53,7 +53,9 @@ if($_SESSION["perfil"] == "Especial"){
            <th>Existencias antes</th>
            <th>Cantidad</th>
            <th>Existencias ahora</th>
-           <th>Precio</th>
+           <th>Precio Venta</th>
+           <th>Precio Compra</th>
+           
            <th>Fecha y hora</th>
 
          </tr> 
@@ -89,7 +91,9 @@ if($_SESSION["perfil"] == "Especial"){
                     <td>'.$value["existencias_ahora"].'</td>         
                         
 
-                    <td>'.number_format($value["precio"], 2).'</td>
+                    <td>'.number_format($value["precio_venta"], 2).'</td>
+                    
+                    <td>'.number_format($value["precio_compra"], 2).'</td>
 
                     <td>'.$value["fecha_hora_accion"].'</td>
 

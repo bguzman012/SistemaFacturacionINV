@@ -405,7 +405,7 @@ $(".formularioVenta").on("change", "select.nuevaDescripcionProducto", function()
 
             // AGRUPAR PRODUCTOS EN FORMATO JSON
 
-            listarProductos()
+            listarProductosVentas()
 
         }
 
