@@ -8,6 +8,35 @@ class ModeloProductos{
 	MOSTRAR PRODUCTOS
 	=============================================*/
 
+	
+	static public function mdlMostrarProductosByCat($tabla, $item, $valor){
+
+		if($item != null){
+			
+			$stmt = Conexion::conectar()->prepare("SELECT pr.id, pr.id_categoria, pr.codigo, pr.descripcion,  COALESCE ((SELECT cp.precio FROM compras_detalle as cp where cp.id = (SELECT max(id) from compras_detalle WHERE id_producto = pr.id)), 0) as precio_compra, COALESCE ((SELECT cp.precio FROM compras_detalle as cp where cp.id = (SELECT max(id) from compras_detalle WHERE id_producto = pr.id)), 0) as precio_venta, COALESCE ((SELECT existencias_ahora FROM inventario where id = (SELECT max(id) from inventario WHERE id_producto = pr.id)),0)as stock , imagen, fecha, id_proveedor from productos as pr where pr.id_categoria =:$item");
+
+			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_INT);
+
+			$stmt -> execute();
+
+			return $stmt -> fetchAll();
+
+		}else{
+
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY $orden DESC");
+
+			$stmt -> execute();
+
+			return $stmt -> fetchAll();
+
+		}
+
+		$stmt -> close();
+
+		$stmt = null;
+
+	}
+
 	static public function mdlMostrarProductos($tabla, $item, $valor, $orden){
 
 		if($item != null){
