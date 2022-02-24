@@ -28,6 +28,63 @@ class ModeloCategorias{
 		$stmt = null;
 
 	}
+	
+	static public function mdlGetCount($tabla, $item, $valor, $limit){
+
+		if($item != null){
+
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
+
+			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
+
+			$stmt -> execute();
+
+			return $stmt -> fetch();
+
+		}else{
+
+			$stmt = Conexion::conectar()->prepare("SELECT count(*) as numero_datos, count(*) as numero_datos_final FROM categorias");
+
+			$stmt -> execute();
+
+			return $stmt -> fetch();
+
+		}
+
+		$stmt -> close();
+
+		$stmt = null;
+
+	}
+
+	
+	static public function mdlMostrarCategoriasLimitSeis($tabla, $item, $valor, $limit){
+
+		if($item != null){
+
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
+
+			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
+
+			$stmt -> execute();
+
+			return $stmt -> fetch();
+
+		}else{
+
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE id > $limit ORDER BY id LIMIT 8");
+
+			$stmt -> execute();
+
+			return $stmt -> fetchAll();
+
+		}
+
+		$stmt -> close();
+
+		$stmt = null;
+
+	}
 
 	/*=============================================
 	MOSTRAR CATEGORIAS

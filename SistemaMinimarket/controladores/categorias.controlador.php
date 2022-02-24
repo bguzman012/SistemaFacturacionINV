@@ -80,6 +80,30 @@ class ControladorCategorias{
 	
 	}
 
+	
+
+	static public function getCount($item, $valor){
+		$tabla = "categorias";
+
+		$respuesta = ModeloCategorias::mdlGetCount($tabla, $item, $valor);
+
+		return $respuesta;
+	
+	}
+
+		/*=============================================
+	MOSTRAR CATEGORIAS
+	=============================================*/
+
+	static public function ctrMostrarCategoriasLimitSeis($item, $valor, $limit){
+		$tabla = "categorias";
+
+		$respuesta = ModeloCategorias::mdlMostrarCategoriasLimitSeis($tabla, $item, $valor, $limit);
+
+		return $respuesta;
+	
+	}
+
 	/*=============================================
 	EDITAR CATEGORIA
 	=============================================*/

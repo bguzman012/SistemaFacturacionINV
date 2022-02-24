@@ -4,7 +4,7 @@
    private $host = 'localhost:3306';
    private $nombre_de_base = 'smartzone';
    private $usuario = 'root'; 
-   private $contrasena = ''; 
+   private $contrasena = 'root'; 
    public function __construct() { 
       try{
          parent::__construct("{$this->tipo_de_base}:dbname={$this->nombre_de_base};host={$this->host};", $this->usuario, $this->contrasena);
