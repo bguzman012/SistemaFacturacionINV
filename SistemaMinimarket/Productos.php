@@ -473,7 +473,7 @@ else
 				<div class="resp-tabs-container">
 					<div class="tab-1 resp-tab-content">
                     <?php
-                    include_once("capalogica/clasemanejo.php");
+                    include_once("capaaalogica/clasemanejo.php");
                     $objma= new clasemanejo();
                     if($categoria<15)
                     {
