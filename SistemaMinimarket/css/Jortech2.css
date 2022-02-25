@@ -63,14 +63,20 @@ img {
 .logo-w3 a h1,.footer a h3{
 	text-align:left;
 	color:#000;
-	font-size:40px;
+	font-size: 39px;
+	font-family: fantasy;
 	position:relative;
+	margin-left: 9px;
+	margin-top: 4px;
+	font-weight: normal;
 }
 .logo-w3 img,.footer img {
     width: 7%;
     position: absolute;
     top: 0;
+    border-radius: 10px 10px 0 0;
     left: -28px;
+    margin-top: 10px;
 }
 .footer img {
 	width:13%;
@@ -202,11 +208,44 @@ button.w3view-cart:focus{
 /*--//header--*/
 
 
+
+
 /*--banner--*/
 .banner-agile{
-	background:url(../images/Banner/fondo1.jpg) no-repeat 0px 0px;
 	background-size:cover;
+	animation-name: banner;
+	animation-duration: 15s;
+	animation-iteration-count: infinite;
+
+	animation-direction: alternate;
 	min-height:500px;
+}
+
+@keyframes banner {
+		0%, 30% {
+			background-image: url("https://img.freepik.com/foto-gratis/mercado-compras-fondo-borroso_51764-11.jpg?w=740");
+			opacity: 1;
+
+		}
+		31%, 34%{
+			opacity: 1;
+		}
+		35%, 65% {
+			background-image: url("https://img.freepik.com/foto-gratis/personal-femenino-pie-brazos-cruzados-supermercado_107420-63707.jpg?w=740");
+			opacity: 1;
+		}
+		66%, 69%{
+			opacity: 0.1;
+		}
+
+		75%, 100%{
+			opacity: 1;
+			background-image: url("https://img.freepik.com/foto-gratis/mujer-tiro-medio-mercado_23-2149148512.jpg?w=740");
+	
+		}
+
+
+		
 }
 .sub-banner{
 	background:url(../images/Banner/fondo1.jpg) no-repeat 0px 0px;
@@ -229,17 +268,17 @@ button.w3view-cart:focus{
 	min-height:480px;
 }
 .banner-agile h2{
-	font-size:35px;
+	font-size: calc(2*1.5vw);
 	text-align:left;
 	margin-top:18%;
 	color: #00e58b;
 }
 .banner-agile h3{
-	font-size:50px;
 	text-align:left;
 	margin:15px 0;
 	color:#fff;
 	font-weight:700;
+	font-size: calc(1.2*1.5vw);
 }
 .banner-agile h3 span{
 	color:#00e58b;

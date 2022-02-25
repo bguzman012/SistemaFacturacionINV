@@ -19,6 +19,8 @@ class claseproducto
 	public $pu;
 
 
+	
+
 	public function listarproducto()
 	{
 		$objconexion = new claseconexion();

@@ -39,7 +39,7 @@ if($validacion== null || $validacion ='')
 <div class="header-top-w3layouts">
 	<div class="container">
 		<div class="col-md-6 logo-w3">
-			<a href="index.php"><img src="images/Logos/pc.png" alt=" " /><h1>TIENDA MICHELITA<span></span></h1></a>
+			<a href="index.php"><img src="https://img.freepik.com/vector-gratis/compre-estilo-plano-tienda-minimercado_186930-584.jpg?w=740" alt=" " /><h1>TIENDA MICHELITA<span></span></h1></a>
 		</div>
 		<div class="col-md-6 phone-w3l">
 			<ul>
@@ -199,7 +199,8 @@ if($validacion== null || $validacion ='')
 </div>
 <div class="banner-agile">
 	<div class="container">
-		<h2>BIENVENIDOS</h2>
+	<h2><b>BIENVENIDOS</b></h2>
+		
 		<h3>TIENDA<span>MICHELITA</span></h3>
 		<h3>PRODUCTOS DE PRIMERA NECECIDAD </h3>
 	

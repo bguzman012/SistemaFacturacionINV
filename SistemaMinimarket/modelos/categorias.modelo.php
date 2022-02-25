@@ -29,7 +29,7 @@ class ModeloCategorias{
 
 	}
 	
-	static public function mdlGetCount($tabla, $item, $valor, $limit){
+	static public function mdlGetCount($tabla, $item, $valor){
 
 		if($item != null){
 
@@ -43,7 +43,7 @@ class ModeloCategorias{
 
 		}else{
 
-			$stmt = Conexion::conectar()->prepare("SELECT count(*) as numero_datos, count(*) as numero_datos_final FROM categorias");
+			$stmt = Conexion::conectar()->prepare("select count(*) as numero_datos, count(*) as numero_datos_final FROM categorias;");
 
 			$stmt -> execute();
 
@@ -72,7 +72,7 @@ class ModeloCategorias{
 
 		}else{
 
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE id > $limit ORDER BY id LIMIT 8");
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE id > $limit ORDER BY id LIMIT 8;");
 
 			$stmt -> execute();
 

@@ -24,9 +24,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <body>
 <?php
-error_reporting(0);
-require "controladores/categorias.controlador.php";
-require "modelos/categorias.modelo.php";
+$validacion = null;
 if($validacion== null || $validacion ='')
 {
 ?>
@@ -89,7 +87,9 @@ if($validacion== null || $validacion ='')
 								<ul class="dropdown-menu multi">
 								<div class="row">
 									<?php
-
+									include_once("controladores/categorias.controlador.php");
+									
+									include_once("modelos/categorias.modelo.php");
 										$item = null;
 										$valor = null;
 										

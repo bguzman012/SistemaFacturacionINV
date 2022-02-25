@@ -216,7 +216,7 @@ if($validacion== null || $validacion ='')
 			</div>
 		</div>
 		<div class="col-md-9 col-sm-9 contact-right">
-			<form action="enviar2.php" method="post">
+			<form action = "correo.php" method="post">
 				<input type="text" name="nombre" placeholder="Nombres" required=" ">
 				<input type="text" name="email" placeholder="E-mail" required=" ">
 				<input type="text" name="apellido" placeholder="Apellidos" required=" ">
@@ -224,10 +224,15 @@ if($validacion== null || $validacion ='')
 				<textarea  name="mensaje" placeholder="Mensaje.." required=" "></textarea>
 				<input type="submit" value="ENVIAR">
 			</form>
+
 		</div>
 	</div>
 </div>
+
+
 <div class="map-w3ls">
+
+
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6703.845168264593!2d-78.17412310029843!3d-2.463757147818386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91cdf7748cb6d7a5%3A0xd27e305d1c22f5ae!2sSMARTZONE!5e0!3m2!1ses!2sec!4v1632428878388!5m2!1ses!2sec" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 

@@ -24,14 +24,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <body>
 <?php
-session_start();
-error_reporting(0);
 $categoria=trim($_GET["cat"]);
-$id= trim($_GET["id"]);
-$validacion=$_SESSION['nombres'];
 
-require "controladores/categorias.controlador.php";
-require "modelos/categorias.modelo.php";
+
+
+$validacion = null;
 if($validacion== null || $validacion ='')
 {
 ?>
@@ -95,6 +92,9 @@ if($validacion== null || $validacion ='')
 								<ul class="dropdown-menu multi">
 								<div class="row">
 									<?php
+									include_once("controladores/categorias.controlador.php");
+									
+									include_once("modelos/categorias.modelo.php");
 
 										$item = null;
 										$valor = null;
@@ -151,7 +151,6 @@ if($validacion== null || $validacion ='')
 									</div>	
 								</ul>
 						</li>
-						<li><a href="Marcas.php" class="hyper"><span>Marcas</span></a></li>
 						
 						<li><a href="Contacto.php" class="hyper"><span>Contacto</span></a></li>
 						<li class="dropdown">
@@ -300,7 +299,6 @@ if($validacion== null || $validacion ='')
 			<h4>Menú</h4> 
 			<ul>
 				<li><a href="index.php">Inicio</a></li>
-				<li><a href="Marcas.php">Marcas</a></li>
 				<li><a href="Contacto.php">Contacto</a></li>
 			</ul>
 		</div>

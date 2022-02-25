@@ -95,7 +95,7 @@ class ModeloVentas{
 
 		}else{
 
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla AND estado = 'ACEP' ORDER BY id ASC");
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE estado = 'ACEP' ORDER BY id ASC");
 
 			$stmt -> execute();
 

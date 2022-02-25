@@ -6,6 +6,7 @@ class clasemanejo
 	public $idcarrito;
 	public $producto;
 	public $cliente;
+	public $limit;
 	public $categoriap;
 
 	public function listarproducto()
@@ -16,6 +17,9 @@ class clasemanejo
 		return $consulta->fetchAll();
 		$consulta->close();
 	}
+
+
+
 
 	public function guardarcarrito()
 	{
