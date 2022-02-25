@@ -25,10 +25,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <body>
 <?php
 session_start();
-error_reporting(0);
 $categoria=trim($_GET["cat"]);
-$id= trim($_GET["id"]);
-$validacion=$_SESSION['nombres'];
+
+echo "<script>console.log('produ: " .  $categoria . "' );</script>"; 
+	                	
+$validacion=null;
 if($validacion== null || $validacion ='')
 {
 ?>
@@ -98,13 +99,22 @@ if($validacion== null || $validacion ='')
 												<li><a href="Productos.php?cat=9"><i class="fa fa-angle-right" aria-hidden="true"></i>Laptop`s</a></li>
 												<li><a href="Productos.php?cat=10"> <i class="fa fa-angle-right" aria-hidden="true"></i>Celulares</a></li>
 												<li><a href="Productos.php?cat=11"><i class="fa fa-angle-right" aria-hidden="true"></i>Impresoras</a></li>
+												<li><a href="Productos.php?cat=7"><i class="fa fa-angle-right" aria-hidden="true"></i>Computadoras</a></li>
+												<li><a href="Productos.php?cat=9"><i class="fa fa-angle-right" aria-hidden="true"></i>Laptop`s</a></li>
+												<li><a href="Productos.php?cat=10"> <i class="fa fa-angle-right" aria-hidden="true"></i>Celulares</a></li>
+												<li><a href="Productos.php?cat=11"><i class="fa fa-angle-right" aria-hidden="true"></i>Impresoras</a></li>
 										
 											</ul>
 										
 										</div>
 										<div class="col-sm-4">
 											<ul class="multi-column-dropdown">
-												<li><a href="Productos.php?cat=12"><i class="fa fa-angle-right" aria-hidden="true"></i>Accesorios</a></li>
+											<li><a href="Productos.php?cat=7"><i class="fa fa-angle-right" aria-hidden="true"></i>Computadoras</a></li>
+												<li><a href="Productos.php?cat=9"><i class="fa fa-angle-right" aria-hidden="true"></i>Laptop`s</a></li>
+												<li><a href="Productos.php?cat=10"> <i class="fa fa-angle-right" aria-hidden="true"></i>Celulares</a></li>
+												<li><a href="Productos.php?cat=11"><i class="fa fa-angle-right" aria-hidden="true"></i>Impresoras</a></li>
+										
+											<li><a href="Productos.php?cat=12"><i class="fa fa-angle-right" aria-hidden="true"></i>Accesorios</a></li>
 												<li><a href="Productos.php?cat=13"><i class="fa fa-angle-right" aria-hidden="true"></i>Zona Gamer</a></li>
 												<li><a href="Productos.php?cat=14"><i class="fa fa-angle-right" aria-hidden="true"></i>Otros</a></li>
 												<li><a href="Productos.php?cat=15"><i class="fa fa-angle-right" aria-hidden="true"></i>Todos los productos</a></li>
@@ -174,7 +184,7 @@ if($validacion== null || $validacion ='')
 <!--===============================================================================================================================-->
 <div class="top-products">
 	<div class="container">
-		<h3>Todos Nuestros Productos</h3>
+		<h3>Todos Nuestros Productos </h3>
 		<div class="sap_tabs">			
 			<div id="horizontalTab">
 				<ul class="resp-tabs-list">
@@ -183,22 +193,29 @@ if($validacion== null || $validacion ='')
 				<div class="clearfix"> </div>	
 				<div class="resp-tabs-container">
 					<div class="tab-1 resp-tab-content">
-                    <?php
+					<?php
 
+                    include_once "contoladores/productos.controlador.php";
 					
-                    include_once("capalogica/clasemanejo.php");
-                    $objma= new clasemanejo();
-                    if($categoria<15)
-                    {
-	                    $objma->categoriap=$categoria;
-	                    $datos = $objma->listarproductocat();
+                    include_once "modelos/productos.modelo.php";
+
+					$item = "categoria";
+					$valor = $categoria;
+					
+					
+echo "<script>console.log('produsize: " .  $item . "' );</script>"; 
+$objma= new ControladorProductos();
+$datos = $objma->ctrMostrarProductosByCat($item, $valor);
+					//$productos = ControladorProductos::ctrMostrarProductosByCat($item, $valor);
+                    
+echo "<script>console.log('produsizSSe: " .  count($datos) . "' );</script>"; 
+
 	                    foreach($datos as $row =>$item)
 	                    {
-	                    ?>
-							<div class="col-md-3 top-product-grids tp1 animated wow slideInUp" data-wow-delay=".5s">
-								<a href="Unidad.php?producto=<?php echo $item["idproducto"];?>&cat=<?php echo $categoria; ?>"><div class="product-img">
-									<img src="<?php echo $item["foto"]; ?>" alt="" />
-									<div class="p-mask">
+							echo '<div class="col-md-3 top-product-grids tp1 animated wow slideInUp" data-wow-delay=".5s">
+							
+							<img src="'.$item["imagen"].' " alt="" />
+									
 									</div>
 								</div></a>
 								<i class="fa fa-star yellow-star" aria-hidden="true"></i>
@@ -206,37 +223,12 @@ if($validacion== null || $validacion ='')
 								<i class="fa fa-star yellow-star" aria-hidden="true"></i>
 								<i class="fa fa-star yellow-star" aria-hidden="true"></i>
 								<i class="fa fa-star gray-star" aria-hidden="true"></i>
-								<h4><?php echo $item["nombreproducto"]; ?></h4>
-								<h5>$<?php echo $item["precio"]; ?></h5>
-							</div>
-					<?php
-	                    }
-	                }
-	                else
-	                {
-	                    $datos = $objma->listarproducto();
-	                    foreach($datos as $row =>$item)
-	                    {
-	                    ?>
-							<div class="col-md-3 top-product-grids tp1 animated wow slideInUp" data-wow-delay=".5s">
-								<a href="Unidad.php?producto=<?php echo $item["idproducto"];?>&cat=<?php echo $categoria; ?>"><div class="product-img">
-									<img src="<?php echo $item["foto"]; ?>" alt="" />
-									<div class="p-mask">
-									</div>
-								</div></a>
-								<i class="fa fa-star yellow-star" aria-hidden="true"></i>
-								<i class="fa fa-star yellow-star" aria-hidden="true"></i>
-								<i class="fa fa-star yellow-star" aria-hidden="true"></i>
-								<i class="fa fa-star yellow-star" aria-hidden="true"></i>
-								<i class="fa fa-star gray-star" aria-hidden="true"></i>
-								<h4><?php echo $item["nombreproducto"]; ?></h4>
-								<h5>$<?php echo $item["precio"]; ?></h5>
-							</div>
-					<?php
+								<h4>'.$item["descripcion"].'</h4>
+								<h5>$'.$item["precio_compra"].'</h5>
+							</div>';
 						}
-					}
-					?>
-						<div class="clearfix"></div>
+					?>	    
+					<div class="clearfix"></div>
 						</div>
 					</div>	
 					</div>						
@@ -464,21 +456,26 @@ else
 				<div class="resp-tabs-container">
 					<div class="tab-1 resp-tab-content">
                     <?php
-                    include_once("capalogica/clasemanejo.php");
-                    $objma= new clasemanejo();
-                    if($categoria<15)
-                    {
-	                    $objma->categoriap=$categoria;
-	                    $datos = $objma->listarproductocat();
+                    include_once("contoladores/productos.controlador.php");
+					
+                    include_once("modelos/productos.modelo.php");
+
+					$item = "categoria";
+					$valor = $categoria;
+					
+					$productos = ControladorProductos::ctrMostrarProductosByCat($item, $valor);
+                    
+                    
+					$datos = $productos;
 	                    foreach($datos as $row =>$item)
 	                    {
 	                    ?>
 							<div class="col-md-3 top-product-grids tp1 animated wow slideInUp" data-wow-delay=".5s">
-								<a href="Unidad.php?id=<?php echo $id; ?>&producto=<?php echo $item["idproducto"];?>&cat=<?php echo $categoria; ?>"><div class="product-img">
-									<img src="<?php echo $item["foto"]; ?>" alt="" />
+								<a href="Unidad.php?id=<?php echo $id; ?>&producto=<?php echo $item["id"];?>&cat=<?php echo $categoria; ?>"><div class="product-img">
+									<img src="<?php echo $item["imagen"]; ?>" alt="" />
 									<div class="p-mask">
 									<form action="#" method="post">
-										<a href="GuardarCarritos.php?cliente=<?php echo $id; ?>&producto=<?php echo $item["idproducto"]; ?>&categoria=<?php echo $categoria; ?>" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i>AGREGAR</a>
+										<a href="GuardarCarritos.php?cliente=<?php echo $id; ?>&producto=<?php echo $item["id"]; ?>&categoria=<?php echo $categoria; ?>" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i>AGREGAR</a>
 									</form>
 									</div>
 								</div></a>
@@ -487,38 +484,12 @@ else
 								<i class="fa fa-star yellow-star" aria-hidden="true"></i>
 								<i class="fa fa-star yellow-star" aria-hidden="true"></i>
 								<i class="fa fa-star gray-star" aria-hidden="true"></i>
-								<h4><?php echo $item["nombreproducto"]; ?></h4>
-								<h5>$<?php echo $item["precio"]; ?></h5>
+								<h4><?php echo $item["descripcion"]; ?></h4>
+								<h5>$<?php echo $item["precio_compra"]; ?></h5>
 							</div>
 					<?php
 	                    }
-	                }
-	                else
-	                {
-	                    $datos = $objma->listarproducto();
-	                    foreach($datos as $row =>$item)
-	                    {
-	                ?>
-							<div class="col-md-3 top-product-grids tp1 animated wow slideInUp" data-wow-delay=".5s">
-								<a href="Unidad.php?id=<?php echo $id; ?>&producto=<?php echo $item["idproducto"];?>&cat=<?php echo $categoria; ?>"><div class="product-img">
-									<img src="<?php echo $item["foto"]; ?>" alt="" />
-									<div class="p-mask">
-									<form action="#" method="post">
-										<a href="GuardarCarritos.php?cliente=<?php echo $id; ?>&producto=<?php echo $item["idproducto"]; ?>&categoria=<?php echo $categoria; ?>" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i>AGREGAR</a>
-									</form>
-									</div>
-								</div></a>
-								<i class="fa fa-star yellow-star" aria-hidden="true"></i>
-								<i class="fa fa-star yellow-star" aria-hidden="true"></i>
-								<i class="fa fa-star yellow-star" aria-hidden="true"></i>
-								<i class="fa fa-star yellow-star" aria-hidden="true"></i>
-								<i class="fa fa-star gray-star" aria-hidden="true"></i>
-								<h4><?php echo $item["nombreproducto"]; ?></h4>
-								<h5>$<?php echo $item["precio"]; ?></h5>
-							</div>
-					<?php 
-						}
-					}
+	                
 					?>	                
 						<div class="clearfix"></div>
 						</div>

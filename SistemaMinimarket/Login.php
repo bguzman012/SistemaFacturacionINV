@@ -30,10 +30,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <body>
 <?php
-
-
+error_reporting(0);
+require "controladores/categorias.controlador.php";
+require "modelos/categorias.modelo.php";
 require "controladores/usuarios.controlador.php";
 require "modelos/usuarios.modelo.php";
+
 $login = new ControladorUsuarios();
 $login -> ctrIngresoUsuario();
 
@@ -97,28 +99,59 @@ $login -> ctrIngresoUsuario();
 						<li class="dropdown ">
 							<a href="#" class="dropdown-toggle  hyper" data-toggle="dropdown" ><span>Productos<b class="caret"></b></span></a>
 								<ul class="dropdown-menu multi">
-									<div class="row">
-										<div class="col-sm-4">
-											<ul class="multi-column-dropdown">
-			
-												<li><a href="Productos.php?cat=7"><i class="fa fa-angle-right" aria-hidden="true"></i>Computadoras</a></li>
-												<li><a href="Productos.php?cat=9"><i class="fa fa-angle-right" aria-hidden="true"></i>Laptop`s</a></li>
-												<li><a href="Productos.php?cat=10"> <i class="fa fa-angle-right" aria-hidden="true"></i>Celulares</a></li>
-												<li><a href="Productos.php?cat=11"><i class="fa fa-angle-right" aria-hidden="true"></i>Impresoras</a></li>
+								<div class="row">
+									<?php
+
+										$item = null;
+										$valor = null;
 										
-											</ul>
+										$conteo_final = ControladorCategorias::getCount($item, $valor);
+
+
+										$limit=0;
+										$num_coolumnas = $conteo_final["numero_datos"] / 8;
+
+										$num_coolumnas =  ceil($num_coolumnas);
+
+										if($num_coolumnas>4){
+											$num_coolumnas = 4;
+										}
+
+										$i = 1;
+
+										$value_final = 0;
 										
-										</div>
-										<div class="col-sm-4">
-											<ul class="multi-column-dropdown">
-												<li><a href="Productos.php?cat=12"><i class="fa fa-angle-right" aria-hidden="true"></i>Accesorios</a></li>
-												<li><a href="Productos.php?cat=13"><i class="fa fa-angle-right" aria-hidden="true"></i>Zona Gamer</a></li>
-												<li><a href="Productos.php?cat=14"><i class="fa fa-angle-right" aria-hidden="true"></i>Otros</a></li>
-												<li><a href="Productos.php?cat=15"><i class="fa fa-angle-right" aria-hidden="true"></i>Todos los productos</a></li>
-											</ul>						
-										</div>
+										while ($i <= $num_coolumnas) {
+											
+											$cont  = 0;
+											//echo "<script>console.log('res: " . $num_coolumnas . "' );</script>";
+											echo '<div class="col-sm-4">
+												<ul class="multi-column-dropdown">';
+
+											$clientes = ControladorCategorias::ctrMostrarCategoriasLimitSeis($item, $valor, $limit);
+	
+											foreach ($clientes as $key => $value) {
+
+
+												$value_final = $value["id"];
+
+												echo '<li><a href="Productos.php?cat='.$value["id"].'"><i class="fa fa-angle-right" aria-hidden="true"></i>'.$value["categoria"].'</a></li>';
+												$cont ++;
+												
+											}
+
+											 $limit = $value_final;
+																				
+										
+											$i++;  
+											echo '</ul>';
+											
+											echo'</div>';		
+									}
+										?>
+									
 										<div class="col-sm-4 w3l">
-											<a href="#"><img src="images/Productos/Menu.jpg" class="img-responsive" alt=""></a>
+											<a href="#"><img src="images/Productos/acesorios.jfif" class="img-responsive" alt=""></a>
 										</div>
 										<div class="clearfix"></div>
 									</div>	
@@ -133,7 +166,7 @@ $login -> ctrIngresoUsuario();
 										<div class="col-sm-4">
 											<ul class="multi-column-dropdown">
 												<li><a href="Login.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Iniciar Sesión</a></li>
-												<li><a href="Registrarse.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Registrarse</a></li>
+												
 											</ul>
 										</div>
 										<div class="col-sm-4">
@@ -199,7 +232,7 @@ $login -> ctrIngresoUsuario();
 					</form>
 				</div>
 				<div class="forg">
-					<a href="Registrarse.php" class="forg-right">Crear Cuenta</a>
+					
 				<div class="clearfix"></div>
 				</div>
 			</div>
@@ -253,7 +286,6 @@ $login -> ctrIngresoUsuario();
 			<h4>Mi Cuenta</h4> 
 			<ul>
 				<li><a href="Login.php">Iniciar Sesión</a></li>
-				<li><a href="Registrarse.php">Registrarse</a></li>
 			</ul>
 		</div>
 		<div class="clearfix"></div>
