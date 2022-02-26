@@ -28,7 +28,18 @@
 
 				</a>
 
-			</li>';
+			</li>
+			<li>
+
+				<a href="promociones">
+
+					<i class="fa fa-user"></i>
+					<span>Promociones</span>
+
+				</a>
+
+			</li>
+			';
 
 		}
 
